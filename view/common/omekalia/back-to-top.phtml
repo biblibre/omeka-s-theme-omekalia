@@ -1,0 +1,26 @@
+<!-- Back to top button -->
+<a id="backtotop"><span class="screen-reader-text"><?php echo $translate('Back to top'); ?></span></a>
+<script>
+(function($) {
+
+	$(document).ready(function() {
+		$('header nav').addClass('closed');
+
+		// Back to top button
+		var backToTopBTN = $('#backtotop');
+		$(window).scroll(function() {
+			if ($(window).scrollTop() > 300) {
+				backToTopBTN.addClass('show');
+			} else {
+				backToTopBTN.removeClass('show');
+			}
+		});
+
+		backToTopBTN.on('click', function(e) {
+			e.preventDefault();
+			$('html, body').animate({scrollTop:0}, '300');
+		});
+
+	});
+})(jQuery);
+</script>

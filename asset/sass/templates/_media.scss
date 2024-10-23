@@ -1,0 +1,61 @@
+.media.show {
+
+	.blocks {
+		
+		& > .wrap {
+			padding: $gutter--md $gutter;
+			background-color: $bg-white;
+			@include box-shadow--md;
+
+			@include breakpoint(xs) {
+				padding: $gutter--lg $gutter--sm;
+			}
+			@include breakpoint(sm) {
+				padding: $gutter--xl;
+			}
+			@include breakpoint(lg) {
+				padding-left: $gutter--xxl;
+				padding-right: $gutter--xxl;
+			}
+		}
+	}
+	.regions-container {
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-row-gap: $gutter--xs;
+
+		@include breakpoint(sm) {
+			grid-template-columns: 1fr 1fr;
+			grid-column-gap: $gutter--sm;
+		}
+	}
+}
+.media-render.file {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: $bg-medium;
+}
+.media-parent-item {
+
+	a {
+		font-weight: $medium;
+		color: $color-global;
+		border-bottom: 2px solid $border--link;
+
+		&:hover,
+		&:focus,
+		&:visited:hover,
+		&:visited:focus {
+			background-color: $bg-link;
+			border-color: $bg-link;
+			color: $color-light;
+			box-shadow: none;
+		}
+
+		&:visited {
+			color: $color-visited;
+			border-bottom-color: lighten($bg-dark, 20%);
+		}
+	}
+}

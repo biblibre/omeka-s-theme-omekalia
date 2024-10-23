@@ -1,0 +1,141 @@
+/* Items
+--------------------------------------------- */
+
+.item.show .blocks,
+.items.search .blocks {
+
+	& > .wrap {
+		padding: $gutter--md $gutter;
+		background-color: $bg-white;
+		@include box-shadow--md;
+
+		@include breakpoint(xs) {
+			padding: $gutter--lg $gutter--sm;
+		}
+		@include breakpoint(sm) {
+			padding: $gutter--xl;
+		}
+		@include breakpoint(lg) {
+			padding-left: $gutter--xxl;
+			padding-right: $gutter--xxl;
+		}
+	}		
+
+	h1  {
+
+		.title {
+			margin-bottom: 0;
+		}
+	}
+}
+.regions-container,
+.main-region {
+	padding-left: $gutter;
+	padding-right: $gutter;
+}
+.regions-container:not(.one-column) {
+
+	@include breakpoint(lg) {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-column-gap: $gutter--md;
+		align-items: flex-start;
+	}
+	.region + .region {
+		margin-top: $gutter--md;
+
+		@include breakpoint(lg) {
+			margin-top: 0;
+		}
+	}
+	.section-2 {
+	}
+}
+.region {
+
+	&.section1 {
+
+		.properties-wrapper {
+			padding: $gutter--sm $gutter;
+			background-color: $bg-body;
+
+			dl {
+				display: grid;
+				grid-template-columns: 1fr;
+				grid-row-gap: $gutter--xs;
+
+				@include breakpoint(sm) {
+					grid-template-columns: 1fr 1fr;
+					grid-column-gap: $gutter--sm;
+				}
+			}
+			dd {
+				margin-bottom: 0;
+			}
+			.resource__property {
+				grid-template-columns: max-content 1fr;
+				margin-bottom: 0;
+			}
+		}
+	}
+	&.section2 {
+		container-name: itemproperties;	
+		container-type: inline-size;
+		max-width: $width--xs;
+		width: 100%;
+		@include margin-auto;
+
+		.properties-wrapper dl,
+		.metadata dl {
+			grid-row-gap: 0.75 * $gutter;
+		}
+
+		@container itemproperties (min-width: 450px) {
+			
+			.resource__property,
+			.metadata .property {
+				grid-template-columns: $gutter--xxl 1fr;
+
+				dd:not(:first-of-type) {
+					grid-column: 2;
+				}
+			}
+		}
+	}
+
+	& + .region {
+		margin-top: $gutter--md;
+	}
+}
+
+.item.show .slider-items {
+	position: relative;
+	margin-top: $gutter--xl;
+	padding-top: $gutter--xl;
+
+	@include breakpoint(sm) {
+		margin-top: 2 * $gutter--lg;
+		padding-top: 2 * $gutter--lg;
+	}
+	@include breakpoint(md) {
+		margin-top: $gutter--xxl;
+		padding-top: $gutter--xxl;
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: -$gutter;
+		left: 50%;
+		transform: translateX(-50%);
+		display: block;
+		width: $width--lg;
+		max-width: 90%;
+		height: $gutter--md;
+		background: var(--img-separator) no-repeat center /cover;
+	}
+	&__title {
+		@extend h1;
+		margin-bottom: $gutter--xl;
+	}
+}

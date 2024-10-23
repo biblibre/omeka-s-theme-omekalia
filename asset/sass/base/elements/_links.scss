@@ -1,0 +1,54 @@
+a {
+	text-decoration: none;
+	@include transition;
+}
+.block {
+
+	a:not(.button) {
+		font-weight: $medium;
+		color: $color-global;
+		border-bottom: 2px solid $border--link;
+
+		&:hover,
+		&:focus,
+		&:visited:hover,
+		&:visited:focus {
+			background-color: $bg-link;
+			border-color: $bg-link;
+			color: $color-light;
+			box-shadow: none;
+		}
+
+		&:visited {
+			color: $color-visited;
+			border-bottom-color: lighten($bg-dark, 20%);
+		}
+	}
+	p > a,
+	li > a {
+
+		&[target="_blank"] {
+
+			&::after {
+				//content: "\f35d"; icone ne s'affiche pas !!
+				content: "";
+				display: inline-block;
+				width: 20px;
+				height: 24px;
+				margin-bottom: -6px;
+				padding-top: 1px;
+				padding-right: 2px;
+				background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' stroke-miterlimit='10' clip-rule='evenodd' viewBox='0 0 90 90'%3E%3Cg transform='matrix(.8294 0 0 .9319 -15.9428 -27.3529)'%3E%3Cpath fill='none' d='M19.222 29.353h108.512v96.581H19.222z'/%3E%3CclipPath id='a'%3E%3Cpath d='M19.222 29.353h108.512v96.581H19.222z'/%3E%3C/clipPath%3E%3Cg clip-path='url(%23a)'%3E%3Cpath fill='none' stroke='%23000000' d='M-3.422 5.185H0v-8.607h-8.607v3.091' transform='matrix(0 8.9427 10.0473 0 64.6186 116.1295)'/%3E%3Cpath fill='none' stroke='%23000000' d='M0-2.797h3.153V0' transform='matrix(10.0473 0 0 8.9427 85.0319 64.1744)'/%3E%3Cpath fill='none' stroke='%23000000' d='M-1.471 3.551H8.572' transform='scale(10.0473 -8.9427) rotate(45 19.6656 3.2617)'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+				background-position: right top;
+				background-repeat: no-repeat;
+				background-size: 14px; 
+				font-family: $font-icon;
+				@include transition;
+			}
+			&:hover::after,
+			&:focus::after {
+				background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' stroke-miterlimit='10' clip-rule='evenodd' viewBox='0 0 90 90'%3E%3Cg transform='matrix(.8294 0 0 .9319 -15.9428 -27.3529)'%3E%3Cpath fill='none' d='M19.222 29.353h108.512v96.581H19.222z'/%3E%3CclipPath id='a'%3E%3Cpath d='M19.222 29.353h108.512v96.581H19.222z'/%3E%3C/clipPath%3E%3Cg clip-path='url(%23a)'%3E%3Cpath fill='none' stroke='%23fff' d='M-3.422 5.185H0v-8.607h-8.607v3.091' transform='matrix(0 8.9427 10.0473 0 64.6186 116.1295)'/%3E%3Cpath fill='none' stroke='%23fff' d='M0-2.797h3.153V0' transform='matrix(10.0473 0 0 8.9427 85.0319 64.1744)'/%3E%3Cpath fill='none' stroke='%23fff' d='M-1.471 3.551H8.572' transform='scale(10.0473 -8.9427) rotate(45 19.6656 3.2617)'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+			}
+		}
+	}
+}

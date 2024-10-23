@@ -1,0 +1,88 @@
+<section class="collections">
+	<div class="collections__wrap wrap wrap--smd">
+		<h2 class="collections__title"><?php echo $translate('Collections'); ?></h2>
+		<div class="collection__items">
+			<?php
+
+			if( $this->themeSetting( 'home_itemsets_selection') ):
+
+			
+				$collections_to_show = array();
+				$collections_to_show = explode( ',',$this->themeSetting( 'home_itemsets_selection') );
+
+				/* Uniquement pour afficher des collections associées au site - si aucun résultat vérifier que des collections sont associées au site */
+				/* Filtre à remettre en service quand les collections auront été associées au site */
+				$collections = $this->api()->search('item_sets'/*, [
+							'site_id' => $site->id(),
+						]*/)->getContent();
+
+				$collections_id = array();
+
+				foreach ($collections as $collection):
+
+					$collection_heading = $collection->displayTitle();
+					$collection_url = $collection->url();
+
+					$collections_id[] = $collection->id();
+
+					if (in_array( $collection->id(), $collections_to_show)) :
+						?>
+						
+							<div class="collection__item">
+								<a href="<?php echo $collection_url; ?>">
+									<div class="collection__thumbnail">
+										<?php
+											if( $this->thumbnail($collection, 'medium') ):
+										?>
+											<?php echo $this->thumbnail($collection, 'medium'); ?>
+										<?php elseif ( $this->themeSetting( 'itemsets_thumbnail' ) ) : ?>                                     
+											<img src="<?php echo $this->themeSettingAssetUrl('itemsets_thumbnail'); ?>" alt="" /> 
+										<?php
+											endif;
+										?>
+									</div>
+									<h3 class="collection__title"><?php echo $collection_heading; ?></h3>
+								</a>
+							</div>
+						<?php
+					endif;
+
+				endforeach;
+
+			else:
+				// Récupération des collections de 1er niveau
+				$root_itemSetsTree = $this->itemSetsTree()->getItemSetsTree( 1 );
+
+				foreach ($root_itemSetsTree as $root_collection):
+					$root_itemSet = $root_collection['itemSet'];
+					?>
+					
+					<div class="collection__item">
+						<a href="<?php echo $root_itemSet->url(); ?>">
+							<div class="collection__thumbnail">
+								<?php
+									if( $this->thumbnail($root_itemSet, 'medium') ):
+								?>
+									<?php echo $this->thumbnail($root_itemSet, 'medium'); ?>
+								<?php elseif ( $this->themeSetting( 'itemsets_thumbnail' ) ) : ?>
+									<img src="<?php echo $this->themeSettingAssetUrl('itemsets_thumbnail'); ?>" alt="" />
+								<?php
+									endif;
+								?>
+							</div>
+
+							<h3 class="collection__title"><?php echo $root_itemSet->displayTitle(); ?></h3>
+						</a>
+					</div>
+					
+				<?php
+				endforeach;
+
+			endif;
+			?>
+		</div>
+		<div class="button__container">
+			<a href="<?php echo $site->url(); ?>/item-sets-tree/" class="button button--small"><?php echo $translate('Explore all the collections'); ?></a>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,89 @@
+// Fichiers in french
+.asset {
+	
+
+	img {
+		max-height: 500px;
+	}	
+}
+.block:not(.block-layout-alignment-block-left, .block-layout-alignment-block-right),
+.block-layout-alignment-block-center {
+
+	img {
+		@include margin-auto;
+	}
+}
+
+.page-layout-normal .block.block-layout-alignment-block-right,
+.page-layout-normal .block.block-layout-alignment-block-left {
+	width: 100%;
+	max-width: 100%;
+
+	@include breakpoint(xs) {
+		width: $one-half;
+	}
+}
+.page-layout-normal .block.block-layout-alignment-block-left {
+	
+	@include breakpoint(xs) {
+		margin-right: $gutter--sm;
+	}
+	@include breakpoint(sm) {
+		margin-right: $gutter--md;
+	}
+	@include breakpoint(md) {
+		margin-left: -80px;
+		max-width: calc( #{$one-half} + 80px );
+		width: calc( #{$one-half} + 80px );
+	}
+	@include breakpoint(lg) {
+		margin-left: -$one-sixth;
+		max-width: calc( #{$one-half} + #{$one-sixth} );
+		width: calc( #{$one-half} + #{$one-sixth} );
+	}
+
+	& + .block {
+		margin-left: $gutter;
+
+		@include breakpoint(md) {
+			margin-right: -80px;
+			width: calc( #{$one-half} + 80px );
+		}
+		@include breakpoint(lg) {
+			margin-right: -$one-sixth;
+			width: calc( #{$one-half} + #{$one-sixth} );
+		}
+	}
+}
+.page-layout-normal .block.block-layout-alignment-block-right {
+	
+	@include breakpoint(xs) {
+		margin-left: $gutter--sm;
+	}
+	@include breakpoint(sm) {
+		margin-left: $gutter--md;
+	}
+	@include breakpoint(md) {
+		margin-right: -80px;
+		max-width: calc( #{$one-half} + 80px );
+		width: calc( #{$one-half} + 80px );
+	}
+	@include breakpoint(lg) {
+		margin-right: -$one-sixth;
+		max-width: calc( #{$one-half} + #{$one-sixth} );
+		width: calc( #{$one-half} + #{$one-sixth} );
+	}
+
+	& + .block {
+		margin-right: $gutter;
+
+		@include breakpoint(md) {
+			margin-left: -80px;
+			width: calc( #{$one-half} + 80px );
+		}
+		@include breakpoint(lg) {
+			margin-left: -$one-sixth;
+			width: calc( #{$one-half} + #{$one-sixth} );
+		}
+	}
+}

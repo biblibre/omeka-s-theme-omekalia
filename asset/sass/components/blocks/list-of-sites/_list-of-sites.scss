@@ -1,0 +1,46 @@
+.block-listOfSites .list-of-sites {
+	
+	.site {
+		align-items: flex-start;
+		margin-bottom: $gutter--sm;
+
+		&:has(.site-thumbnail) {
+			display: grid;
+			grid-template-columns: 220px 1fr;
+		}
+
+		&-thumbnail {
+			display: flex;
+			flex-direction: columns;
+			justify-content: center;
+			aspect-ratio: 3/2;
+			overflow: hidden;
+
+			img {
+				max-height: initial;
+				min-width: 100%;
+				min-height: 100%;
+				object-fit: cover;
+				object-position: center;
+			}
+		}
+		&:not(:has(.site-thumbnail)) {
+			
+			.site-link {
+				position: relative;
+				margin-left: $gutter--lg;
+
+				&::before {
+					content: '';
+					position: absolute;
+					top: 0;
+					left: -$gutter--lg;
+					display: block;
+					height: 30px;
+					width: 22px;
+					background: var(--icon-bookmark) no-repeat left center/contain;
+				}
+			}
+		}
+	}
+}

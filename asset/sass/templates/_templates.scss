@@ -1,0 +1,61 @@
+ .page-title {
+
+	h1 {
+		max-width: $width--lg;
+		@include margin-auto;
+		margin-bottom: $gutter--sm;
+	}
+} 
+
+/* SHARE ME BABY  ---------------------- */
+.item.show,
+.media.show {
+
+	.block-share-me-baby {
+		margin-bottom: $gutter;
+		background-color: $bg-body;
+
+		.wrap {
+			display: flex;
+			justify-content: flex-end;
+		}
+	}
+	.share-me-baby {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		gap: $gutter;
+		padding: $gutter--xs;
+		background-color: $bg-white;
+
+		.button {
+			padding-left: $gutter--xs;
+			padding-right: $gutter--xs;
+
+			svg {
+				height: $gutter--sm;
+				width: $gutter--sm;
+			}
+			span {
+				@include screen-reader-text;
+			}
+		}
+	}
+}
+
+
+/* Pages
+--------------------------------------------- */
+@import "pages";
+
+/* Item show
+--------------------------------------------- */
+@import "item";
+
+/* Media show
+--------------------------------------------- */
+@import "media";
+
+/* Itemset page (item/browse => itemset part)
+--------------------------------------------- */
+@import "itemset";

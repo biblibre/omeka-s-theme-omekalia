@@ -1,0 +1,20 @@
+<?php
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+
+$this->htmlElement('body')->appendAttribute('class', 'itemsets-hierarchy');
+?>
+
+
+<div class="breadcrumbs wrap wrap--lg">
+	<a href="<?php echo $this->url('site', [], [], true); ?>"><?php echo $translate('Home'); ?></a> &gt; <span><?php echo $translate('All item sets'); ?></span>
+</div>
+<div class="blocks">
+
+	<div class="wrap wrap--md">
+		<?php echo $this->pageTitle($translate('Item Sets Tree')); ?>
+
+		<?php $itemSetsTree = $this->itemSetsTree()->getItemSetsTree(); ?>
+		<?php echo $this->partial('item-sets-tree/item-sets-tree', ['itemSetsTree' => $itemSetsTree]); ?>
+	</div>
+</div>

@@ -1,0 +1,21 @@
+.breadcrumbs {
+	margin-bottom: $gutter--md;
+	padding: 0.5 * $gutter $gutter;
+	font-size: 0.88889em;
+
+	@include breakpoint(xl) {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	a {	
+		box-shadow: inset 0 -2px 0 0 $bg-secondary-50;
+
+		&:hover,
+		&:focus {
+			background-color: $bg-primary;
+			box-shadow: none;
+			color: $color-light;
+		}
+	}
+}

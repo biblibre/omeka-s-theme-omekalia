@@ -1,0 +1,69 @@
+h1,.h1,
+h2,.h2,
+h3,.h3,
+h4,.h4,
+h5,.h5,
+h6,.h6 {
+	line-height: $line-height--headings;
+	font-family: $font-headings;
+	font-weight: $light;
+	color: $color-headings--2;
+	@include transition;
+}
+h1,
+.h1,
+h1.entry-title {
+	text-transform: uppercase;
+	text-align: center;
+	font-size: $font-size__h1;
+	color: $color-headings;
+}
+h2,
+.h2 {
+	text-transform: uppercase;
+	font-size: $font-size__h2;
+	font-weight: $normal;
+}
+h3,
+.h3 {
+	font-size: $font-size__h3;
+	font-weight: $semi-bold;
+}
+h4,
+.h4 {
+	font-weight: $semi-bold;
+	font-size: $font-size__h4;
+}
+h5,
+.h5 {
+	font-size: $font-size__h5;
+	font-weight: $semi-bold;
+}
+h6,
+.h6 {
+	text-transform: uppercase;
+	font-size: $font-size__h6;
+	font-weight: $normal;
+	color: $color-accent;
+}
+
+.block {
+
+	h2,
+	.h2,
+	h3,
+	.h3,
+	h4,
+	.h4,
+	h5,
+	.h5,
+	h6,
+	.h6 {
+		margin-top: $gutter--md;
+		margin-bottom: $gutter--sm;
+
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+}

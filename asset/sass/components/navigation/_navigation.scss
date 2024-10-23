@@ -1,0 +1,448 @@
+.header__nav {
+	margin-top: 0;
+	margin-right: 0;
+	margin-left: 0;
+
+	@include breakpoint(md) {
+		margin: 0;
+	}
+}
+.header__nav nav {
+	position: relative;	
+	margin-top: 40px;
+	padding: 0;	
+
+	@include breakpoint(md) {
+		position: static;
+		margin: 0 auto !important;
+	}
+
+	/* Burger menu opening button */
+	&::before {
+		content: "Menu";
+		position: absolute;
+		left: 50%;
+		top: -40px;
+		display: flex;
+		align-items: center;
+		height: 40px;
+		padding: $gutter--xs $gutter--xl $gutter--xs $gutter;
+		background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2' clip-rule='evenodd' viewBox='0 0 25 25'%3E%3Cpath fill='%23fff' d='M0 4c0-1.105.89-2 2.004-2h20.992C24.103 2 25 2.888 25 4c0 1.105-.89 2-2.004 2H2.004A1.997 1.997 0 0 1 0 4Zm0 8c0-1.105.89-2 2.004-2h20.992c1.107 0 2.004.888 2.004 2 0 1.105-.89 2-2.004 2H2.004A1.997 1.997 0 0 1 0 12Zm0 8c0-1.105.89-2 2.004-2h20.992c1.107 0 2.004.888 2.004 2 0 1.105-.89 2-2.004 2H2.004A1.997 1.997 0 0 1 0 20Z'/%3E%3C/svg%3E%0A") no-repeat right $gutter center/$gutter--sm $bg-primary;
+		border: 1px solid $bg-light;
+		cursor: pointer;
+		transform: translateX(-50%);
+		font-size: 1.25em;
+		color: $color-light;
+
+		@include transition;
+
+		@include breakpoint(xs) {
+			//top: -48px;
+		}
+		@include breakpoint(md) {
+			display: none;
+			content: "";
+			border: 0;
+		}
+	}
+
+	&.closed ul {
+		height: 0;
+		overflow: hidden;
+		margin: 0;
+
+		@include breakpoint(md) {
+			height: auto;
+			overflow: visible;
+		}
+	}
+
+	&.open {
+		margin-top: 40px;
+		@include box-shadow--md;
+
+		@include breakpoint(xs) {
+			margin-top: 48px;
+		}
+		@include breakpoint(md) {
+			box-shadow: none;
+		}
+
+		&::before {
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2' clip-rule='evenodd' viewBox='0 0 15 15'%3E%3Cpath fill='none' d='M0 0h15v15H0z'/%3E%3Cpath fill='%23fff' fill-rule='nonzero' d='M.8 14.2c.2.2.4.3.7.3.3 0 .5-.1.7-.3l5.3-5.3 5.3 5.3c.2.2.5.3.7.3.2 0 .5-.1.7-.3.4-.4.4-1 0-1.4L8.9 7.5l5.3-5.3c.4-.4.4-1 0-1.4-.4-.4-1-.4-1.4 0L7.5 6.1 2.2.8C1.8.4 1.2.4.8.8c-.4.4-.4 1 0 1.4l5.3 5.3-5.3 5.3c-.4.4-.4 1 0 1.4Z'/%3E%3C/svg%3E%0A");
+		}
+	}
+
+	.child-toggle {
+		appearance: none;
+		width: $gutter--lg;
+		padding: 0;
+		background-color: transparent;
+		border: 1px solid transparent;
+
+		@include breakpoint(xs) {
+			width: $gutter--xl;
+		}
+
+		&:hover,
+		&:focus {
+			background-color: transparent;
+			border-color: $bg-primary;
+			cursor: pointer;
+		}
+		
+		&::before {
+			font-family: $font-icon;
+			content: "\f107";
+			content: "";
+			display: block;
+			height: 100%;
+			width: 100%;
+			background: var(--icon-arrow-down) no-repeat center / 20px;
+		}
+		&[aria-label="Déplier"]::before {
+
+		}
+		&[aria-label="Replier"]::before {
+
+		}
+
+		@include breakpoint(md) {
+			display: none;
+		}
+	}
+}
+
+
+.header__nav nav ul {
+	position: relative;
+	margin: 0;
+	padding-left: 0;
+	list-style: none;
+	font-family: $font-menu;
+	line-height: $line-height--sm;
+
+	&.navigation {
+
+		@include breakpoint(md) {
+			position: static;
+			display: grid;
+			grid-auto-flow: column;
+			grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+			align-items: stretch;
+			justify-content: center;
+			column-gap: $gutter;
+			padding-bottom: 0.75 * $gutter;
+			padding-top: 0.75 * $gutter;
+		}
+
+		// First level of menu
+		& > li {	
+			border-bottom: 2px solid $bg-body;	
+
+			@include breakpoint(md) {
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				align-self: stretch;
+				border-bottom: 0;
+				text-align: center;
+			}
+		}
+		& > li > a,
+		& > li > .parent-link > a {
+
+			@include breakpoint(md) {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				height: 100%;
+				background-color: $bg-primary;
+				border: 1px solid $bg-primary;
+				color: $color-light;
+			}
+			&:hover,
+			&:focus {
+
+				@include breakpoint(md) {
+					background-color: $bg-white;
+					color: $color-accent;
+				}
+			}
+		}
+		& > li > .parent-link {
+
+			@include breakpoint(md) {
+				display: flex;
+				height: 100%;
+			}
+		}
+
+		// Second level - show on hover
+		& > li > ul {		
+
+			@include breakpoint(md) {
+				position: absolute;
+				z-index: 2;
+				top: 100%;
+				left: -9999px;
+				display: flex;
+				flex-direction: column;
+				width: 100%;
+				padding: 0;
+				background-color: $bg-white;
+				box-shadow: 0 6px 16px rgba($bg-dark, 0.5);
+				list-style: none;
+			}
+		}
+		& > li:hover > ul,
+		& > li:focus-within > ul,
+		& > li a:hover > ul,
+		& > li a:focus > ul {
+
+			@include breakpoint(md) {
+				left: 0;
+				right: 0;
+			}
+		}
+
+
+
+		& > li > ul > li ul {
+			
+			@include breakpoint(md) {
+				height: auto;
+			}
+		}
+	}
+
+	// Opens second level of menu - show on click (responsive)
+	&.open > li {
+		height: auto;
+		padding-top: -1px;
+		border-top: 1px solid $bg-body;
+
+		@include breakpoint(md) {
+			padding-top: 0;
+			border-top: 0;
+		}
+	}
+
+	/* Second level items */
+	ul {
+		padding-left: $gutter;
+		background-color: $bg-white;
+
+		@include breakpoint(xs) {
+			padding-left: $gutter--sm;
+		}
+		@include breakpoint(md) {
+			padding-left: 0;
+			border-top: 1px solid $bg-body;
+		}
+	}
+	ul li {
+		height: 0;
+		overflow: hidden;
+
+		@include breakpoint(md) {
+			width: 100%;
+			height: auto;
+			overflow: visible;
+			border-bottom: 1px solid $bg-body;
+			text-align: left;
+		}
+		a {
+			
+			@include breakpoint(md) {
+			//	padding-left: calc( #{$gutter} + #{$gutter--sm} );
+			}			
+		}
+
+		/* Third level items */
+		ul li {	
+
+			@include breakpoint(md) {
+				//border-top: 1px solid $bg-body;
+			}			
+		}
+		ul li a {
+			
+			@include breakpoint(md) {
+				//padding-left: calc( #{$gutter} + #{$gutter--sm} );
+			}			
+		}
+
+		/* Fourth level items */
+		ul ul li a {
+			
+			@include breakpoint(md) {
+			//	padding-left: calc( 2 * #{$gutter} + #{$gutter--sm} );
+			}			
+		}
+	}
+}
+
+// Links & Active entries
+.header__nav nav ul.navigation {
+
+	a {
+		display: inline-block;
+		width: 100%;
+		padding: $gutter;
+
+		@include breakpoint(xs) {
+			padding-left: $gutter--sm;
+			padding-right: $gutter--sm;
+		}
+		@include breakpoint(md) {
+			padding: 0.75 * $gutter $gutter;
+		}
+	}
+
+
+	// FIRST LEVEL MENU
+	& > li > a,
+	& > li > .parent-link > a {
+
+		@include breakpoint(md) {
+			background-color: $bg-primary;	
+			border: 1px solid $bg-primary;			
+			color: $color-light;
+		}
+		&:hover,
+		&:focus {
+			background-color: $bg-white;
+			color: $color-accent;
+		}
+	}
+	& > li.active {
+		
+		& > a,
+		& > .parent-link > a {
+			background-color: $bg-primary;
+			border-top-color: $bg-white;
+			font-weight: $semi-bold;
+			color: $color-light;
+
+			@include breakpoint(md) {
+				background-color: $bg-white;
+				border: 1px solid $bg-primary;
+				color: $color-accent;
+			}
+
+			&:hover,
+			&:focus {
+				background-color: $bg-primary;
+				color: $color-light;
+			}
+		}
+		&,
+		& > .parent-link {
+			border-top-color: $bg-white;
+		}
+	}
+	& > li:hover > .parent-link > a,
+	& > li:focus-within > .parent-link > a {
+
+		@include breakpoint(md) {
+			
+		}
+	}
+	// SECOND LEVEL MENU
+	& li li > a,
+	& li li > .parent-link > a {
+
+		&:hover,
+		&:focus {
+			background-color: $bg-primary;
+			color: $color-light;
+		}
+	}
+	& li.active li.active {
+		
+		& > a,
+		& > .parent-link > a {
+
+			@include breakpoint(md) {
+				background-color: $bg-primary;
+				border-color: $bg-white;
+				font-weight: $semi-bold;
+				color: $color-light;
+			}
+			&:hover,
+			&:focus {
+
+				@include breakpoint(md) {
+					background-color: $bg-white;
+					border-color: $bg-primary;
+					color: $color-accent;
+				}
+			}
+
+		}
+	}
+	// THIRD LEVEL MENU
+	& li li li > a,
+	& li li li > .parent-link > a {
+
+		@include breakpoint(md) {
+			padding-left: calc( #{$gutter} + #{$gutter--sm} );
+		}
+	}
+	// FOURTH LEVEL MENU
+	& li li li li > a,
+	& li li li li > .parent-link > a {
+
+		@include breakpoint(md) {
+			padding-left: calc( 2 * #{$gutter} + #{$gutter--sm} );
+		}
+	}
+	
+	// ENTRY WITH CHILDREN
+	.parent-link {
+		display: grid;
+		grid-template-columns: 1fr $gutter--lg;
+
+		@include breakpoint(xs) {
+			grid-template-columns: 1fr $gutter--xl;
+		}
+		@include breakpoint(md) {
+			display: block
+		}
+		
+		& > a {			
+
+			@include breakpoint(md) {
+				position: relative;
+				width: 100%;
+				padding-right: $gutter--md;
+
+				&::after {
+					content: "";
+					position: absolute;
+					right: 0;
+					top: 0;
+					display: block;
+					height: 100%;
+					width: $gutter--md;
+					background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2' viewBox='0 0 299 169'%3E%3Cpath d='M8.296 120.55h293.023v167.506H8.296z' style='fill:none' transform='matrix(1.0204 0 0 1.00892 -8.466 -121.625)'/%3E%3Cpath d='M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192Z' style='fill:%23fff;fill-rule:nonzero' transform='translate(-10.45 -191.825)'/%3E%3C/svg%3E") no-repeat right 12px center/16px;
+				}
+				&:hover::after,
+				&:focus::after {
+					background-image: var(--icon-arrow-down);
+				}
+			}
+		}
+	}
+	.active > .parent-link > a {
+
+		&::after {
+			background-image: var(--icon-arrow-down);
+		}
+		&:hover::after,
+		&:focus::after {
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2' viewBox='0 0 299 169'%3E%3Cpath d='M8.296 120.55h293.023v167.506H8.296z' style='fill:none' transform='matrix(1.0204 0 0 1.00892 -8.466 -121.625)'/%3E%3Cpath d='M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192Z' style='fill:%23fff;fill-rule:nonzero' transform='translate(-10.45 -191.825)'/%3E%3C/svg%3E");
+		}
+	}
+}

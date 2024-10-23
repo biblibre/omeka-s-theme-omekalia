@@ -1,0 +1,39 @@
+.item-with-metadata {
+
+	.resource.show {
+		margin-bottom: $gutter--md;
+		padding: $gutter--md;
+		background-color: $bg-body;
+		@include alignmedium;
+
+		@include breakpoint(sm) {
+			padding: $gutter--lg;
+		}
+		@include breakpoint(md) {
+			padding: $gutter--xl $gutter--xxl;
+		}
+		@include breakpoint(lg) {
+			padding-left: calc(calc(#{$width--md} - #{$width--xs}) / 2);
+			padding-right: calc(calc(#{$width--md} - #{$width--xs}) / 2);
+		}
+	}
+
+	dl:not([class]) .property {
+		display: grid;		
+		grid-column-gap: $gutter--xs;
+		align-items: flex-start;
+		line-height: $line-height--sm;
+		margin-bottom: $gutter--xs;
+	}
+
+	@container medialist-width (min-width: 450px) {
+		
+		dl:not([class]) .property {
+			grid-template-columns: $gutter--xxl 1fr;
+
+			dd + dd {
+				grid-column-start: 2;
+			}
+		}
+	}
+}

@@ -1,0 +1,117 @@
+button,
+.button,
+input[type="button"],
+input[type="submit"] {
+	padding: 0.5 * $gutter--xs $gutter--sm;
+	border-width: 0 0 4px 0;
+	border-style: solid;
+	border-color: transparent transparent $border--link transparent;
+	text-transform: uppercase;
+	font-family: $font-headings;
+	color: $color-accent;
+	@include transition;	
+
+	&:hover,
+	&:focus {
+		background-color: $bg-primary;
+		border-color: $bg-primary;
+		color: $color-light;
+	}
+	&:visited {
+		border-bottom-color: $border--link;
+
+		&:hover,
+		&:focus {
+			border-color: $bg-primary;
+		}
+	}
+	&::before {
+		font-family: $font-icon;
+	}
+
+	&.inactive {
+		filter: grayscale(100%);
+		opacity: 0.5;
+
+		&:hover,
+		&:focus {
+			background-color: transparent;
+			color: initial;
+			opacity: 0.5;
+		}
+	}
+}
+
+.button {
+
+	&--small {
+		padding: 0.5 * $gutter--xs 0;
+
+		&:hover,
+		&:focus {
+			padding-left: 0.5 * $gutter;
+			padding-right: 0.5 * $gutter;
+		}
+	}
+
+	&--advanced {
+		padding: 0.5 * $gutter--xs $gutter 0.5 * $gutter--xs $gutter--xs;
+		background-color: $bg-dark;
+		border: 1px solid $bg-dark !important;
+		border-radius: $gutter--md;
+		color: $color-light;
+
+		&:hover,
+		&:focus {
+			padding: 0.5 * $gutter--xs $gutter 0.5 * $gutter--xs $gutter--xs;
+			background-color: $bg-primary;
+			border-color: $bg-primary;
+			@include box-shadow--sm;
+		}		
+
+		i {
+			margin-right: $gutter;
+			font-size: 1.5em;
+		}
+	}
+}
+.button--large,
+button[type="submit"] {
+		padding: 0.5 * $gutter--xs $gutter--lg;
+		background-color: transparent;
+		border-bottom: 10px solid $bg-secondary;
+
+		&:hover,
+		&:focus {
+			padding-left: $gutter--lg;
+			padding-right: $gutter--lg;
+			background-color: $bg-primary;
+			border-bottom-color: $bg-primary;
+		}
+	}
+
+.button.previous,
+.button.next {
+	width: $gutter--sm;
+	border-bottom: 0;
+	font-size: 1.8em;
+	color: $color-accent;
+
+	&::before{
+		width: 100%;
+		text-align: center;
+		@include transition;
+	}
+
+	&:hover,
+	&:focus {
+		color: $color-light;
+	}
+	&.inactive {
+
+		&:hover,
+		&:focus {
+			color: $color-accent;
+		}
+	}
+}

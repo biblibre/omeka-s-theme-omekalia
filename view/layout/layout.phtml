@@ -1,0 +1,72 @@
+<?php
+$translate = $this->plugin('translate');
+$primaryColor = ($this->themeSetting('primary_color')) ?: '#912F13';
+$secondaryColor = ($this->themeSetting('secondary_color')) ?: '#FF7F17';
+$fontSelection = ($this->themeSetting('font_selection')) ?: 1;
+$bgSearch = $this->themeSettingAssetUrl('banner_narrow');
+$bgSearchHome = $this->themeSettingAssetUrl('banner_large');
+$separator = $this->themeSettingAssetUrl('separator');
+$userBar = $this->userBar();
+
+
+$this->headMeta()->setCharset('utf-8');
+$this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1');
+$this->headTitle($this->setting('installation_title', 'Omeka S'))->setSeparator(' · ');
+
+$this->headLink()->appendStylesheet($this->assetUrl('css/iconfonts.css', 'Omeka'));
+$this->headLink()->prependStylesheet($this->assetUrl('lib/splide/css/splide.min.css' ));
+$this->headLink()->appendStylesheet($this->assetUrl('css/style.css'));
+$this->headLink()->appendStylesheet($this->assetUrl('css/font-pack--'.$fontSelection.'.css'));
+
+$this->headScript()->prependFile($this->assetUrl('vendor/jquery/jquery.min.js', 'Omeka'));
+$this->headScript()->appendFile($this->assetUrl('js/global.js', 'Omeka'));
+$this->headScript()->prependFile($this->assetUrl('lib/splide/js/splide.min.js' ));
+$this->headScript()->appendFile($this->assetUrl('js/theme.js'));
+$this->jsTranslate();
+$this->trigger('view.layout');
+
+if ($userBar) {
+	$this->htmlElement('body')->appendAttribute('class', 'user-bar');
+}
+?>
+<?php echo $this->doctype(); ?>
+<?php echo $this->htmlElement('html')->setAttribute('lang', $this->lang()); ?>
+	<head>
+		<?php echo $this->headMeta(); ?>
+		<?php echo $this->headTitle(); ?>
+		<?php echo $this->headLink(); ?>
+		<?php echo $this->headStyle(); ?>
+		<?php echo $this->headScript(); ?>
+
+		<style type="text/css" media="screen">
+			:root {
+				--primary: <?php echo $primaryColor; ?>;
+				--secondary: <?php echo $secondaryColor; ?>;
+				--secondary-light: <?php echo $this->MixColor($secondaryColor, '#FFFFFF', 50); ?>;
+				<?php echo ($bgSearchHome) ? '--img-bg-search-home: url('.$bgSearchHome.');' : '' ; ?>
+				<?php echo ($bgSearch) ? '--img-bg-search: url('.$bgSearch.');' : '' ; ?>
+				<?php echo ($separator) ? '--img-separator: url('.$separator.');' : '' ; ?>
+				--icon-arrow-up: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2' viewBox='0 0 299 169'%3E%3Cpath d='M8.296 120.55h293.023v167.506H8.296z' style='fill:none' transform='matrix(1.0204 0 0 1.00892 -8.466 -121.625)'/%3E%3Cpath d='M288.8 352H31.3c-17.8 0-26.7-21.5-14.1-34.1l128.7-128.7c7.8-7.8 20.5-7.8 28.3 0l128.7 128.7c12.6 12.6 3.7 34.1-14.1 34.1Z' style='fill:<?php echo urlencode($primaryColor); ?>;fill-rule:nonzero' transform='translate(-10.55 -183.175)'/%3E%3C/svg%3E");
+				--icon-arrow-down: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2' viewBox='0 0 299 169'%3E%3Cpath d='M8.296 120.55h293.023v167.506H8.296z' style='fill:none' transform='matrix(1.0204 0 0 1.00892 -8.466 -121.625)'/%3E%3Cpath d='M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192Z' style='fill:<?php echo urlencode($primaryColor); ?>;fill-rule:nonzero' transform='translate(-10.45 -191.825)'/%3E%3C/svg%3E");
+				--icon-bookmark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2' viewBox='0 0 384 512'%3E%3Cpath d='M0 512V48C0 21.5 21.5 0 48 0h288c26.5 0 48 21.5 48 48v464L192 400 0 512Z' style='fill:<?php echo urlencode($primaryColor); ?>;fill-rule:nonzero'/%3E%3C/svg%3E");
+				--icon-map-pin: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2' viewBox='0 0 288 512'%3E%3Cpath d='M112 316.9v156.7l22 33c4.8 7.1 15.2 7.1 20 0l22-33V316.9c-10.4 1.9-21.1 3.1-32 3.1-10.9 0-21.6-1.1-32-3.1ZM144 0C64.5 0 0 64.5 0 144s64.5 144 144 144 144-64.5 144-144S223.5 0 144 0Zm0 76c-37.5 0-68 30.5-68 68 0 6.6-5.4 12-12 12s-12-5.4-12-12c0-50.7 41.3-92 92-92 6.6 0 12 5.4 12 12s-5.4 12-12 12Z' style='fill:<?php echo urlencode($primaryColor); ?>;fill-rule:nonzero'/%3E%3C/svg%3E");
+			}
+		</style>
+
+	</head>
+
+	<?php echo $this->htmlElement('body')->appendAttribute('class', 'minimal'); ?>
+		<?php echo $userBar; ?>
+
+		<?php echo $this->partial('common/omekalia/header', ['userBar' => $userBar, 'site' => $site]); ?>
+
+		<div id="content" role="main">
+			<?php echo $this->messages(); ?>
+			<?php echo $this->content; ?>
+		</div>
+
+		<?php echo $this->partial('common/omekalia/footer', ['site' => $site]); ?>
+		<?php echo $this->partial('common/omekalia/back-to-top', ['translate' => $translate]); ?>
+
+	</body>
+</html>

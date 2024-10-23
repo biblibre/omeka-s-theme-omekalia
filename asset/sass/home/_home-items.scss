@@ -1,0 +1,8 @@
+.home .slider-items {
+	background-color: $bg-white;
+	@include box-shadow--md;
+
+	& + .wrap {
+		margin-top: $gutter--xl;
+	}
+}

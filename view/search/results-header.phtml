@@ -1,0 +1,39 @@
+<?php
+	$translate = $this->plugin('translate');
+	$escape = $this->plugin('escapeHtml');
+?>
+
+<div class="search-results-header">
+	<div class="search-results-header__container">
+		<div class="search-results-display">
+			<span><?php echo $translate('Display'); ?></span>
+			<a class="search-view-type search-view-type-list" href="#" title="<?php echo $translate('List'); ?>">
+				<i class="fas fa-list"></i><span class="screen-reader-text" aria-label="<?php echo $translate('List'); ?>"><?php echo $translate('List'); ?></span>
+			</a>
+			<a class="search-view-type search-view-type-grid" href="#" title="<?php echo $translate('Grid'); ?>">
+				<i class="fas fa-th"></i><span class="screen-reader-text" aria-label="<?php echo $translate('Grid'); ?>"><?php echo $translate('Grid'); ?></span>
+			</a>
+		</div>
+		
+		<div class="search-results-sort">
+			<form>
+				<?php if ($sortOptions):
+					$sortSelect = new Laminas\Form\Element\Select('sort');
+					$sortSelect->setValueOptions($sortOptions);
+					$sortSelect->setValue($query->getSort());
+					$sortSelect->setLabel($this->translate('Sort by'));
+				endif; ?>
+				<?php if (!empty($sortSelect)): ?>
+				<?php echo $this->formLabel($sortSelect); ?>
+				<?php echo $this->formSelect($sortSelect); ?>
+				<?php endif; ?>
+			</form>
+		</div>
+
+		<div class="search-results-count">
+			<div class="pagination__container">
+				<?php echo $this->pagination(); ?>
+			</div>
+		</div>
+	</div>
+</div>

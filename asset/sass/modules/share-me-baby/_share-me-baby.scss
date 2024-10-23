@@ -1,0 +1,39 @@
+.block .share-me-baby {
+	padding: $gutter;
+	background-color: $bg-body;
+
+	&__heading {
+		margin: 0 0 $gutter--xs 0;
+	}
+}
+.share-me-baby {
+
+	&__heading {
+		font-size: 1rem;
+		font-family: $font-family;
+		color: $color-headings--2;
+	}
+
+	&__buttons {
+		display: flex;
+		gap: $gutter--xs;
+	}
+	.button {
+		display: flex;
+		flex-direction: row;
+		gap: 0.5 * $gutter--xs;
+		align-items: center;
+		justify-content: center;
+		margin-right: 0;
+		padding-left: 0.75 * $gutter;
+		padding-right: 0.75 * $gutter;
+		border: 0;
+		text-transform: none;
+		color: $color-headings--2;
+
+		&:hover,
+		&:focus {
+			color: $color-light;
+		}
+	}
+}

@@ -1,0 +1,61 @@
+<?php
+	$this->headScript()->prependFile($this->assetUrl('js/accordion.js'));
+
+	$displayCount = $displayCount ?? false;
+	$displayDescription = $displayDescription ?? false;
+	$linkEmpty = $linkEmpty ?? true;
+?>
+
+<?php if (!empty($itemSetsTree)): ?>
+<?php $i = 0; ?>
+	<div class="accordion__container">  
+
+		<?php foreach ($itemSetsTree as $itemSetsTreeNode): ?>
+			<?php $itemSet = $itemSetsTreeNode['itemSet']; ?>
+			<?php $i++; ?>
+			<?php if ($displayCount || !$linkEmpty): ?>
+				<?php $itemCount = $itemSet->itemCount(); ?>
+			<?php endif; ?>
+
+			<div class="accordion__heading<?php if ($itemSetsTreeNode['children']): echo ' with-children'; else: echo ' no-child'; endif;?>">
+				<button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="accordion__panel--collections<?php echo $i; ?>" id="accordion-collections<?php echo $i; ?>">
+					<div class="accordion__thumbnail">
+					<?php if( $this->thumbnail($itemSet, 'medium') ): ?>
+						<?php echo $this->thumbnail($itemSet, 'medium'); ?>
+					<?php elseif ( $this->themeSetting( 'itemset_illus' ) ) : ?>                    
+						<img src="<?php echo $this->themeSettingAssetUrl('itemset_illus'); ?>" alt="" />                    
+					<?php else: ?>
+						<img src="<?php echo $this->assetUrl('img/collection_default.png'); ?>">
+					<?php endif; ?>
+					</div>
+					<span class="accordion__title">
+						<?php if (!$linkEmpty && $itemCount === 0): ?>
+							<?php echo $this->escapeHtml($itemSet->displayTitle()); ?>
+						<?php else: ?>
+							<?php echo $this->hyperlink($itemSet->displayTitle(), $itemSet->url()); ?>
+						<?php endif; ?>
+
+						<?php if ($displayCount): ?>
+							(<span class="count"><?php echo $itemCount; ?></span>)
+						<?php endif; ?>
+
+						<?php if ($displayDescription && $description = $itemSet->displayDescription()): ?>
+							<span class="description"><?php echo $this->escapeHtml($description); ?></span>
+						<?php endif; ?>
+						<span class="accordion__icon fa fa-caret-down"></span>
+					</span>
+				</button>               
+			</div>
+			<?php if ($itemSetsTreeNode['children']):?>
+			<div class="accordion__panel with-children" id="accordion__panel--collections<?php echo $i; ?>" role="region" aria-labelledby="accordion-collections<?php echo $i; ?>">
+				<?php echo $this->partial('item-sets-tree/item-sets-tree', [
+					'itemSetsTree' => $itemSetsTreeNode['children'],
+					'displayCount' => $displayCount,
+					'displayDescription' => $displayDescription,
+					'linkEmpty' => $linkEmpty,
+				]); ?>          
+			</div>
+			<?php endif; ?>
+		<?php endforeach; ?>
+	</div>
+<?php endif; ?>

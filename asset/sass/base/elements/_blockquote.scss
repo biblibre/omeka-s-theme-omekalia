@@ -1,0 +1,28 @@
+blockquote {
+	position: relative;
+	margin: $gutter--lg 0;
+	padding: $gutter--lg 0;
+	font-weight: $semi-bold;
+	font-style: italic;
+	font-size: $font-size__h4;
+
+	&::before,
+	&::after {
+		position: absolute;
+		font-family: $font-icon;
+		font-style: normal;
+		line-height: 1;
+		font-size: 1.8em;
+		color: $bg-secondary;
+	}
+	&::before {
+		content: "\f10d";
+		top: 0;
+		left: 0;
+	}
+	&::after {
+		content: "\f10e";
+		bottom: 0;
+		right: 0;
+	}
+}

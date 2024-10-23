@@ -1,0 +1,187 @@
+.label,
+.property dt {
+	text-transform: uppercase;
+	font-family: $font-headings;
+	font-size: 0.8889em;
+	color: $color-label;
+}
+.value {
+	margin-bottom: 0;
+	color: $color-value;
+
+	a {
+		position: relative;
+		border-bottom: 2px solid $border--link;
+		font-weight: $medium;
+		color: $color-global;
+
+		&:hover,
+		&:focus,
+		&:visited:hover,
+		&:visited:focus {
+			background-color: $bg-link;
+			border-color: $bg-link;
+			color: $color-light;
+			box-shadow: none;
+
+			i.fa-external-link-square-alt::before {
+				content: "\f35d";
+				font-size: 0.48em;
+			}
+		}
+
+		i::before {
+			position: relative;
+			bottom: 0.5 * $gutter--xs;
+			padding-left: 4px;
+			padding-right: 2px;
+			font-size: 0.6em;
+			@include transition;
+		}
+	}
+}
+
+.language {
+	display: inline-block;
+	padding: 0.5 * $gutter--xs $gutter--xs;
+	background-color: $bg-body;
+	color: $color-headings--2;
+}
+
+.properties-wrapper,
+.metadata {
+	container-name: properties;
+	container-type: inline-size;
+
+	dl {
+		display: grid;
+		grid-row-gap: $gutter--xs;
+		
+	}
+}
+
+@include container (properties, xxs) {
+	
+	.resource__property,
+	.metadata .property {
+		grid-template-columns: auto 1fr;
+	}
+}
+.resource {
+
+	&__property {
+		display: grid;		
+		grid-column-gap: $gutter--xs;
+		align-items: flex-start;
+
+		@include container (properties, sm) {
+			line-height: $line-height--sm;
+		}
+
+		.value {
+			margin-bottom: 0;
+		}
+	}	
+
+	& > dl:not([class]) > .property:first-child {
+		grid-template-columns: max-content 1fr;
+		grid-column-gap: $gutter--xs;
+		align-items: center;
+		font-size: 1.3em;
+
+		& > .value {
+			text-transform: uppercase;
+			font-family: $font-headings;
+			color: $color-accent;
+		}
+	}
+	
+}
+
+.metadata {
+
+	.property {
+		display: grid;		
+		grid-column-gap: $gutter--xs;
+		align-items: flex-start;
+
+		@include container (properties, sm) {
+			line-height: $line-height--sm;
+		}
+
+		.label {
+			padding-top: 2px;
+		}
+		.value {
+			margin-bottom: 0;
+		}		
+	}
+
+	& > dl:not(last-of-type) {
+		margin-bottom: $gutter--md;
+	}
+	& > dl:not([class]) {
+		max-width: $width--xs;
+		@include margin-auto;
+	}
+}
+.media-list {
+	container-name: medialist-width;
+	container-type: inline-size;
+	margin-top: $gutter--md;
+
+	.property {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-column-gap: $gutter--sm;
+		grid-row-gap: $gutter--sm;
+		justify-content: center;
+
+		@container medialist-width (min-width: 420px) {
+			grid-template-columns: 1fr 1fr;
+		}
+		@container medialist-width (min-width: 600px) {
+		}
+		@container medialist-width (min-width: 768px) {
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-column-gap: $gutter--md;
+			grid-row-gap: $gutter--md;
+		}
+	}
+	.property dt {
+		@extend h3;
+
+		@container medialist-width (min-width: 420px) {
+			grid-column: span 2;
+		}
+		@container medialist-width (min-width: 768px) {
+			grid-column: span 3;
+		}
+	}
+	a.resource-link {
+		line-height: $line-height--sm;
+		font-size: $font-size__h5;
+		font-weight: $semi-bold;
+	}
+	a.resource-link:has(img) {
+		display: grid;
+		grid-template-columns: 60px 1fr;
+		grid-column-gap: $gutter--xs;
+		align-items: flex-end;
+		border: 0;
+
+		&:hover,
+		&:focus {
+
+			.resource-name {
+				border-bottom-color: $bg-primary;
+			}
+		}
+
+		.resource-name {
+			width: fit-content;
+			border-bottom: 3px solid $bg-secondary-50;
+			@include transition;
+		}
+	}
+}

@@ -1,0 +1,10 @@
+.block-html {
+
+	h2:only-child,
+	h3:only-child,
+	h4:only-child,
+	h5:only-child,
+	h6:only-child {
+		margin-bottom: 0;
+	}
+}

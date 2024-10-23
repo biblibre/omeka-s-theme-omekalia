@@ -1,0 +1,112 @@
+<section class="slider-items">
+	<div class="wrap wrap--md" aria-labelledby="new-documents-heading">
+
+		<h2 class="slider-items__title" id="new-documents-heading"><?php echo $translate('Discover other items'); ?></h2>
+
+		<div class="slider splide" id="recent-slider">
+
+			<div class="splide__arrows">
+				<button class="splide__arrow splide__arrow--prev">
+					<i class="fa fa-caret-left"></i><span class="screen-reader-text"><?php echo $translate('Previous'); ?></span>
+				</button>
+				<button class="splide__arrow splide__arrow--next">
+					<i class="fa fa-caret-right"></i><span class="screen-reader-text"><?php echo $translate('Next'); ?></span>
+				</button>
+			</div>
+
+			<div class="splide__track">
+				<div class="splide__list">
+
+					<?php
+					$escape = $this->plugin('escapeHtml');
+
+					if( $this->themeSetting( 'home_items_selection') ):
+
+						$items_selection_ids = array();
+						$items_selection_ids = explode( ',',$this->themeSetting( 'home_items_selection') );
+
+						$home_items = $this->api()->search('items', [
+								'id' => $items_selection_ids,
+								'is_public' => 1,
+								'site_id' => $site->id(),
+							])->getContent();
+
+					else:
+
+						$home_items = $this->api()->search('items', [
+								'is_public' => 1,
+								'limit' => 12,
+								'site_id' => $site->id(),
+								'sort_by' => 'created',
+								'sort_order' => 'desc',
+							])->getContent();
+
+					endif;
+
+					if( $home_items ):
+
+						$itemdata_lists = $this->themeSetting( 'itemdata_lists' );
+
+						foreach ( $home_items as $home_item ) :
+
+							$metadataContent = $this->DisplaySelectedValues($home_item, $itemdata_lists);
+
+							?>
+							<div class="slider-item splide__slide">
+								<div class="slider-item__contents">
+
+									<div class="slider-item__thumbnail">
+									<?php echo $this->thumbnail($home_item, 'large', ['class' => 'media-thumbnail']); ?>
+									</div>
+
+									<div class="slider-item__texts">
+										<h3 class="slider-item__title">
+											<a href="<?php echo $home_item->url(); ?>"><?php echo $home_item->displayTitle(); ?></a>
+										</h3>
+										<?php
+											if ($metadataContent) {
+												echo '<div class="item-notice__block">'.$metadataContent.'</div>';
+											}
+										?>
+									</div>
+								</div>
+							</div>
+							<?php 
+						endforeach; 
+					endif;
+					?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		document.addEventListener( 'DOMContentLoaded', function () {
+			var splide2 = new Splide( '#recent-slider', {
+				arrows: true,
+				keyboard: true,
+				type: 'loop',
+				interval: 8000,
+				perPage: 3,
+				breakpoints: {
+					979: { perPage: 2, },
+					599: { perPage: 1, }
+				}
+			} );
+
+			// reference https://splidejs.com/guides/overflow/#loop-carousel
+			splide2.on( 'overflow', function ( isOverflow ) {
+				// Reset the carousel position
+				splide2.go( 0 );
+
+				splide2.options = {
+					arrows    : isOverflow,
+					pagination: isOverflow,
+					drag      : isOverflow,
+					clones    : isOverflow ? undefined : 0, // Toggle clones
+				};
+			} );
+
+			splide2.mount();
+		} );
+	</script>
+</section>

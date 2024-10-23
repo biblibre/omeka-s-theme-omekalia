@@ -1,0 +1,109 @@
+# Theme translation
+# Copyright (C) 2024
+# This file is distributed under the same license as the Omekalia package.
+# Kaeness <contact@kaeness.fr>, 2024.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Omekalia\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-19 14:41+0200\n"
+"PO-Revision-Date: 2024-10-01 16:03+0200\n"
+"Last-Translator: Christophe Perrin <christophe@kaeness.fr>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.4.1\n"
+"X-Poedit-Basepath: ..\n"
+
+#: ../view/common/omekalia/back-to-top.phtml:2
+msgid "Back to top"
+msgstr "Retour en haut de page"
+
+#: ../view/common/omekalia/footer.phtml:54
+msgid "Open new tab"
+msgstr "Ouvre un nouvel onglet"
+
+#: ../view/common/omekalia/home-collections.phtml:3
+msgid "Collections"
+msgstr "Collections"
+
+#: ../view/common/omekalia/home-collections.phtml:85
+msgid "Explore all the collections"
+msgstr "Explorez toutes les collections"
+
+#: ../view/common/omekalia/home-items.phtml:4
+msgid "Discover other items"
+msgstr "Découvrez tous les documents"
+
+#: ../view/common/pagination.phtml:20
+msgid "of %s"
+msgstr "sur %s"
+
+#: ../view/common/pagination.phtml:41
+msgid "Results %1$s–%2$s of %3$s"
+msgstr "Résultats %1$s à %2$s sur %3$s"
+
+#: ../view/item-sets-tree/site/index/index.phtml:10
+#: ../view/omeka/site/item-set/browse.phtml:14
+#: ../view/omeka/site/item/browse.phtml:30
+msgid "All item sets"
+msgstr "Toutes les collections"
+
+#: ../view/omeka/site/item/browse.phtml:43
+msgid "Item set"
+msgstr "Collection"
+
+#: ../view/omeka/site/item/browse.phtml:63
+msgid "Sub-collections"
+msgstr "Sous-collections"
+
+#: ../view/omeka/site/item-set/browse.phtml:20
+msgid "Item sets"
+msgstr "Collections"
+
+#: ../view/omeka/site/item/browse.phtml:81
+msgid "The items"
+msgstr "Les documents"
+
+#: ../view/omeka/site/item/browse.phtml:84
+#: ../view/omeka/site/item/browse.phtml:87
+msgid "Browse items"
+msgstr "Parcourir les documents"
+
+#: ../view/omeka/site/item/show.phtml:127
+msgid "Related resources"
+msgstr "Documents en relation"
+
+#: ../helper/DisplaySelectedValues.php:53
+msgid ": "
+msgstr " : "
+
+#: ../view/common/omekalia/header.phtml:53
+msgid "Visitor Login"
+msgstr "Connexion visiteur"
+
+#: ../view/search/index/search.phtml:44
+msgid "Advanced search"
+msgstr "Recherche avancée"
+
+#: ../view/search/index/search.phtml:48
+msgid "Advanced Search"
+msgstr "Recherche avancée"
+
+#: ../view/search/results-header.phtml:9
+msgid "List"
+msgstr "Liste"
+
+#: ../view/search/form/standard.phtml:187
+msgid "Reset Search"
+msgstr "Effacer la recherche"
+
+#: ../view/search/form/standard-match-group.phtml:12
+#: ../view/search/form/standard-match-group-filter.phtml:46
+msgid "Delete value"
+msgstr "Supprimer la valeur"

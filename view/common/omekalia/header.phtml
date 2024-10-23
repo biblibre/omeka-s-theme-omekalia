@@ -1,0 +1,97 @@
+<?php
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+
+$user = $this->identity();
+$siteTitle = $site->title();
+
+	$logo = $this->themeSetting('logo');
+	$logo_bis = $this->themeSetting('logo_bis');
+	$logo_bis_label = $this->themeSetting('logo_bis_label');
+	$subtitle = $this->themeSetting('site_subtitle');
+
+	$logo_alignment = $this->themeSetting('logo_alignment');
+	$class_alignment = ' '.$logo_alignment;
+
+	$class_logo = " no-logo";
+	if ( $logo ): $class_logo = " with-logo"; endif;
+	
+	$class_logo_bis = " no-logo-bis";
+	if ( $logo_bis && $logo_bis_label ): $class_logo_bis = " with-logo-bis"; endif;
+	
+	$class_connect = " no-connect";
+	if ( $this->themeSetting( 'connect_show') == 1 ): $class_connect = ""; endif;
+	
+	$class_subtitle = "";
+	if ( $subtitle ): $class_subtitle = " with-subtitle"; endif;
+?>
+<header class="header">
+	<?php if ($this->getHelperPluginManager()->has('languageSwitcher')): ?>
+	<div class="header__top">
+		<div class="wrap wrap--lg">
+			<?php echo $this->languageSwitcher(); ?>
+
+			<!-- AFFICHAGE DE TEST, À SUPPRIMER AVANT MEP
+
+			<ul class="language-switcher locale-flag">
+				<li><a href="/s/site-en-francais/page/bienvenue" title="français">fr</a></li>
+				<li><span class="active" title="English (United States)">en</span></li>
+			</ul> -->
+		</div>			
+	</div>
+	<?php endif; ?>
+
+	<div class="wrap wrap--lg<?php echo $class_logo_bis; ?><?php echo $class_connect; ?>">
+		<?php if( $this->themeSetting( 'connect_show') == 1 ): ?>
+			<?php if (isset($user)): ?>
+			<div class="header__connect connected">
+					<span class="user"><i class="fa fa-user-circle"></i><?php echo $user->getName(); ?></span><a href="/logout" class="intern logout"><span><?php echo $translate('Logout'); ?></span></a>	
+			</div>
+			
+			<?php else: ?>
+			<div class="header__connect disconnected">					
+				<span class="user"><i class="fa fa-user-circle"></i><?php echo $this->hyperlink( $translate('Visitor Login'), $this->url('login', [], ['query' => ['redirect_url' => $_SERVER['REQUEST_URI']]])); ?></span>
+			</div>
+			<?php endif; ?>
+		<?php endif; ?>
+
+		<?php if ( $logo_bis && $logo_bis_label ): ?>
+		<div class="header__logo--bis">
+				<img src="<?php echo $this->themeSettingAssetUrl('logo_bis'); ?>" alt="<?php echo $logo_bis_label; ?>" />
+			</a>
+		</div>
+		<?php endif; ?>
+
+		<div class="header__logo<?php echo $class_logo; ?><?php echo $class_subtitle; ?><?php echo $class_alignment; ?>">
+			<a href="<?php echo $site->url(); ?>" class="site-title" class="header__logo--main">
+				<?php if ($logo): ?>
+					<img src="<?php echo $this->themeSettingAssetUrl('logo'); ?>" alt="<?php echo $escape($siteTitle); ?>" />
+					<?php if ( $subtitle ): ?>
+						<span class="header__subtitle screen-reader-text"><?php echo $subtitle; ?></span>
+					<?php endif; ?>
+				<?php else: ?>
+					<?php echo $escape($siteTitle); ?>
+					<?php if ( $subtitle ): ?>
+						<span class="header__subtitle"><?php echo $subtitle; ?></span>
+					<?php endif; ?>
+				<?php endif; ?>
+			</a>
+		</div>
+
+		<div class="header__nav">
+			<nav>
+				<?php
+				echo $site->publicNav()->menu()->renderMenu(null, [
+					'maxDepth' => $this->themeSetting('nav_depth') - 1
+				]);
+				?>
+			</nav>
+		</div>
+	</div>
+</header>
+
+<div class="header__search simple-search">
+	<div class="wrap wrap--lg">
+		<?php echo $this->partial('common/search-form'); ?>
+	</div>	
+</div>

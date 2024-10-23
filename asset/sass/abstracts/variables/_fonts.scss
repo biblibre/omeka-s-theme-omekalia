@@ -1,0 +1,37 @@
+/* ------------	FONTS
+----------------------------------------------------------- */
+/* Color packs selection defined in theme settings, css files assigned to each pack in css directory */
+
+
+/* FONTS STYLE ---------------------------------------- */
+$font-family:		var(--font-global), Helvetica, Arial, serif;
+$font-headings:		var(--font-headings), sans-serif;
+$font-menu:			$font-headings;
+$font-button:		$font-headings;
+$font-label:		$font-headings;
+$font-icon:			"Font Awesome 5 Free";
+
+$light:		300;
+$normal:	400;
+$medium: 	500;
+$semi-bold:	600;
+$bold: 		700;
+$extra-bold:800;
+
+
+$font-size: 1em;			// Base 16px set on most browsers
+$font-size--sm: 0.88889em;	// 14px with base 16px -- 16px with base 18px
+$font-size--md: 1.125em;	// 18px 
+
+$line-height: 1.625;
+$line-height--xs: 1.15;
+$line-height--sm: 1.25;
+
+$font-size__h1: 2.22223em;	// 40px
+$font-size__h2: 1.55556em;	// 28px
+$font-size__h3: 1.33334em;	// 24px
+$font-size__h4: 1.16667em;	// 21px
+$font-size__h5: 1.11112em;	// 20px
+$font-size__h6: 1em;		// 18px
+
+$line-height--headings: $line-height--sm;

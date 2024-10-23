@@ -1,0 +1,42 @@
+<?php
+	$edito_title = $this->themeSetting( 'edito_title');
+	$edito_baseline_doc = $this->themeSetting( 'edito_baseline_doc');
+	$edito_baseline_nodoc = $this->themeSetting( 'edito_baseline');
+	$edito_text = $this->themeSetting( 'edito_text');
+	$edito_label = $this->themeSetting( 'edito_label');
+	$edito_url = $this->themeSetting( 'edito_url');
+
+	$edito_baseline = '';
+	$items_number = $this->api()->search('items', [
+					'is_public' => 1,
+					'site_id' => $site->id(),
+					'limit' => 0,
+				])->getTotalResults();
+
+	if( $edito_baseline_doc && $edito_baseline_nodoc ) : 
+		$edito_baseline = $items_number.' '.$edito_baseline_doc; 
+	elseif( $edito_baseline_doc ):
+		$edito_baseline = $items_number.' '.$edito_baseline_doc;
+	elseif( $edito_baseline_nodoc ):
+		$edito_baseline = $edito_baseline_nodoc;
+	endif;
+?>
+<?php if( $edito_title && $edito_text ): ?>
+
+<section class="edito">
+	<div class="wrap wrap--sm">
+		<div class="edito__content">
+			<h2 class="edito__title"><?php echo $edito_title; ?></h2>
+			<?php echo $edito_baseline ? '<p class="edito__baseline">'.$edito_baseline.'</p>' : ''; ?>
+			<div class="edito__text"><?php echo $edito_text; ?></div>
+
+			<?php if( $edito_label && $edito_url ): ?>
+			<div class="edito__button">
+				<a href="<?php echo $edito_url; ?>" class="button button--small"><?php echo $edito_label; ?></a>
+			</div>
+			<?php endif; ?>
+		</div>
+	</div>				
+</section>
+
+<?php endif; ?>

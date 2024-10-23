@@ -1,0 +1,89 @@
+<?php
+$this->headLink()->appendStylesheet($this->assetUrl('css/page-blocks.css', 'Omeka'));
+$this->htmlElement('body')->appendAttribute('class', $pageBodyClass);
+$this->pageTitle($page->title(), 2);
+
+$nav = $site->publicNav();
+$activePage = $nav->findActive($nav->getContainer());
+switch ($this->siteSetting('subnav_display')) {
+	case 'show';
+		$displaySubnav = $this->displayNavigation;
+		break;
+	case 'hide':
+		$displaySubnav = false;
+		break;
+	default:
+		$displaySubnav = $this->displayNavigation && $activePage && $activePage['page']->hasPages();
+}
+$showPagePagination = $this->siteSetting('show_page_pagination', true);
+
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+
+$homepage = $site->homepage();
+if( $homepage && ( $homepage->id() == $page->id() ) ):
+	$class_plus = ' home';
+else:
+	$class_plus = ' pageid' . $page->id();
+endif;
+
+$this->htmlElement('body')->appendAttribute('class', 'page ' . $page->slug() . $class_plus );
+
+$nav = $site->publicNav();
+$container = $nav->getContainer();
+$activePage = $nav->findActive($container); 
+?>
+
+<?php if ($activePage): ?>
+
+	<?php if ($activePage['depth'] !== 0): ?>
+	<nav class="breadcrumbs wrap wrap--lg"><a href="<?php echo $site->url(); ?>"><?php echo $translate('Home'); ?></a> &gt; <?php echo $nav->breadcrumbs(); ?></nav>
+	
+	<?php elseif ( ($class_plus !== ' home') ): ?>
+		<nav class="breadcrumbs wrap wrap--lg"><a href="<?php echo $site->url(); ?>"><?php echo $translate('Home'); ?></a> &gt; <span><?php echo $page->title(); ?></span></nav>
+	<?php endif; ?>
+<?php endif; ?>
+
+
+
+<div class="blocks">
+
+	<?php $this->trigger('view.show.before'); ?>
+
+	<?php if($class_plus == ' home'): ?>
+		<h1 class="screen-reader-text"><?php echo $escape($site->title()); ?></h1>
+	
+		<?php if( $this->themeSetting( 'homeslider_show') == 1 ):
+			echo $this->partial('common/omekalia/home-carousel', ['site' => $site, 'translate' => $translate]);
+			endif;
+		?>
+
+		<?php if( $this->themeSetting( 'edito_show') == 1 ): 
+			echo $this->partial('common/omekalia/home-edito', ['site' => $site, 'translate' => $translate]);
+			endif;
+		?>
+
+
+		<?php if( $this->themeSetting( 'home_itemsets_show') == 1 ): 
+			echo $this->partial('common/omekalia/home-collections', ['site' => $site, 'translate' => $translate]);
+			endif;
+		?>
+
+		<?php if( $this->themeSetting( 'home_items_show') == 1 ): 
+			echo $this->partial('common/omekalia/home-items', ['site' => $site, 'translate' => $translate]);
+			endif;
+		?>
+
+	<?php endif; ?> 
+	<div class="blocks--container">
+		<div class="wrap wrap--xs">
+			<?php echo $this->content; ?>
+		</div>
+	</div>
+</div>
+
+<?php $this->trigger('view.show.after'); ?>
+
+<?php if ($showPagePagination): ?>
+	<?php echo $this->sitePagePagination(); ?>
+<?php endif; ?>

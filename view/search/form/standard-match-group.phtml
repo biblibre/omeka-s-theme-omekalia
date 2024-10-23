@@ -1,0 +1,65 @@
+<?php
+	$translate = $this->plugin('translate');
+?>
+
+<div class="search-form-standard-match-group">
+	<?php echo $this->formSelect((new \Laminas\Form\Element\Select($namePrefix . '[match]'))->setValueOptions([
+		'all' => $this->translate('Match all of the following criteria:'),
+		'any' => $this->translate('Match any of the following criteria:'),
+	])->setValue(!empty($data) ? $data['match'] : '')); ?>
+
+	<?php if (!$mainGroup): ?>
+		<button type="button" class="fas fa-times search-delete-filter" aria-label="<?php echo $translate('Delete value'); ?>" title="<?php echo $translate('Delete value'); ?>"></button>
+	<?php endif; ?>
+
+	<div class="search-form-standard-match-group-items">
+		<?php if (!empty($data['queries'])): ?>
+			<?php foreach($data['queries'] as $i => $query): ?>
+				<div class="search-form-standard-match-group-item">
+					<?php if (isset($query['match'])): ?>
+						<?php echo $this->partial('search/form/standard-match-group', [
+							'availableFieldsOptions' => $availableFieldsOptions,
+							'availableOperatorsOptions' => $availableOperatorsOptions,
+							'data' => $query,
+							'namePrefix' => $namePrefix . "[queries][$i]",
+							'mainGroup' => false,
+							'proximitySetting' => $proximitySetting,
+						]); ?>
+					<?php else: ?>
+						<?php echo $this->partial('search/form/standard-match-group-filter', [
+							'availableFieldsOptions' => $availableFieldsOptions,
+							'availableOperatorsOptions' => $availableOperatorsOptions,
+							'query' => $query,
+							'namePrefix' => $namePrefix . "[queries][$i]",
+							'proximitySetting' => $proximitySetting,
+						]); ?>
+					<?php endif; ?>
+				</div>
+			<?php endforeach; ?>
+		<?php else: ?>
+			<div class="search-form-standard-match-group-item">
+				<?php echo $this->partial('search/form/standard-match-group-filter', [
+					'availableFieldsOptions' => $availableFieldsOptions,
+					'availableOperatorsOptions' => $availableOperatorsOptions,
+					'query' => [],
+					'namePrefix' => $namePrefix . '[queries][0]',
+					'proximitySetting' => $proximitySetting,
+				]); ?>
+			</div>
+			<div class="search-form-standard-match-group-item">
+				<?php echo $this->partial('search/form/standard-match-group-filter', [
+					'availableFieldsOptions' => $availableFieldsOptions,
+					'availableOperatorsOptions' => $availableOperatorsOptions,
+					'query' => [],
+					'namePrefix' => $namePrefix . '[queries][1]',
+					'proximitySetting' => $proximitySetting,
+				]); ?>
+			</div>
+		<?php endif; ?>
+
+		<div class="search-form-standard-match-group-item button__group">
+			<a href="#" class="button search-add-filter"><i class="o-icon-add"></i><?php echo $translate('Add filter'); ?></a>
+			<a href="#" class="button search-add-group"><i class="fas fa-folder-plus"></i><?php echo $translate('Add group'); ?></a>
+		</div>
+	</div>
+</div>

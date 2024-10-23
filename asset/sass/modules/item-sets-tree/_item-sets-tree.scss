@@ -1,0 +1,265 @@
+.itemsets-hierarchy {
+
+	.blocks > .wrap {
+		padding-bottom: $gutter--md;
+
+		@include breakpoint(xs) {
+			padding-bottom: $gutter--lg;
+		}
+		@include breakpoint(sm) {
+			padding-bottom: $gutter--xl;
+		}
+	}
+	.wrap > .accordion__container {
+		margin: $gutter--lg 0;
+	}
+	.wrap > .accordion__container > .accordion__heading:not(:first-child) {
+		margin-top: $gutter--md;
+	}
+}
+
+
+.itemsets-hierarchy,
+.block-item-sets-tree {
+
+	.accordion {
+
+		&__heading.no-child {
+
+			& > .accordion__trigger > .accordion__title > .accordion__icon {
+				display: none;
+			}
+		}
+		&__heading.with-children {
+
+			& > .accordion__trigger:hover {
+				cursor: pointer;
+			}
+		}
+
+		&__trigger {
+
+			@include breakpoint(xs) {
+				display: flex;
+				flex-flow: row wrap;
+				align-items: center;
+			}
+
+			&:hover,
+			&:active,
+			&:focus {
+				background-color: $bg-white;
+				color: $color-global;
+
+				.accordion__title,
+				a {
+					color: $color-global;
+				}
+			}
+		}
+		&__thumbnail {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 100px;
+			aspect-ratio: 1/1;
+			padding: $gutter;
+			overflow: hidden;
+			@include box-shadow--md;
+
+			@include breakpoint(xs) {
+				width: 150px;
+			}
+			img {
+				min-height: 100%;
+				object-fit: cover;
+				object-position: center;
+			}
+		}
+		&__title {
+			flex-basis: calc(100% - 100px);
+			padding-right: 70px;
+
+			@include breakpoint(xs) {
+				flex-basis: calc(100% - 150px);
+			}
+		}
+		&__icon {
+			height: calc(100% - 70px);
+			bottom: 0;
+			top: auto;
+
+			@include breakpoint(xs) {
+				height: 100%;
+			}
+		}
+
+		// first level panel
+		&__panel {
+			margin-left: $gutter--lg;
+
+			@include breakpoint(xs) {
+				margin-left: 150px;
+			}
+			
+			.accordion__heading {
+				border-bottom: 1px solid $bg-body;
+			}
+			.accordion__thumbnail {
+				display: none;
+			}
+			
+			.accordion__title {
+				flex-basis: 100%;
+				padding-left: $gutter--sm;
+
+				@include breakpoint(xs) {
+					padding-left: calc( calc( 150px - #{$gutter--xxl} ) +  #{$gutter--md} );
+				}
+			}
+			.accordion__panel {
+				margin-left: $gutter--md;
+
+				@include breakpoint(xs) {
+					margin-left: calc( calc( 150px - #{$gutter--xxl} ) +  #{$gutter--md} );
+				}
+
+				.accordion__trigger {
+					position: relative;
+				}
+				.accordion__title {	
+					position: relative;				
+					padding-left: $gutter--sm;
+					font-size: 1.16667em;
+					text-transform: none;
+
+					@include breakpoint(xs) {
+						padding-left: $gutter--md
+					}
+					&::before {
+						content: '';
+						position: absolute;
+						left: 0;
+						top: $gutter--sm;
+						display: block;
+						height: 10px;
+						width: 10px;
+						background-color: $bg-primary;
+						border-radius: 10px;
+					}
+				}
+				.accordion__panel {
+					margin-left: $gutter--md;
+
+					.accordion__title {	
+						font-weight: $normal;
+
+						&::before {
+							top: calc(#{$gutter--sm} + 4px);
+							height: 3px;
+							width: 8px;
+							border-radius: 0;
+						}
+					}
+				}
+			}
+
+			// inhibition of the trigger button for sublevels -- To put it back js requires modifications too
+			.accordion__trigger {
+				cursor: auto;
+
+				&:hover,
+				&:focus {
+					background-color: transparent;
+				}
+
+				.accordion__icon {
+					display: none;
+				}
+			}
+			// sub levels opened by default (accordion__panel styles)
+			.accordion__panel {
+				display: block;
+				max-height: unset;
+			}
+
+		}
+	}
+}
+
+
+/* MODULE BLOCK FOR PAGES
+-------------------------------------------- */
+.block-item-sets-tree {
+	@include alignsmall;
+
+	h2 {
+		text-align: center;
+	}
+
+	& > .accordion__container > .accordion__heading:not(:first-child) {
+		margin-top: $gutter--md;
+	}
+	& > .accordion__container > .accordion__heading > .accordion__trigger {
+		border-bottom: 5px solid $bg-white;
+	}
+	.accordion {
+
+		&__trigger {			
+			background-color: $bg-body;
+
+			&:has(.description) {
+				align-items: flex-start;
+			}
+
+			&:hover,
+			&:focus {
+				background-color: $bg-body;
+
+				.accordion__title {
+					color: $color-headings--2;
+				}
+			}
+
+			a {
+				margin-right: 0.5 * $gutter;
+			}
+		}
+		&__title {			
+			flex-wrap: wrap;
+
+			a,
+			a:visited {
+				border-bottom-color: transparent;
+
+				&:hover,
+				&:focus {
+					background-color: transparent;
+					border-bottom-color: $bg-primary;
+					color: $color-headings;
+				}
+			}
+		}
+		&__panel {
+			background-color: $bg-body;
+
+			.accordion__heading {
+				border-bottom-color: $border--grey;
+			}
+			.accordion__trigger {
+				justify-content: space-between;
+			}
+			.accordion__title {
+				padding-right: 0;
+			}
+		}
+
+	}
+	.description {
+		line-height: $line-height--sm;
+		font-size: 0.8889rem;
+		color: $color-headings--2;
+	}
+}
+

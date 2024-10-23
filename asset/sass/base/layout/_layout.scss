@@ -1,0 +1,22 @@
+// Wraps
+.wrap {
+	width: 100%;
+	max-width: $width--xl;
+	@include margin-auto;
+
+	&--xs {
+		max-width: $width--xs;
+	}
+	&--sm {
+		max-width: $width--sm;
+	}
+	&--smd {
+		max-width: $width;
+	}
+	&--md {
+		max-width: $width--md;
+	}
+	&--lg {
+		max-width: $width--lg;
+	}
+}

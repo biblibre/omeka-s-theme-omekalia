@@ -1,0 +1,75 @@
+.pagination__container {
+	container-type: inline-size;
+	container-name: pagination-container;
+}
+.pagination {
+	display: grid;
+	grid-template-columns: auto auto auto;
+	grid-row-gap: 0.5 * $gutter;
+	grid-column-gap: 0.5 * $gutter;
+	align-items: center;	
+	width: fit-content;
+	@include margin-auto;
+	text-transform: uppercase;
+	font-family: $font-headings;
+	font-size: 0.88889em;
+
+	@include container(pagination-container, xs) {
+		grid-template-columns: auto auto auto auto;
+	}
+
+	form {
+		display: grid;
+		grid-template-columns: auto auto 1fr;
+		grid-column-gap: 0.5 * $gutter;
+		align-items: center;
+		width: max-content;
+		min-height: 45px;
+
+		@include container(pagination-container, xs) {
+			order: initial;
+		}
+	}
+	input {
+		max-width: 70px;
+		height: 100%;
+		padding-left: 0.5 * $gutter;
+		padding-right: 0.5 * $gutter;
+		border-radius: 0;
+		text-align: right;
+	}
+	.row-count {
+		grid-column: span 3;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 45px;
+
+		@include container(pagination-container, xs) {
+			grid-column: initial;
+			width: max-content;
+		}
+	}
+	.page-count,
+	.row-count {
+
+		@include breakpoint(lg) {
+			width: max-content;
+		}
+	}
+	.pagination-button--prev {
+
+	}
+	.pagination-button--next {
+
+	}
+}
+.pagination--bottom {
+	margin-top: $gutter;
+	padding: $gutter--xs;
+	background-color: $bg-light;
+	
+	.pagination {
+		@include margin-auto;
+	}
+}

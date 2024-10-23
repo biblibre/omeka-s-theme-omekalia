@@ -1,0 +1,39 @@
+.site-page-pagination {
+	position: relative;
+	padding-top: $gutter--xl;
+	background-color: $bg-white;
+	box-shadow: 16px 0 16px -16px rgba($bg-dark, 0.25), -16px 0 16px -16px rgba($bg-dark, 0.25);
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: $gutter--lg;
+		left: 50%;
+		transform: translateX(-50%);
+		display: block;
+		width: $width--lg;
+		max-width: 90%;
+		height: $gutter--md;
+		background: var(--img-separator) no-repeat center /cover;
+	}	
+
+	.wrap {
+		display: flex;
+		justify-content: space-between;
+		padding: $gutter--xl $gutter;
+
+		@include breakpoint(lg) {
+			padding-left: 0;
+			padding-right: 0;
+		}
+
+	}		
+
+	.page__next:only-child {
+		margin-left: auto;
+	}
+
+	a {
+		@extend .button;
+	}
+} 

@@ -1,0 +1,170 @@
+/* ------------	MIXINS
+----------------------------------------------------------- */
+// margin auto
+@mixin margin-auto {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+// align small - 
+@mixin alignsmall {
+
+	@include breakpoint(md) {
+		margin-left: -$one-sixth;
+		margin-right: -$one-sixth;
+		max-width: calc( 100% + #{$one-third} );
+		width: calc( 100% + #{$one-third} );
+	}
+	@include breakpoint(lg) {
+		margin-left: calc(calc(100% - #{$width--sm}) / 2);
+		margin-right: calc(calc(100% - #{$width--sm}) / 2);
+		width: $width--sm;
+		max-width: $width--sm;
+	}
+}
+// align medium - 
+@mixin alignmedium {
+
+	@include breakpoint(md) {
+		margin-left: -$one-sixth;
+		margin-right: -$one-sixth;
+		max-width: calc( 100% + #{$one-third} );
+		width: calc( 100% + #{$one-third} );
+	}
+	@include breakpoint(lg) {
+		margin-left: calc(calc(100% - #{$width--md}) / 2);
+		margin-right: calc(calc(100% - #{$width--md}) / 2);
+		width: $width--md;
+		max-width: $width--md;
+	}
+}
+// align wide
+@mixin alignwide {
+	margin-left: calc(calc(100% - #{$content-wide}) / 2);
+	margin-right: calc(calc(100% - #{$content-wide}) / 2);
+	width: $content-wide;
+	max-width: $content-wide;
+}
+// align full
+@mixin alignfull {
+	margin-left: calc(calc(-99vw + 100%) / 2);
+	margin-right: calc(calc(-99vw + 100%) / 2);
+	width: 99vw;
+	max-width: 99vw;
+}
+
+
+// Breakpoints
+$breakpoints: (
+	xxs:	450px,
+	xs:		600px,
+	sm:		768px,
+	md:		1080px,
+	lg:		1366px,
+	xl:		1600px
+);
+
+// Media queries.
+@mixin breakpoint( $breakpoint ) {
+
+	@if map-has-key($breakpoints, $breakpoint) {
+
+		@media (min-width: #{ map-get($breakpoints, $breakpoint) }) {
+			@content;
+		}
+
+	} @else if type_of( $breakpoint ) == number and unit( $breakpoint ) == px or unit( $breakpoint ) == em or unit( $breakpoint ) == rem {
+
+		@media (min-width: $breakpoint) {
+			@content;
+		}
+
+	} @else {
+		@warn "No value could be retrieved from `#{$breakpoint}`. "
+			+ "Please make sure it is defined in `$breakpoints` map, or it is a valid number with supported unit of px, em or rem.";
+	}
+}
+// Container queries.
+@mixin container( $name, $breakpoint ) {
+
+	@if map-has-key($breakpoints, $breakpoint) {
+
+		@container #{$name} (min-width: #{ map-get($breakpoints, $breakpoint) }) {
+			@content;
+		}
+
+	} @else if type_of( $breakpoint ) == number and unit( $breakpoint ) == px or unit( $breakpoint ) == em or unit( $breakpoint ) == rem {
+
+		@container #{$name} (min-width: $breakpoint) {
+			@content;
+		}
+
+	} @else {
+		@warn "No value could be retrieved from `#{$breakpoint}`. "
+			+ "Please make sure it is defined in `$breakpoints` map, or it is a valid number with supported unit of px, em or rem.";
+	}
+}
+
+// Transitions.
+@mixin transition {
+	transition: all 0.5s ease-in-out;
+}
+
+
+// BOX SHADOW
+@mixin box-shadow--sm {
+	box-shadow: 0 0 6px rgba($bg-dark,0.5);
+}
+@mixin box-shadow--md {
+	box-shadow: 0 0 16px rgba($bg-dark,0.5);
+}
+@mixin box-shadow--lg {
+	box-shadow: 0 0 24px rgba($bg-dark,0.5);
+}
+
+// Clearfix.
+@mixin clearfix {
+	clear: both;
+
+	&:before,
+	&:after {
+		display: block;
+		clear: both;
+		content: "";
+	}
+}
+
+
+// Screen reader text.
+@mixin screen-reader-text {
+	position: absolute !important;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	border: 0;
+	overflow: hidden;
+	word-wrap: normal !important; // Many screen reader and browser combinations announce broken words as they would appear visually.
+
+	&:focus {
+		z-index: 100000;
+		clip: auto !important;
+		clip-path: none;
+		left: 5px;
+		top: 5px;
+		display: block;
+		height: auto;
+		width: auto;
+		padding: 15px 23px 14px;
+		background-color: $bg-medium;
+		border-radius: 3px;
+		box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+		line-height: normal;
+		text-decoration: none;
+		font-weight: 700;
+		font-size: 0.875rem;
+		color: $color-global;
+	}
+}

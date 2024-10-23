@@ -1,0 +1,19 @@
+<?php $translate = $this->plugin('translate'); ?>
+<div class="search-results-footer pagination--bottom">
+	<div class="pagination__container">
+		<?php echo $this->pagination(); ?>
+	</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('body .resource__value a').each(function() {
+		var href = $(this).attr('href');
+		// Vérifie si le lien commence par http ou https et s'il ne provient pas du même domaine
+		if (href && href.indexOf('http') === 0 && this.hostname !== window.location.hostname) {
+			$(this).attr('target', '_blank'); // Ajoute target="_blank"
+			$(this).attr('title', '<?php echo $translate('Open new tab'); ?>'); // Ajoute un titre
+			$(this).append('<i class="fas fa-external-link-square-alt"></i>'); // Ajoute l'icône après le libellé du lien
+		}
+	});
+});
+</script>

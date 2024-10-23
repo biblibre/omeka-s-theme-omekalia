@@ -1,0 +1,89 @@
+/* FONT PACK 3 - Petrona + Literata Variable
+--------------------------------------------------*/
+/* petrona-300 - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Petrona';
+	font-style: normal;
+	font-weight: 300;
+	src: url('../fonts/petrona-v32-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* petrona-600 - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Petrona';
+	font-style: normal;
+	font-weight: 600;
+	src: url('../fonts/petrona-v32-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* petrona-800 - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Petrona';
+	font-style: normal;
+	font-weight: 800;
+	src: url('../fonts/petrona-v32-latin-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+
+/* literata-regular - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Literata';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/literata-v35-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* literata-italic - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Literata';
+	font-style: italic;
+	font-weight: 400;
+	src: url('../fonts/literata-v35-latin-italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* literata-500 - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Literata';
+	font-style: normal;
+	font-weight: 500;
+	src: url('../fonts/literata-v35-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* literata-500italic - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Literata';
+	font-style: italic;
+	font-weight: 500;
+	src: url('../fonts/literata-v35-latin-500italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* literata-600 - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Literata';
+	font-style: normal;
+	font-weight: 600;
+	src: url('../fonts/literata-v35-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* literata-600italic - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Literata';
+	font-style: italic;
+	font-weight: 600;
+	src: url('../fonts/literata-v35-latin-600italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+
+html {
+	--font-global: 'Literata';
+	--font-headings: 'Petrona';
+}

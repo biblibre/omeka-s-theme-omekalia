@@ -1,0 +1,73 @@
+<?php echo $block->dataValue('html', ''); ?>
+<div class="color-test-block">
+<?php
+$primaryColor = $this->themeSetting('primary_color') ?? '#912F13';
+$secondaryColor = $this->themeSetting('secondary_color') ?? '#FF7F17';
+?>
+<style>
+.color-test {
+	width: 6em;
+	display: inline-block;
+	border: 1px solid #7f7f7f;
+	font-size: 0.75em;
+	text-align: center;
+	text-transform: uppercase;
+	padding: 0.5em 1em;
+}
+</style>
+<div>
+<?php
+for($percent = 0; $percent <=100; $percent+=10) {
+	echo '<span class="color-test" style="background-color:#FFF;">'.$percent.'</span>';
+}
+?>
+</div>
+<div>
+<?php
+for($percent = 0; $percent <=100; $percent+=10) {
+	$newcolor = $this->MixColor($primaryColor, '#FFFFFF', $percent);
+	echo '<span class="color-test" style="background-color:'.$newcolor.';">'.$newcolor.'</span>';
+}
+?>
+</div>
+<div>
+<?php
+for($percent = 0; $percent <=100; $percent+=10) {
+	$newcolor = $this->MixColor($secondaryColor, '#FFFFFF', $percent);
+	echo '<span class="color-test" style="background-color:'.$newcolor.';">'.$newcolor.'</span>';
+}
+?>
+</div>
+<div>
+<?php
+for($percent = 0; $percent <=100; $percent+=10) {
+	$newcolor = $this->MixColor($primaryColor, '#000000', $percent);
+	echo '<span class="color-test" style="background-color:'.$newcolor.'; color:#fff;">'.$newcolor.'</span>';
+}
+?>
+</div>
+<div>
+<?php
+for($percent = 0; $percent <=100; $percent+=10) {
+	$newcolor = $this->MixColor($secondaryColor, '#000000', $percent);
+	echo '<span class="color-test" style="background-color:'.$newcolor.'; color:#fff;">'.$newcolor.'</span>';
+}
+?>
+</div>
+<div>
+<?php
+for($percent = 0; $percent <=100; $percent+=10) {
+	$newcolor = $this->MixColor($primaryColor, $secondaryColor, $percent);
+	echo '<span class="color-test" style="background-color:'.$newcolor.';">'.$newcolor.'</span>';
+}
+?>
+</div>
+<div>
+<?php
+for($percent = 0; $percent <=100; $percent+=10) {
+	$newcolor = $this->MixColor($secondaryColor, $primaryColor, $percent);
+	echo '<span class="color-test" style="background-color:'.$newcolor.';">'.$newcolor.'</span>';
+}
+?>
+</div>
+</div>

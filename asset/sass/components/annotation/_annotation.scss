@@ -1,0 +1,48 @@
+.expand:after,
+.collapse:after {
+	padding: 0 3px;
+	background-color: $bg-primary;
+	border-radius: $radius;
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	color: $color-light;
+}
+
+.expand:after {
+	content: "\f0d7";
+}
+
+.collapse:after {
+	content: "\f0d8"
+}
+
+.collapsible {
+	display: none;
+}
+
+.collapse + .collapsible {
+	display: block;
+	background-color: $bg-body;
+	padding: $gutter--sm;
+	margin: $gutter--md 0;
+	width: 100%;
+}
+.has-annotation {
+	color: $color-headings--2;
+}
+
+.value:has(.annotation) {
+	container-name: annotation;
+	container-type: inline-size;
+}
+
+@container annotation (min-width: 450px) {
+	
+	.annotation {
+
+		.property {
+			display: grid;
+			grid-template-columns: 2.5 * $gutter--lg 1fr;
+		}
+	}
+}

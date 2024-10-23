@@ -1,0 +1,151 @@
+.blocks ul.resource-list {
+	display: flex;
+	flex-flow: column wrap;
+	gap: $margin;
+	margin: $gutter--md 0;
+	padding: 0;
+
+	@include breakpoint(sm) {
+		flex-direction: row;
+		margin-top: $gutter--lg;
+		margin-bottom: $gutter--lg;
+	}
+
+	.resource__item {
+		list-style-type: none;
+
+		@include breakpoint(sm) {
+			flex-basis: $one-half;
+		}
+	}
+}
+.search-results .resource-list {
+	gap: $gutter;	
+}
+
+.resource-list {
+	
+	&__title {
+		margin-bottom: $gutter--lg;
+		text-align: center;
+	}	
+}
+
+
+.resource {
+
+	&__container {
+		container-name: itemcontents;
+		container-type: inline-size;
+	}
+	&__item {
+		position: relative;
+		border-top: 1px solid $border--1;
+
+		.resource__contents {
+
+			.resource__title a {
+				color: $color-global;
+			}
+
+			&:hover,
+			&:focus {
+
+				.resource__title a {
+					color: $color-accent;
+				}
+			}
+		}
+		.resource__contents,
+		.resource__container > a {
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-row-gap: $gutter;
+			width: 100%;
+			padding: $gutter 0;
+			color: $color-global;
+
+			@include container(itemcontents,xxs) {
+				grid-template-columns: 1fr 3fr;
+				grid-column-gap: $gutter;
+			}
+			@include container(itemcontents,xs) {
+				grid-template-columns: 1fr 4fr;
+				grid-column-gap: $gutter;
+				padding: $gutter--sm $gutter--sm $gutter--sm 0;
+			}
+			@include container(itemcontents,sm) {
+				grid-column-gap: $gutter--md;
+				padding-right: $gutter--md;
+			}
+
+			&:hover,
+			&:focus {
+				background-color: $bg-body;
+				box-shadow: inset 0 3px 0 0 $bg-primary;
+
+				.resource__title {
+					color: $color-accent;
+				}
+				.resource__thumbnail {
+					background-color: $bg-secondary-50;
+				}
+			}
+		}
+
+		h2,
+		h3,
+		h4 {
+			margin-top: 0;
+			margin-bottom: 0.5 * $gutter;
+			text-transform: none;
+			font-size: 1.166667em;
+			font-weight: $normal;
+		}
+	}
+
+	&__thumbnail {
+		display: flex;
+		flex-flow: column wrap;
+		justify-content: center;
+		align-items: center;
+		aspect-ratio: 1/1;
+		background-color: $bg-medium;
+		overflow: hidden;
+		@include transition;
+
+		img {
+			object-fit: contain;
+			object-position: bottom center;
+			max-height: 100%;
+		}
+	}
+
+	&__title {
+		margin-bottom: $gutter;
+		text-align: left;
+
+		a::after {
+			content: '';
+			position: absolute;
+			z-index: 1;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+		}	
+	}
+	.value a {
+		z-index: 10; // doesn't function - due to container-type:inline-size
+	}
+}
+
+.list .resource {
+
+	&__link {
+		grid-template-columns: 150px 1fr;
+	}
+	&__thumbnail {
+		max-height: 150px;
+	}
+}

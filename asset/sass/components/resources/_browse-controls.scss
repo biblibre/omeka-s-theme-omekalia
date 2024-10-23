@@ -1,0 +1,58 @@
+.browse-controls {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-column-gap: $gutter;
+	grid-row-gap: $gutter;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: $gutter--md;
+	padding: $gutter--xs;
+	background-color: $bg-body;
+	text-transform: uppercase;
+	font-size: 0.8889em;
+
+	@include breakpoint(lg) {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-column-gap: $margin;
+	}
+
+	input[type=text],
+	select {
+		margin-bottom: 0;
+	}
+
+	select {
+		min-width: 170px;
+
+		@include breakpoint(lg) {
+			min-width: 200px;
+		}
+	}
+
+	.accordion__container {
+		width: 100%;
+
+		@include breakpoint(xs) {
+			display: flex;
+			justify-content: center;
+		}
+		@include breakpoint(md) {
+			margin-bottom: 0;
+		}
+	}
+	.sorting {
+		display: flex;
+		gap: $gutter;
+		flex-flow: column wrap;
+		width: fit-content;
+
+		@include breakpoint(xs) {
+			flex-flow: row wrap;
+
+			* {
+				width: auto;
+			}
+		}
+	}
+}

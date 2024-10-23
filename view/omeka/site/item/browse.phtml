@@ -1,0 +1,179 @@
+<?php
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+$thumbnail = $this->plugin('thumbnail');
+$this->htmlElement('body')->appendAttribute('class', 'item resource browse');
+
+$filterLocale = (bool) $this->siteSetting('filter_locale_values');
+$lang = $this->lang();
+$valueLang = $filterLocale ? [$lang, ''] : null;
+
+$query = $this->params()->fromQuery();
+$itemSetShow = isset($itemSet);
+if ($itemSetShow):
+	$this->headLink()->appendStylesheet($this->assetUrl('css/resource-page-blocks.css', 'Omeka'));
+	$this->htmlElement('body')->appendAttribute('class', 'item-set');
+	$query['item_set_id'] = $itemSet->id();
+endif;
+?>
+
+<?php if ($itemSetShow): ?>
+	<div class="breadcrumbs wrap wrap--lg">
+		<?php
+			$breadcrumbParents = '';
+			$itemSetAncestors = array_reverse( $this->itemSetsTree()->getAncestors($itemSet) );
+			foreach ( $itemSetAncestors as $ancestorItemSet):
+				$breadcrumbParents .= '&gt; '.$ancestorItemSet->link( $ancestorItemSet->displayTitle() ).' ';
+			endforeach;
+		?>
+		<a href="<?php echo $site->url(); ?>"><?php echo $translate('Home'); ?></a> &gt; <a href="<?php echo $site->url().'/item-sets-tree'; ?>"><?php echo $translate('All item sets'); ?></a> <?php echo $breadcrumbParents; ?> &gt; <span><?php echo $itemSet->displayTitle(); ?></span>
+	</div>
+	
+	<div class="blocks">
+		<div class="wrap wrap--md">
+		<?php
+		// Item set info section
+			$image = $thumbnail($itemSet, 'large');
+			$itemSetChildrens = $this->itemSetsTree()->getChildren($itemSet);
+		?>
+
+			<div class="page-title">
+				<?php echo $this->pageTitle($itemSet->displayTitle(null, $valueLang), 1); ?>
+				<p class="page-subtitle"><?php echo $translate('Item set'); ?></p>
+			</div>
+			
+			<div class="itemset__content">
+				<?php echo ($image)? '<div class="itemset__thumbnail">'.$image.'</div>' : ''; ?> <!-- itemset_illus -->
+				<?php
+					$itemsetDataMain = $this->themeSetting( 'itemsetdata_main' );
+					$itemsetDataContent = $this->DisplaySelectedValues($itemSet, $itemsetDataMain);
+
+					$itemsetBlockContent = $this->resourcePageBlocks($itemSet,'main');
+					$itemsetHasBlocks = $itemsetBlockContent->hasBlocks();
+
+
+					if ( $itemsetDataMain && $itemsetDataContent != '' ):
+				?>
+					<div class="metadata itemset__metadata">
+						<?php echo '<div class="properties-wrapper">'.$this->DisplaySelectedValues($itemSet, $itemsetDataMain).'</div>'; ?>
+					</div>
+				<?php
+					elseif($itemsetHasBlocks && $itemsetBlockContent->getBlocks() != ''):
+				?>
+					<div class="metadata itemset__metadata">
+						<?php echo $itemsetBlockContent->getBlocks();  ?>
+					</div>
+				<?php
+					endif;
+				?>
+
+				<?php if ($itemSetChildrens): ?>
+					<div class="itemset__subcollections simple-accordion simple-accordion__container">
+						<div class="simple-accordion__heading">
+							<span class="simple-accordion__title"><?php echo $translate('Sub-collections'); ?><span class="simple-accordion__icon fa fa-caret-down"></span></span>
+							
+						</div>
+						<div class="simple-accordion__panel">
+							<ul>
+							<?php foreach ($itemSetChildrens as $itemSetChildren): ?>
+								<li><a href="<?php echo $escape($itemSetChildren->url()); ?>"><?php echo $itemSetChildren->displayTitle(); ?></a></li>
+							<?php endforeach; ?>
+							</ul>
+						</div>
+					</div>
+				<?php endif; ?>
+
+
+			</div>
+		</div>
+		<div class="wrap wrap--xl">
+			<div class="item-set-items">
+			<?php echo '<h2 class="resource-list__title">' . $escape($translate('The items')) . '</h2>'; ?>
+
+<?php else: ?>
+	<nav class="breadcrumbs wrap wrap--lg"><a href="<?php echo $site->url(); ?>"><?php echo $translate('Home'); ?></a> &gt; <?php echo $translate('Browse items'); ?></nav>
+	<div class="blocks">
+		<div class="wrap wrap--md">
+			<div class="page-title"><?php echo $this->pageTitle($translate('Browse items'), 1); ?></div>
+		</div>
+		<div class="wrap wrap--xl">
+			<div class="item-set-items">
+<?php endif; ?>
+
+		<?php echo $this->searchFilters(); ?>
+
+		<div class="browse-controls">
+			<div class="pagination__container">
+				<?php echo $this->pagination(); ?>
+			</div>
+				<?php //echo $this->hyperlink($translate('Advanced search'), $this->url('site/resource', ['controller' => 'item', 'action' => 'search'], ['query' => $query], true), ['class' => 'advanced-search']); ?>
+			<?php echo $this->browse()->renderSortSelector('items'); ?>
+		</div>
+
+		<?php $this->trigger('view.browse.before'); ?>
+		<ul class="resource-list">
+		<?php
+		$itemdata_lists = $this->themeSetting( 'itemdata_lists' );
+
+		$headingTerm = $this->siteSetting('browse_heading_property_term');
+		$bodyTerm = $this->siteSetting('browse_body_property_term');
+		foreach ($items as $item):
+			$heading = $headingTerm ? $item->value($headingTerm, ['default' => $translate('[Untitled]'), 'lang' => $valueLang]) : $item->displayTitle(null, $valueLang);
+			$body = $bodyTerm ? $item->value($bodyTerm, ['lang' => $valueLang]) : $item->displayDescription(null, $valueLang);
+			$bodyContent = $this->DisplaySelectedValues($item, $itemdata_lists);
+
+		// Question du escapeHTML sur les titres et contenus de description - Omekanum, titre How Victor Hugo Created the Characters of <i>Notre-Dame de Paris</i>
+		?>
+			<li class="item resource resource__item">
+				<div class="resource__container">
+					<?php
+					$linkContent = sprintf('<div class="resource__thumbnail">%s</div><div class="resource__content"><h3 class="resource__title">%s</h3><div class="properties-wrapper">%s</div></div>',
+						$thumbnail($item, 'medium'),
+						$escape($heading),
+						$bodyContent);
+					echo $item->linkRaw($linkContent, null, ['class' => 'resource-link']);
+					?>
+					<!-- <div class="resource__contents">
+						<p class="resource-name h4"><?php echo $escape($heading); ?></p>
+						<?php /*if ($bodyContent): ?>
+							<div class="properties-wrapper"><?php echo $bodyContent; ?></div>
+						<?php endif;*/ ?>
+					</div> -->
+				</div>
+					
+			</li>
+		<?php endforeach; ?>
+		</ul>
+		<?php echo ($itemSetShow) ? '</div>' : ''; ?>
+		<?php $this->trigger('view.browse.after'); ?>
+		<div class="pagination--bottom"><div class="pagination__container"><?php echo $this->pagination(); ?></div></div>
+	</div>
+</div>
+
+<!-- Accordion for sub collections section -->
+<script type="text/javascript">
+$(document).ready(function()
+{
+	//Add Inactive Class To All Accordion Headers
+	$('.simple-accordion__heading').toggleClass('inactive-heading');
+	
+	//Set The Accordion Content Width
+	var contentwidth = $('.simple-accordion__heading').width();	
+		
+	// The Accordion Effect
+	$('.simple-accordion__heading').click(function () {
+		if($(this).is('.inactive-heading')) {
+			$('.active-heading').toggleClass('active-heading').toggleClass('inactive-heading').next().slideToggle().toggleClass('open-content');
+			$(this).toggleClass('active-heading').toggleClass('inactive-heading');
+			$(this).next().slideToggle().toggleClass('open-content');
+		}
+		
+		else {
+			$(this).toggleClass('active-heading').toggleClass('inactive-heading');
+			$(this).next().slideToggle().toggleClass('open-content');
+		}
+	});
+	
+	return false;
+});
+</script>

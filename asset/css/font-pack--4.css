@@ -1,0 +1,90 @@
+/* FONT PACK 4 - Roboto Condensed + Instrument Sans
+--------------------------------------------------*/
+/* roboto-condensed-300 - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Roboto Condensed';
+	font-style: normal;
+	font-weight: 300;
+	src: url('../fonts/roboto-condensed-v27-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* roboto-condensed-600 - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Roboto Condensed';
+	font-style: normal;
+	font-weight: 600;
+	src: url('../fonts/roboto-condensed-v27-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* roboto-condensed-800 - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Roboto Condensed';
+	font-style: normal;
+	font-weight: 800;
+	src: url('../fonts/roboto-condensed-v27-latin-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+
+
+/* instrument-sans-regular - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Instrument Sans';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/instrument-sans-v1-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* instrument-sans-italic - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Instrument Sans';
+	font-style: italic;
+	font-weight: 400;
+	src: url('../fonts/instrument-sans-v1-latin-italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* instrument-sans-500 - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Instrument Sans';
+	font-style: normal;
+	font-weight: 500;
+	src: url('../fonts/instrument-sans-v1-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* instrument-sans-500italic - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Instrument Sans';
+	font-style: italic;
+	font-weight: 500;
+	src: url('../fonts/instrument-sans-v1-latin-500italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* instrument-sans-600 - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Instrument Sans';
+	font-style: normal;
+	font-weight: 600;
+	src: url('../fonts/instrument-sans-v1-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* instrument-sans-600italic - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Instrument Sans';
+	font-style: italic;
+	font-weight: 600;
+	src: url('../fonts/instrument-sans-v1-latin-600italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+
+html {
+	--font-global: 'Instrument Sans';
+	--font-headings: 'Roboto Condensed';
+}

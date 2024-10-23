@@ -1,0 +1,33 @@
+.edito {
+
+	&__content {
+		text-align: center;
+		
+	}
+	&__title {
+		margin-bottom: $gutter;
+	}
+	&__baseline {
+		margin-bottom: $gutter--xs;
+		font-weight: $semi-bold;
+	}
+	&__button {
+		margin-top: $gutter--sm;
+	}
+}
+.edito + .collections {
+	position: relative;
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: -$gutter;
+		left: 50%;
+		transform: translateX(-50%);
+		display: block;
+		width: $width--lg;
+		max-width: 90%;
+		height: $gutter--md;
+		background: var(--img-separator) no-repeat center /cover;
+	}	
+}

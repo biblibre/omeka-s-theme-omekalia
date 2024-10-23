@@ -1,0 +1,17 @@
+.block-pageDateTime {
+	
+	.page-date-time {
+		text-align: center;
+		text-transform: uppercase;
+		font-family: $font-headings;
+		
+		color: $color-headings--2;
+	}
+	.property {
+		font-weight: $normal;
+	}
+	.value {
+		text-transform: none;
+		font-family: $font-family;
+	}
+}

@@ -1,0 +1,16 @@
+<?php
+	$this->headScript()->prependFile($this->assetUrl('js/accordion.js'));
+?>
+
+<div class="block-item-sets-tree">
+	<?php if ($heading): ?>
+		<h2><?= $this->escapeHtml($heading) ?></h2>
+	<?php endif; ?>
+
+	<?php echo $this->partial('item-sets-tree/item-sets-tree', [
+		'itemSetsTree' => $this->itemSetsTree()->getItemSetsTree(),
+		'displayCount' => $displayCount,
+		'displayDescription' => $displayDescription,
+		'linkEmpty' => $linkEmpty,
+	]); ?>
+</div>

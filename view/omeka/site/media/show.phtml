@@ -1,0 +1,96 @@
+<?php
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+$item = $media->item();
+$this->headLink()->appendStylesheet($this->assetUrl('css/resource-page-blocks.css', 'Omeka'));
+$this->htmlElement('body')->appendAttribute('class', 'media resource show'); 
+$filterLocale = (bool) $this->siteSetting('filter_locale_values');
+$lang = $this->lang();
+$valueLang = $filterLocale ? [$lang, ''] : null;
+
+// Regions
+$section1BlockContent = $this->resourcePageBlocks($media, 'section1');
+$section1HasBlocks = $section1BlockContent->hasBlocks();
+$section2BlockContent = $this->resourcePageBlocks($media, 'section2');
+$section2HasBlocks = $section2BlockContent->hasBlocks();
+$mainBlockContent = $this->resourcePageBlocks($media);
+$mainHasBlocks = $mainBlockContent->hasBlocks();
+
+$mediadataSectionHTML = '';
+if ($mediadataSection = $this->themeSetting( 'mediadata_main' )) {
+	$mediadataSectionHTML = $this->DisplaySelectedValues($media, $mediadataSection,true);
+}
+
+$blockContent = '';
+
+?>
+
+<?php
+// Breadcrumb à valider
+$itemSets = $item->itemSets(); 
+$itemSetIds = array();
+$counter = 0;
+if (count($itemSets) > 0):
+	foreach ($itemSets as $itemSet):
+		if ($counter++ == 0):
+			$itemSetIds[] = $itemSet->ID();
+			$breadcrumbParents = '';
+			$itemSetAncestors = array_reverse( $this->itemSetsTree()->getAncestors($itemSet) );
+			foreach ( $itemSetAncestors as $ancestorItemSet):
+				$breadcrumbParents .= '&gt; '.$ancestorItemSet->link($ancestorItemSet->displayTitle()).' ';
+			endforeach;
+			?>
+			
+			<?php
+		endif;
+	endforeach;
+endif;
+?>
+<nav class="breadcrumbs wrap wrap--lg"><a href="<?php echo $this->url('site', [], [], true); ?>"><?php echo $translate('Home'); ?></a> &gt; <span><?php echo $media->displayTitle(null, $valueLang); ?></span></nav>
+<div class="blocks">
+	<?php if ($this->getHelperPluginManager()->has('shareMeBaby')) : ?>
+		<div class="block-share-me-baby"><div class="wrap wrap--lg"><?php echo $this->shareMeBaby(); ?></div></div>
+	<?php endif; ?>
+	<div class="page-title"><?php echo $this->pageTitle($media->displayTitle(null, $valueLang), 1); ?></div>
+	<div class="wrap wrap--xl">
+		<?php $this->trigger('view.show.before'); ?>
+		<h3><?php echo $translate('Media'); ?></h3>
+
+		<p class="media-parent-item">
+			<?php echo sprintf($translate('Part of %s'), $item->link($item->displayTitle(null, $valueLang))); ?>
+		</p>
+
+		<div class="regions-container">
+
+			<?php if ($section1HasBlocks && $blockContent = $section1BlockContent->getBlocks()): ?>
+				<div class="region region--section section1">
+					<?php
+					echo $blockContent;
+					$blockContent = '';
+					?>
+				</div>
+			<?php endif; ?>
+
+			<?php if ( ($section2HasBlocks && $blockContent = $section2BlockContent->getBlocks()) || $mediadataSectionHTML): ?>
+				<div class="region region--section section2">
+					<?php echo $blockContent; ?>
+					<?php
+					// Affichage métadonnées section 2
+					echo ($mediadataSectionHTML) ? '<div class="properties-wrapper">'.$mediadataSectionHTML.'</div>' : '';
+					$blockContent = '';
+					?>
+				</div>
+			<?php endif; ?>
+
+			<?php if ($mainHasBlocks && $blockContent = $mainBlockContent->getBlocks()): ?>
+				<div class="main-region">
+					<div class="wrap wrap--md">
+						<?php echo $blockContent; ?>
+					</div>
+				</div>
+			<?php endif; ?>
+
+		</div>
+		<?php $this->trigger('view.show.after'); ?>
+	</div>
+</div>

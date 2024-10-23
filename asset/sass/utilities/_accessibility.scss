@@ -1,0 +1,41 @@
+#skipnav {
+    position: fixed;
+    top: $line-height;
+    left: 50%;
+    border: 1px solid $border;
+    transform: translateX(-50%);
+    z-index: -5;
+    padding: 1rem;
+    background-color: $bg-white;
+    opacity: 0;
+    
+    &:focus {
+        z-index: 1000;
+        opacity: 1;
+    }
+}
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	@include screen-reader-text;
+}
+.screen-reader-text--xs {
+	@include breakpoint(xs) {
+		@include screen-reader-text;
+	}
+}
+.screen-reader-text--sm {
+	@include breakpoint(sm) {
+		@include screen-reader-text;
+	}
+}
+.screen-reader-text--md {
+	@include breakpoint(md) {
+		@include screen-reader-text;
+	}
+}
+.screen-reader-text--lg {
+	@include breakpoint(lg) {
+		@include screen-reader-text;
+	}
+}

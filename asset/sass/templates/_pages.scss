@@ -1,0 +1,52 @@
+/* Pages
+--------------------------------------------- */
+.page-layout-normal .block {
+	margin: 0;
+	padding: $gutter--md 0;
+}
+
+.blocks {
+
+	&-inner {
+		padding-left: $gutter;
+		padding-right: $gutter;
+
+		@include breakpoint(sm) {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+
+	&--container {
+		position: relative;
+		background-color: $bg-white;		
+		box-shadow: 16px 0 16px -16px rgba($bg-dark, 0.25), -16px 0 16px -16px rgba($bg-dark, 0.25);
+
+		@include breakpoint(xl) {
+			@include alignwide;
+		}
+	}
+
+	&.wrap {
+		margin-left: $gutter;
+		margin-right: $gutter;
+		padding-top: $gutter;
+		padding-bottom: $gutter--xl;
+
+		@include breakpoint(xl) {
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+	.block:nth-child(2) {
+		position: relative;
+	}
+
+	p {
+		margin-bottom: $gutter;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}

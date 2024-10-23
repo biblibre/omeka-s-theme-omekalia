@@ -1,0 +1,97 @@
+.home section.carousel {
+
+	& > .wrap {
+		padding-left: $gutter--sm;
+		padding-right: $gutter--sm;
+
+		@include breakpoint(xs) {
+			padding-left: $gutter--md;
+			padding-right: $gutter--md;
+		}
+		@include breakpoint(sm) {
+			padding-left: $gutter--lg;
+			padding-right: $gutter--lg;
+		}
+		@include breakpoint(md) {
+			padding-left: $gutter--xl;
+			padding-right: $gutter--xl;
+		}
+	}
+}
+.carousel {
+
+	& > .wrap {
+		background-color: $bg-white;
+		@include box-shadow--md;
+
+		@include breakpoint(xs) {
+			
+		}
+		@include breakpoint(sm) {
+			
+		}
+		@include breakpoint(md) {
+			
+		}
+	}		
+
+	&__contents {
+
+		@include breakpoint(sm) {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-column-gap: $gutter--lg;
+		}
+	}
+	&__thumbnail {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		aspect-ratio: 3/2;
+		overflow: hidden;
+
+		img {
+			object-fit: cover;
+			object-position: center;
+		}
+	}
+	&__title {
+		margin-top: $gutter--sm;
+		margin-bottom: $gutter;
+		text-align: left;
+		text-transform: none;
+		font-size: 1.55556em;
+		color: $color-headings--2;
+
+		@include breakpoint(xs) {
+
+		}
+	}
+	.button__container {
+		margin-top: $gutter--sm;
+	}
+	.splide {
+
+		&__arrow {
+
+			&--prev {
+
+				@include breakpoint(sm) {
+					left: -2.5em;
+				}
+				@include breakpoint(md) {
+					left: -3em;
+				}
+			}
+			&--next {
+
+				@include breakpoint(sm) {
+					right: -2.5em;
+				}
+				@include breakpoint(md) {
+					right: -3em;
+				}
+			}
+		}
+	}
+}

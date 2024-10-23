@@ -1,0 +1,42 @@
+.home section {
+
+	& > .wrap {
+		padding: $gutter--lg $gutter;
+
+		@include breakpoint(sm) {
+			padding-top: $gutter--xl;
+			padding-bottom: $gutter--xl;
+		}
+		@include breakpoint(md) {
+			padding-top: 2 * $gutter--lg;
+			padding-bottom: 2 * $gutter--lg;
+		}
+	}
+		
+	&:not(.carousel) h2[class*='title'] {
+		@extend h1;
+		margin-bottom: $gutter--md;
+	}
+
+	// if page content shows after home contents from theme parameters
+	& + .blocks--container {
+		margin-top: $gutter--xl;
+	}
+}
+
+
+/* HOME - Carousel
+--------------------------------------------- */
+@import "home-carousel";
+
+/* HOME - Presentation (edito)
+--------------------------------------------- */
+@import "home-edito";
+
+/* HOME - Item sets
+--------------------------------------------- */
+ @import "home-collections";
+
+/* HOME - Items selection
+--------------------------------------------- */
+@import "home-items";

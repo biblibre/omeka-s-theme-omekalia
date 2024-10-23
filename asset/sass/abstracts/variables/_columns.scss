@@ -1,0 +1,56 @@
+/* ------------	LAYOUT
+----------------------------------------------------------- */
+
+// COLUMNS
+$margin: 2.564102564102564%;  // half : 1,282051282051282
+
+$one-half: 			48.71794871794871%; // = 6/12e
+$one-third: 		31.62393162393162%; // = 4/12e
+$one-fifth: 		17.94871794871794%; 
+$one-fourth: 		23.07692307692307%; // = 3/12e
+$one-sixth: 		14.52991452991453%; // = 2/12e
+$one-twelfth: 		7.051282051282051%;
+$two-thirds: 		65.81196581196582%; // = 8/12e
+$two-fifths: 		38.46153846153846%;
+$three-fourths: 	74.35897435897436%; // = 9/12e
+$three-fifths: 		58.97435897435897%;
+$four-fifths: 		79.48717948717948%;
+$five-sixths: 		82.90598290598291%; // = 10/12e
+$five-twelfth: 		40.38461538461538%;
+$seven-twelfth: 	57.05128205128205%;
+$eleven-twelfth: 	90.38461538461538%;
+
+
+// WIDTHS - WRAPS & REFERENCES
+$width--xs:		680px;
+$width--sm:		768px;
+$width:			960px;
+$width--md: 	1080px;
+$width--lg: 	1366px;
+$width--xl: 	1600px;
+
+$content-wide: 1600px; 
+
+
+// SPACES
+$gutter:		16px;
+$gutter--xs:	$gutter * 0.5; 	// 8px
+$gutter--sm:	$gutter * 1.5; 	// 24px
+$gutter--md:	$gutter * 2;	// 32px
+$gutter--lg:	$gutter * 3;	// 48px
+$gutter--xl:	$gutter * 4;	// 64px
+$gutter--xxl:	$gutter * 8;	// 128px
+
+// RADIUS
+$radius: 20px;
+$radius--sm: 4px;
+
+
+// BREAKPOINTS
+$breakpoints: (
+	xs: 	600px,
+	sm: 	768px,
+	md: 	1080px,
+	lg: 	1366px,
+	xl: 	1600px
+);

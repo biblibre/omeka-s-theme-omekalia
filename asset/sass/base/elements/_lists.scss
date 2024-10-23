@@ -1,0 +1,52 @@
+.block ul {
+	padding-inline-start: $gutter--md;
+}
+.block ul li:not([role]) {
+	position: relative;
+	list-style-type: none;
+
+	&::before {
+		content: '';
+		position: absolute;
+		left: calc( -#{$gutter--md} + 2px );
+		top: 10px;
+		display: block;
+		height: 10px;
+		width: 10px;
+		background-color: $bg-primary;
+		border-radius: 10px;
+	}
+	li::before {
+		top: $gutter;
+		height: 3px;
+		width: 8px;
+		border-radius: 0;
+	}
+	li li {
+		list-style-type: disc;
+		
+		&::before {
+			content:none;
+		}
+	}
+	li ul {
+		padding-inline-start: $gutter;
+	}
+	li li li {
+		list-style-type: circle;
+	}
+	li li li li {
+		list-style-type: square;
+	}
+	dl dt {
+		font-weight: $semi-bold;
+		font-style: normal;
+		font-size: $font-size__h4;
+	}
+	dl dd {
+		margin-bottom: $gutter;
+	}
+}
+::marker {
+	color: $bg-marker;
+}

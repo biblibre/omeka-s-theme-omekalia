@@ -1,0 +1,85 @@
+<!-- Show slider if selected in theme parameters - 4 slides -->
+<section class="carousel" aria-label="Carousel Slider">
+	<div class="section__wrap section-carousel__wrap wrap wrap--lg">
+
+		<div class="carousel__slider slider splide" id="head-slider">
+
+			<div class="splide__arrows">
+				<button class="splide__arrow splide__arrow--prev">
+					<i class="fa fa-caret-left"></i><span class="screen-reader-text"><?php echo $translate('Previous'); ?></span>
+				</button>
+				<button class="splide__arrow splide__arrow--next">
+					<i class="fa fa-caret-right"></i><span class="screen-reader-text"><?php echo $translate('Next'); ?></span>
+				</button>
+			</div>
+			
+			<div class="splide__track">
+				<div class="splide__list">
+				<?php
+
+					for($i = 1; $i < 5; $i++):
+
+						$slider_image = $this->themeSetting( 'homeslider_image'.$i );
+						$slider_title = $this->themeSetting( 'homeslider_title'.$i );
+
+						if($slider_image && $slider_title ) :
+						
+							$slider_text = $this->themeSetting( 'homeslider_text'.$i );
+							$slider_label = $this->themeSetting( 'homeslider_label'.$i );
+							$slider_url = $this->themeSetting( 'homeslider_url'.$i );
+						?>
+						<div class="carousel__contents splide__slide">
+
+							<div class="carousel__thumbnail"><img src="<?php echo $this->themeSettingAssetUrl('homeslider_image'.$i); ?>" alt="" /></div>
+
+							<div class="carousel__content">
+								<h2 class="carousel__title"><?php echo $slider_title; ?></h2>																	
+
+								<div class="carousel__edito--container">
+									<div class="carousel__edito">
+										<?php if($slider_text): ?>
+											<div class="carousel__text"><?php echo $slider_text; ?></div>
+										<?php endif; ?>
+										<?php if($slider_url): ?>
+											<div class="button__container"><a href="<?php echo $slider_url; ?>" class="button button--small"><?php echo $slider_label; ?></a></div>
+										<?php endif; ?>
+									</div>
+								</div>
+							</div>						
+
+						</div>
+						<?php
+
+						endif;
+
+					endfor;
+				?>
+				</div>
+			</div>
+		</div>
+		<script>
+			document.addEventListener( 'DOMContentLoaded', function () {
+				var splide = new Splide( '#head-slider', {
+					arrows: true,
+					keyboard: true,
+					type: 'loop',
+					autoplay: false,
+					pauseOnHover: true,
+					interval: 8000,
+				} );
+
+				// reference https://splidejs.com/guides/overflow/#observing-overflow
+				splide.on( 'overflow', function ( isOverflow ) {
+					splide.options = {
+						arrows    : isOverflow,
+						pagination: isOverflow,
+						drag      : isOverflow,
+					};
+				} );
+
+				splide.mount();
+			} );
+		</script>
+
+	</div>
+</section>

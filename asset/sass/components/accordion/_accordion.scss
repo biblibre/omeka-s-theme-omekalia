@@ -1,0 +1,293 @@
+// .accordion => MULTILEVEL ACCORDION FOR ITEM SETS TREE
+.wrap > .accordion {
+
+	&__container {
+		max-width: 100%;
+		margin-bottom: 1rem;
+
+		& > .accordion__heading > .accordion__trigger {
+			border-bottom: 5px solid $bg-body
+		}
+	}
+}
+
+.accordion {
+
+	&__container {
+		max-width: 100%;
+	}
+	&__heading {
+		margin-bottom: 0;
+	}
+
+	&__trigger {
+		position: relative;
+		width: 100%;
+		padding: 0;
+		background-color: $bg-white;
+		border-radius: 0;
+		border: 0;
+		text-align: left;
+		text-transform: none;
+		color: $color-headings--2;
+		transition: 0.4s;
+
+		&:hover,
+		&:active,
+		&:focus {			
+
+			.accordion__title {
+				color: $color-light;
+			}
+		}
+	}
+	&__title {
+		display: flex;
+		align-items: center;
+		max-width: calc(100% - 70px);
+		padding: 0.5 * $gutter $gutter;
+		line-height: 1;
+		font-size: 1.5556em;
+
+		@include breakpoint(xs) {
+			padding-left: $gutter--md;
+		}
+
+		a {
+			display: inline-block;
+			padding-top: 0.5 * $gutter--xs;
+			padding-bottom: 0.5 * $gutter--xs;
+
+			&:hover,
+			&:focus {
+				box-shadow: inset 0 -3px 0 0 $bg-secondary-50;
+			}
+		}
+	}
+
+	&__icon {
+		position: absolute;
+		right: 0;
+		top: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+		width: 70px;
+		pointer-events: none;
+		
+		transition: transform 0.3s;
+
+		&::before {
+			transform: rotate(0);
+			@include transition;
+		}
+
+		.accordion__trigger.expanded & {
+			
+			&::before {
+				transform: rotate(-180deg); 
+			}
+		}
+	}
+
+	&__panel {
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height 0.4s ease-out;		
+		background-color: $bg-white;
+
+		.accordion__title {
+			padding-top: 0.75 * $gutter;
+			padding-bottom: 0.75 * $gutter;
+			font-size: 1.33334em;
+		}
+
+		ul {
+			padding-left: $gutter--md;
+				
+		}
+	}
+}
+
+
+// SIMPLE ACCORDION FOR ITEM SETS SUB COLLECTIONS + FACETS (responsive)
+.simple-accordion {
+	position: relative;
+
+	&__container {
+		max-width: 100%;
+	}
+	&__heading {
+		position: relative;
+		width: 100%;
+		margin-bottom: 0;
+		padding: 0;
+		border-radius: 0;
+		border: 0;
+		text-align: left;
+		text-transform: none;
+		color: $color-headings--2;
+		transition: 0.4s;
+
+		&:hover,
+		&:active,
+		&:focus {			
+			background-color: $bg-primary;
+
+			.simple-accordion__title {
+				color: $color-light;
+			}
+		}
+	}
+	&__title {
+		display: flex;
+		align-items: center;
+		max-width: calc(100% - 70px);
+		padding: 0.5 * $gutter $gutter;
+		line-height: 1;
+		font-family: $font-headings;
+		font-size: 1.5556em;
+		cursor: pointer;
+
+		@include breakpoint(xs) {
+			padding-left: $gutter--md;
+		}
+
+		a {
+			display: inline-block;
+			padding-top: 0.5 * $gutter--xs;
+			padding-bottom: 0.5 * $gutter--xs;
+
+			&:hover,
+			&:focus {
+				box-shadow: inset 0 -3px 0 0 $bg-secondary-50;
+			}
+		}
+	}
+
+	&__icon {
+		position: absolute;
+		right: 0;
+		top: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+		width: 70px;
+		pointer-events: none;
+		
+		transition: transform 0.3s;
+
+		&::before {
+			transform: rotate(0);
+			@include transition;
+		}
+	}
+	&__heading.active-heading {
+
+		.simple-accordion__icon::before {
+			transform: rotate(-180deg);
+		}
+	}
+
+	&__panel {
+		display: none;
+		width: 100%;		
+		transition: max-height 0.4s ease-out;
+
+		ul {
+			margin: 0;				
+		}
+	}
+}
+// deactivate accordion on larger screens from 600px
+.simple-accordion--xs  {
+
+	@include breakpoint(xs) {
+
+	// inactivate accordion
+		.simple-accordion__heading {
+
+			&:hover,
+			&:focus {
+				background-color: transparent;
+
+				.simple-accordion__title {
+					color: initial;
+					cursor: initial;
+				}
+			}
+		}
+		.simple-accordion__title {
+			padding: 0;
+		}
+		.simple-accordion__icon {
+			display: none;
+		}
+		.simple-accordion__panel {
+			max-height: unset !important;
+			display: block;
+		}
+	}
+}
+// deactivate accordion on larger screens from 768px
+.simple-accordion--sm  {
+
+	@include breakpoint(sm) {
+
+	// inactivate accordion
+		.simple-accordion__heading {
+
+			&:hover,
+			&:focus {
+				background-color: transparent;
+
+				.simple-accordion__title {
+					color: initial;
+					cursor: initial;
+				}
+			}
+		}
+		.simple-accordion__title {
+			padding: 0;
+		}
+		.simple-accordion__icon {
+			display: none;
+		}
+		.simple-accordion__panel {
+			max-height: unset !important;
+			display: block;
+		}
+	}
+}
+// deactivate accordion on larger screens from 1080px
+.simple-accordion--md  {
+
+	@include breakpoint(md) {
+
+	// inactivate accordion
+		.simple-accordion__heading {
+
+			&:hover,
+			&:focus {
+				background-color: transparent;
+
+				.simple-accordion__title {
+					color: initial;
+					cursor: initial;
+				}
+			}
+		}
+		.simple-accordion__title {
+			padding: 0;
+		}
+		.simple-accordion__icon {
+			display: none;
+		}
+		.simple-accordion__panel {
+			max-height: unset !important;
+			display: block;
+		}
+	}
+}
