@@ -1,7 +1,10 @@
+<?php
+	$slider_title = $this->themeSetting('home_items_title');
+?>
 <section class="slider-items">
 	<div class="wrap wrap--md" aria-labelledby="new-documents-heading">
 
-		<h2 class="slider-items__title" id="new-documents-heading"><?php echo $translate('Discover other items'); ?></h2>
+		<h2 class="slider-items__title" id="new-documents-heading"><?php echo ($slider_title) ? $slider_title : $translate('Discover other items') ; ?></h2>
 
 		<div class="slider splide" id="recent-slider">
 

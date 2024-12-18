@@ -1,6 +1,9 @@
+<?php
+	$collections_title = $this->themeSetting('home_itemsets_title');
+?>
 <section class="collections">
 	<div class="collections__wrap wrap wrap--smd">
-		<h2 class="collections__title"><?php echo $translate('Collections'); ?></h2>
+		<h2 class="collections__title"><?php echo ($collections_title) ? $collections_title : $translate('Collections') ; ?></h2>
 		<div class="collection__items">
 			<?php
 

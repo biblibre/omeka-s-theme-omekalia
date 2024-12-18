@@ -22,7 +22,7 @@ $this->htmlElement('body')->appendAttribute('class', 'item-set resource browse')
 		<?php echo $this->searchFilters(); ?>
 
 		<div class="browse-controls">
-			<?php echo $this->pagination(); ?>
+			<div class="pagination__container"><?php echo $this->pagination(); ?></div>
 			<?php echo $this->hyperlink($translate('Advanced search'), $site->url().'/search', ['class' => 'button button--large']); ?>
 		</div>
 
@@ -47,6 +47,6 @@ $this->htmlElement('body')->appendAttribute('class', 'item-set resource browse')
 		<?php endforeach; ?>
 		</ul>
 		<?php $this->trigger('view.browse.after'); ?>
-		<div class="pagination--bottom"><?php echo $this->pagination(); ?></div>
+		<div class="pagination--bottom"><div class="pagination__container"><?php echo $this->pagination(); ?></div></div>
 	</div>
 </div>

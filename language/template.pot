@@ -89,6 +89,12 @@ msgstr ""
 msgid "Visitor Login"
 msgstr ""
 
+
+
+#: ../view/search/facets.phtml:43
+msgid "Facets"
+msgstr ""
+
 #: ../view/search/index/search.phtml:44
 msgid "Advanced search"
 msgstr ""

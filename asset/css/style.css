@@ -4,7 +4,7 @@ Theme Name: Omekalia
 Author: Kaeness
 Author URI: https://kaeness.fr
 Description: Omeka S Theme for BibLibre
-Version: 1.0.1
+Version: 1.0.2
 Omeka Version Constraint: ^4.1.1
 Text Domain: omekalia
 */
@@ -1344,7 +1344,7 @@ h6,
 }
 .header__logo img {
   max-width: 450px;
-  max-height: 250px;
+  max-height: 150px;
 }
 .header__logo--bis {
   -ms-grid-row: 1;
@@ -2164,6 +2164,7 @@ h6,
 @media (min-width: 600px) {
   .simple-accordion--xs .simple-accordion__heading:hover, .simple-accordion--xs .simple-accordion__heading:focus {
     background-color: transparent;
+    pointer-events: none;
   }
   .simple-accordion--xs .simple-accordion__heading:hover .simple-accordion__title, .simple-accordion--xs .simple-accordion__heading:focus .simple-accordion__title {
     color: initial;
@@ -2184,6 +2185,7 @@ h6,
 @media (min-width: 768px) {
   .simple-accordion--sm .simple-accordion__heading:hover, .simple-accordion--sm .simple-accordion__heading:focus {
     background-color: transparent;
+    pointer-events: none;
   }
   .simple-accordion--sm .simple-accordion__heading:hover .simple-accordion__title, .simple-accordion--sm .simple-accordion__heading:focus .simple-accordion__title {
     color: initial;
@@ -2204,6 +2206,7 @@ h6,
 @media (min-width: 1080px) {
   .simple-accordion--md .simple-accordion__heading:hover, .simple-accordion--md .simple-accordion__heading:focus {
     background-color: transparent;
+    pointer-events: none;
   }
   .simple-accordion--md .simple-accordion__heading:hover .simple-accordion__title, .simple-accordion--md .simple-accordion__heading:focus .simple-accordion__title {
     color: initial;
@@ -2668,6 +2671,17 @@ h6,
   font-family: var(--font-headings), sans-serif;
   font-size: 0.8889em;
   color: #404040;
+}
+
+.property dt .field-term {
+  display: block;
+  text-transform: none;
+  line-height: 1.25;
+  font-family: var(--font-global), Helvetica, Arial, serif;
+  font-size: 0.875em;
+  -ms-hyphens: auto;
+      hyphens: auto;
+  word-wrap: anywhere;
 }
 
 .value {
@@ -5766,7 +5780,7 @@ body:not(.home) .partners--onlyhome {
 ----------------------------------------------------------- */
 octopusviewer-viewer {
   margin: 0 0 10px 0;
-  border: 1px solid var(--primary);
+  border: 1px solid #9B9FA4;
   -webkit-box-shadow: none;
           box-shadow: none;
 }

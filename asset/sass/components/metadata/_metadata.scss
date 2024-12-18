@@ -5,6 +5,18 @@
 	font-size: 0.8889em;
 	color: $color-label;
 }
+.property dt {
+
+	.field-term {
+		display: block;
+		text-transform: none;
+		line-height: $line-height--sm;
+		font-family: $font-family;
+		font-size: 0.875em;
+		hyphens: auto;
+		word-wrap: anywhere;
+	}
+}
 .value {
 	margin-bottom: 0;
 	color: $color-value;
