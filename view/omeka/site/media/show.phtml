@@ -18,7 +18,7 @@ $mainHasBlocks = $mainBlockContent->hasBlocks();
 
 $mediadataSectionHTML = '';
 if ($mediadataSection = $this->themeSetting( 'mediadata_main' )) {
-	$mediadataSectionHTML = $this->DisplaySelectedValues($media, $mediadataSection,true);
+	$mediadataSectionHTML = $this->DisplaySelectedValues($media, $mediadataSection, [ 'showValueAnnotations' => true ] );
 }
 
 $blockContent = '';

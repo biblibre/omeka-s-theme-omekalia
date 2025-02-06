@@ -35,11 +35,6 @@
 			border-color: $bg-link;
 			color: $color-light;
 			box-shadow: none;
-
-			i.fa-external-link-square-alt::before {
-				content: "\f35d";
-				font-size: 0.48em;
-			}
 		}
 
 		i::before {
@@ -49,6 +44,35 @@
 			padding-right: 2px;
 			font-size: 0.6em;
 			@include transition;
+		}
+	}
+	.uri-value-link--icon a {
+		display: inline-block;
+		margin-left: $gutter--xs;
+		border-bottom: 0;
+
+		i::before {
+			bottom: initial;
+			display: inline-block;
+			padding: 0.5 * $gutter--xs 0.75 * $gutter--xs;
+			font-size: 1em;
+		} 
+	}
+	a:has(.has-annotation) {
+		margin-left: $gutter--xs;
+		border-bottom: 0;
+
+		&:hover,
+		&:focus {
+			color: $color-light;
+		}
+	}
+	a.expand:hover,
+	a.expand:focus,
+	a.collapse {
+
+		.has-annotation::before {
+			color: $color-light;
 		}
 	}
 }
@@ -76,7 +100,11 @@
 	
 	.resource__property,
 	.metadata .property {
-		grid-template-columns: auto 1fr;
+		grid-template-columns: $gutter--xxl 1fr;
+
+		dd:not(:first-of-type) {
+			grid-column: 2;
+		}
 	}
 }
 .resource {

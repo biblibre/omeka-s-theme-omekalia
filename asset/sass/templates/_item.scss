@@ -89,18 +89,6 @@
 		.metadata dl {
 			grid-row-gap: 0.75 * $gutter;
 		}
-
-		@container itemproperties (min-width: 450px) {
-			
-			.resource__property,
-			.metadata .property {
-				grid-template-columns: $gutter--xxl 1fr;
-
-				dd:not(:first-of-type) {
-					grid-column: 2;
-				}
-			}
-		}
 	}
 
 	& + .region {

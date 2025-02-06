@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.0.3 - 2025-02-06
+
+New public release
+Style corrections
+Corrections and changes to the display of metadata
+
 ## 1.0.2 - 2024-12-18
 
 New public release with css and wording corrections

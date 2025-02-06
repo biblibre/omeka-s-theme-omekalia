@@ -7,6 +7,9 @@ $filterLocale = (bool) $this->siteSetting('filter_locale_values');
 $lang = $this->lang();
 $valueLang = $filterLocale ? [$lang, ''] : null;
 
+// Item metadata for search link
+$itemdataSearchSelection = $this->themeSetting( 'itemdata_search' , '' );
+
 // Regions
 $section1BlockContent = $this->resourcePageBlocks($item, 'section1');
 $section1HasBlocks = $section1BlockContent->hasBlocks();
@@ -15,14 +18,20 @@ $section2HasBlocks = $section2BlockContent->hasBlocks();
 $mainBlockContent = $this->resourcePageBlocks($item);
 $mainHasBlocks = $mainBlockContent->hasBlocks();
 
+$itemDataDisplayOptions = [
+	'showValueAnnotations' => true,
+	'propertiesForSearch' => $itemdataSearchSelection,
+	'multiValuesSeparator' => '<br/>'
+];
+
 $itemdataSection1HTML = '';
 if ($itemdataSection1 = $this->themeSetting( 'itemdata_section1' )) {
-	$itemdataSection1HTML = $this->DisplaySelectedValues($item, $itemdataSection1,true);
+	$itemdataSection1HTML = $this->DisplaySelectedValues($item, $itemdataSection1, $itemDataDisplayOptions );
 }
 
 $itemdataSection2HTML = '';
 if ($itemdataSection2 = $this->themeSetting( 'itemdata_section2' )) {
-	$itemdataSection2HTML = $this->DisplaySelectedValues($item, $itemdataSection2,true);
+	$itemdataSection2HTML = $this->DisplaySelectedValues($item, $itemdataSection2, $itemDataDisplayOptions );
 }
 
 
@@ -156,7 +165,7 @@ endif;
 												</h3>											
 												<div class="resource__metadatas">
 												<?php
-												$metadataContent = $this->DisplaySelectedValues($relatedResource, $itemdata_lists);
+												$metadataContent = $this->DisplaySelectedValues($relatedResource, $itemdata_lists, [ 'stripTags' => true ] );
 												if ($metadataContent) {
 													echo $metadataContent;
 												}

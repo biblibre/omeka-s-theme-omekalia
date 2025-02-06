@@ -120,7 +120,7 @@ endif;
 		foreach ($items as $item):
 			$heading = $headingTerm ? $item->value($headingTerm, ['default' => $translate('[Untitled]'), 'lang' => $valueLang]) : $item->displayTitle(null, $valueLang);
 			$body = $bodyTerm ? $item->value($bodyTerm, ['lang' => $valueLang]) : $item->displayDescription(null, $valueLang);
-			$bodyContent = $this->DisplaySelectedValues($item, $itemdata_lists);
+			$bodyContent = $this->DisplaySelectedValues($item, $itemdata_lists, [ 'stripTags' => true ]);
 
 		// Question du escapeHTML sur les titres et contenus de description - Omekanum, titre How Victor Hugo Created the Characters of <i>Notre-Dame de Paris</i>
 		?>

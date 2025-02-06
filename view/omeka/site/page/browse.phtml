@@ -1,0 +1,35 @@
+<?php
+$this->htmlElement('body')->appendAttribute('class', 'page browse');
+
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+?>
+
+
+<div class="blocks">
+	<div class="blocks--container">
+		<div class="wrap wrap--xs">
+			<div class="blocks-inner page-layout-normal">
+				<div class="block block-pageTitle"><?php echo $this->pageTitle($this->translate('Pages'), 1); ?></div>
+
+				<div class="browse-controls">
+					<div class="pagination__container"><?php echo $this->pagination(); ?></div>
+				</div>
+				<div class="block">
+					<?php if ($pages): ?>
+					<ul class="pages-list">
+						<?php foreach ($pages as $page): ?>
+						<li class="page resource"><p><?php echo $page->link($page->title()); ?></p></li>
+						<?php endforeach; ?>
+					</ul>
+					<?php else: ?>
+					<p><?php echo $this->translate('No pages found'); ?></p>
+					<?php endif; ?>
+				</div>
+				<div class="pagination--bottom"><div class="pagination__container"><?php echo $this->pagination(); ?></div></div>
+			</div>
+		</div>
+	</div>
+		
+		
+</div>

@@ -15,9 +15,11 @@
 
 				/* Uniquement pour afficher des collections associées au site - si aucun résultat vérifier que des collections sont associées au site */
 				/* Filtre à remettre en service quand les collections auront été associées au site */
-				$collections = $this->api()->search('item_sets'/*, [
+				$collections = $this->api()->search('item_sets', [
 							'site_id' => $site->id(),
-						]*/)->getContent();
+							'sort_by' => 'title',
+							'sort_order' => 'asc',
+						])->getContent();
 
 				$collections_id = array();
 

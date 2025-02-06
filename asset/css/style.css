@@ -4,7 +4,7 @@ Theme Name: Omekalia
 Author: Kaeness
 Author URI: https://kaeness.fr
 Description: Omeka S Theme for BibLibre
-Version: 1.0.2
+Version: 1.0.3
 Omeka Version Constraint: ^4.1.1
 Text Domain: omekalia
 */
@@ -1768,7 +1768,7 @@ h6,
 @media (min-width: 1080px) {
   .header__nav nav ul.navigation > li > ul {
     position: absolute;
-    z-index: 2;
+    z-index: 11;
     top: 100%;
     left: -9999px;
     display: -webkit-box;
@@ -2701,10 +2701,6 @@ h6,
   -webkit-box-shadow: none;
           box-shadow: none;
 }
-.value a:hover i.fa-external-link-square-alt::before, .value a:focus i.fa-external-link-square-alt::before, .value a:visited:hover i.fa-external-link-square-alt::before, .value a:visited:focus i.fa-external-link-square-alt::before {
-  content: "\f35d";
-  font-size: 0.48em;
-}
 .value a i::before {
   position: relative;
   bottom: 4px;
@@ -2713,6 +2709,29 @@ h6,
   font-size: 0.6em;
   -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
+}
+.value .uri-value-link--icon a {
+  display: inline-block;
+  margin-left: 8px;
+  border-bottom: 0;
+}
+.value .uri-value-link--icon a i::before {
+  bottom: initial;
+  display: inline-block;
+  padding: 4px 6px;
+  font-size: 1em;
+}
+.value a:has(.has-annotation) {
+  margin-left: 8px;
+  border-bottom: 0;
+}
+.value a:has(.has-annotation):hover, .value a:has(.has-annotation):focus {
+  color: #FFF;
+}
+.value a.expand:hover .has-annotation::before,
+.value a.expand:focus .has-annotation::before,
+.value a.collapse .has-annotation::before {
+  color: #FFF;
 }
 
 .language {
@@ -2737,8 +2756,13 @@ h6,
 @container properties (min-width: 450px) {
   .resource__property,
   .metadata .property {
-    -ms-grid-columns: auto 1fr;
-    grid-template-columns: auto 1fr;
+    -ms-grid-columns: 128px 1fr;
+    grid-template-columns: 128px 1fr;
+  }
+  .resource__property dd:not(:first-of-type),
+  .metadata .property dd:not(:first-of-type) {
+    -ms-grid-column: 2;
+    grid-column: 2;
   }
 }
 .resource__property {
@@ -4684,6 +4708,15 @@ body:not(.home) .partners--onlyhome {
   margin: 0;
   padding: 32px 0;
 }
+.page-layout-normal .browse-controls {
+  position: relative;
+  -ms-grid-columns: 1fr;
+  grid-template-columns: 1fr;
+  margin-top: 32px;
+}
+.page-layout-normal .pagination--bottom {
+  margin-top: 64px;
+}
 
 .blocks-inner {
   padding-left: 16px;
@@ -4844,18 +4877,6 @@ body:not(.home) .partners--onlyhome {
 .region.section2 .metadata dl {
   grid-row-gap: 12px;
 }
-@container itemproperties (min-width: 450px) {
-  .region.section2 .resource__property,
-  .region.section2 .metadata .property {
-    -ms-grid-columns: 128px 1fr;
-    grid-template-columns: 128px 1fr;
-  }
-  .region.section2 .resource__property dd:not(:first-of-type),
-  .region.section2 .metadata .property dd:not(:first-of-type) {
-    -ms-grid-column: 2;
-    grid-column: 2;
-  }
-}
 .region + .region {
   margin-top: 32px;
 }
@@ -4999,6 +5020,11 @@ body:not(.home) .partners--onlyhome {
   -webkit-box-shadow: none;
           box-shadow: none;
   background-color: transparent;
+}
+
+.item-sets-list.browse .browse-controls {
+  -ms-grid-columns: 2fr 1fr;
+  grid-template-columns: 2fr 1fr;
 }
 
 /* Itemset - item/browse.phtml

@@ -1,8 +1,20 @@
 /* Pages
 --------------------------------------------- */
-.page-layout-normal .block {
-	margin: 0;
-	padding: $gutter--md 0;
+.page-layout-normal {
+
+	.block {
+		margin: 0;
+		padding: $gutter--md 0;
+	}
+
+	.browse-controls {
+		position: relative;
+		grid-template-columns: 1fr;
+		margin-top: $gutter--md;
+	}
+	.pagination--bottom {
+		margin-top: $gutter--xl;
+	}
 }
 
 .blocks {

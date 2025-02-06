@@ -44,7 +44,7 @@ if ($userBar) {
 				--secondary: <?php echo $secondaryColor; ?>;
 				--secondary-light: <?php echo $this->MixColor($secondaryColor, '#FFFFFF', 50); ?>;
 				<?php echo ($bgSearchHome) ? '--img-bg-search-home: url('.$bgSearchHome.');' : '' ; ?>
-				<?php echo ($bgSearch) ? '--img-bg-search: url('.$bgSearch.');' : '' ; ?>
+				<?php echo ($bgSearch) ? '--img-bg-search: url('.$bgSearch.');' : '--img-bg-search: url('.$bgSearchHome.');' ; ?>
 				<?php echo ($separator) ? '--img-separator: url('.$separator.');' : '' ; ?>
 				--icon-arrow-up: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2' viewBox='0 0 299 169'%3E%3Cpath d='M8.296 120.55h293.023v167.506H8.296z' style='fill:none' transform='matrix(1.0204 0 0 1.00892 -8.466 -121.625)'/%3E%3Cpath d='M288.8 352H31.3c-17.8 0-26.7-21.5-14.1-34.1l128.7-128.7c7.8-7.8 20.5-7.8 28.3 0l128.7 128.7c12.6 12.6 3.7 34.1-14.1 34.1Z' style='fill:<?php echo urlencode($primaryColor); ?>;fill-rule:nonzero' transform='translate(-10.55 -183.175)'/%3E%3C/svg%3E");
 				--icon-arrow-down: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2' viewBox='0 0 299 169'%3E%3Cpath d='M8.296 120.55h293.023v167.506H8.296z' style='fill:none' transform='matrix(1.0204 0 0 1.00892 -8.466 -121.625)'/%3E%3Cpath d='M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192Z' style='fill:<?php echo urlencode($primaryColor); ?>;fill-rule:nonzero' transform='translate(-10.45 -191.825)'/%3E%3C/svg%3E");

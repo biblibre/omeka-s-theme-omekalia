@@ -34,7 +34,13 @@
 			}
 		}
 	}
+}
+// only for itemsets browse page
+.item-sets-list.browse {
 
+	.browse-controls {
+		grid-template-columns: 2fr 1fr;
+	}
 }
 
 /* Itemset - item/browse.phtml
