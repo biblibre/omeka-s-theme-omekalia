@@ -8,6 +8,7 @@
 	@include alignwide;
 	height: $gutter--md;
 	background: var(--img-separator) no-repeat center/cover;
+	background-color: $bg-secondary;
 	border: 0;
 
 	&::after {

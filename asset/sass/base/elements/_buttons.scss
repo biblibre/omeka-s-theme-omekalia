@@ -17,6 +17,9 @@ input[type="submit"] {
 		border-color: $bg-primary;
 		color: $color-light;
 	}
+	&:hover {
+		cursor: pointer;
+	}
 	&:visited {
 		border-bottom-color: $border--link;
 
@@ -66,7 +69,7 @@ input[type="submit"] {
 			padding: 0.5 * $gutter--xs $gutter 0.5 * $gutter--xs $gutter--xs;
 			background-color: $bg-primary;
 			border-color: $bg-primary;
-			@include box-shadow--sm;
+			@include box-shadow--md;
 		}		
 
 		i {

@@ -4,7 +4,7 @@ Theme Name: Omekalia
 Author: Kaeness
 Author URI: https://kaeness.fr
 Description: Omeka S Theme for BibLibre
-Version: 1.0.3
+Version: 1.0.4
 Omeka Version Constraint: ^4.1.1
 Text Domain: omekalia
 */
@@ -751,6 +751,13 @@ input[type=submit]:focus {
   border-color: var(--primary);
   color: #FFF;
 }
+button:hover,
+.button:hover,
+.site-page-pagination a:hover,
+input[type=button]:hover,
+input[type=submit]:hover {
+  cursor: pointer;
+}
 button:visited,
 .button:visited,
 .site-page-pagination a:visited,
@@ -817,8 +824,8 @@ input[type=submit].inactive:focus {
   padding: 4px 16px 4px 8px;
   background-color: var(--primary);
   border-color: var(--primary);
-  -webkit-box-shadow: 0 0 6px rgba(64, 64, 64, 0.5);
-          box-shadow: 0 0 6px rgba(64, 64, 64, 0.5);
+  -webkit-box-shadow: 0 0 16px rgba(64, 64, 64, 0.5);
+          box-shadow: 0 0 16px rgba(64, 64, 64, 0.5);
 }
 .button--advanced i {
   margin-right: 16px;
@@ -1453,6 +1460,7 @@ h6,
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  gap: 24px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -1472,7 +1480,6 @@ h6,
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
-    gap: 24px;
   }
 }
 @media (min-width: 1080px) {
@@ -1509,7 +1516,7 @@ h6,
 }
 .simple-search input[type=text] {
   height: 40px;
-  padding: 6px 24px 6px 16px;
+  padding: 6px 128px 6px 16px;
   border: 2px solid #FFF;
   border-radius: 32px 0 0 32px;
   -webkit-transition: all 0.5s ease-in-out;
@@ -1529,6 +1536,29 @@ h6,
 }
 .simple-search button[type=submit]:hover, .simple-search button[type=submit]:focus {
   background-color: var(--primary);
+}
+.simple-search input[type=text]:focus-visible + button[type=submit] {
+  width: 170px;
+  margin-left: -150px;
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #FFF;
+}
+.simple-search input[type=text]:focus-visible + button[type=submit] .screen-reader-text {
+  position: initial !important;
+  clip-path: none;
+  padding-left: 8px;
+}
+.simple-search form:has(input[type=text]:focus-visible) + .button-container .button--advanced {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #000;
+}
+.simple-search form:has(input[type=text]:focus-visible) + .button-container .button--advanced:hover {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #FFF;
+  -webkit-box-shadow: 0 0 16px rgba(64, 64, 64, 0.5);
+          box-shadow: 0 0 16px rgba(64, 64, 64, 0.5);
 }
 .simple-search .button-container {
   position: relative;
@@ -3382,6 +3412,7 @@ h6,
   max-width: 1600px;
   height: 32px;
   background: var(--img-separator) no-repeat center/cover;
+  background-color: var(--secondary);
   border: 0;
 }
 .break.img-separator::after {
@@ -3515,6 +3546,7 @@ h6,
   max-width: 90%;
   height: 32px;
   background: var(--img-separator) no-repeat center/cover;
+  background-color: var(--secondary);
 }
 .site-page-pagination .wrap, .site-page-pagination .search-results .noresults, .search-results .site-page-pagination .noresults {
   display: -webkit-box;
@@ -5051,9 +5083,6 @@ body:not(.home) .partners--onlyhome {
     padding-right: 128px;
   }
 }
-.item.browse .page-subtitle {
-  text-align: center;
-}
 .item.browse .browse-controls {
   background-color: #F3F3F4;
 }
@@ -5219,7 +5248,7 @@ body:not(.home) .partners--onlyhome {
 .home section:not(.carousel) h2[class*=title] {
   margin-bottom: 32px;
 }
-.home section + .blocks--container {
+.home section + .blocks--container:has(.block) {
   margin-top: 64px;
 }
 
@@ -5346,6 +5375,7 @@ body:not(.home) .partners--onlyhome {
   max-width: 90%;
   height: 32px;
   background: var(--img-separator) no-repeat center/cover;
+  background-color: var(--secondary);
 }
 
 /* HOME - Item sets
@@ -5438,8 +5468,6 @@ body:not(.home) .partners--onlyhome {
 --------------------------------------------- */
 .home .slider-items {
   background-color: #FFF;
-  -webkit-box-shadow: 0 0 16px rgba(64, 64, 64, 0.5);
-          box-shadow: 0 0 16px rgba(64, 64, 64, 0.5);
 }
 .home .slider-items + .wrap, .home .search-results .slider-items + .noresults, .search-results .home .slider-items + .noresults {
   margin-top: 64px;

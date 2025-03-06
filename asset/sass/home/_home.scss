@@ -19,11 +19,10 @@
 	}
 
 	// if page content shows after home contents from theme parameters
-	& + .blocks--container {
+	& + .blocks--container:has(.block) {
 		margin-top: $gutter--xl;
 	}
 }
-
 
 /* HOME - Carousel
 --------------------------------------------- */

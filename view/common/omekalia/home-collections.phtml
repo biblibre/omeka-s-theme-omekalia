@@ -1,5 +1,7 @@
 <?php
 	$collections_title = $this->themeSetting('home_itemsets_title');
+	$itemsets_label = $this->themeSetting( 'home_itemsets_label');
+	$itemsets_url_selection = ($this->themeSetting('home_itemsets_url')) ?: 1;
 ?>
 <section class="collections">
 	<div class="collections__wrap wrap wrap--smd">
@@ -9,7 +11,7 @@
 
 			if( $this->themeSetting( 'home_itemsets_selection') ):
 
-			
+
 				$collections_to_show = array();
 				$collections_to_show = explode( ',',$this->themeSetting( 'home_itemsets_selection') );
 
@@ -17,20 +19,18 @@
 				/* Filtre à remettre en service quand les collections auront été associées au site */
 				$collections = $this->api()->search('item_sets', [
 							'site_id' => $site->id(),
+							'id' => $collections_to_show,
 							'sort_by' => 'title',
 							'sort_order' => 'asc',
 						])->getContent();
 
-				$collections_id = array();
+				if ($collections) :
 
-				foreach ($collections as $collection):
+					foreach ($collections as $collection):
 
-					$collection_heading = $collection->displayTitle();
-					$collection_url = $collection->url();
+						$collection_heading = $collection->displayTitle();
+						$collection_url = $collection->url();
 
-					$collections_id[] = $collection->id();
-
-					if (in_array( $collection->id(), $collections_to_show)) :
 						?>
 						
 							<div class="collection__item">
@@ -50,9 +50,10 @@
 								</a>
 							</div>
 						<?php
-					endif;
 
-				endforeach;
+					endforeach;
+
+				endif;
 
 			else:
 				// Récupération des collections de 1er niveau
@@ -86,8 +87,18 @@
 			endif;
 			?>
 		</div>
-		<div class="button__container">
-			<a href="<?php echo $site->url(); ?>/item-sets-tree/" class="button button--small"><?php echo $translate('Explore all the collections'); ?></a>
-		</div>
+		<?php
+			if($itemsets_label && ($itemsets_url_selection != 1) ):
+				$itemsets_url = '';
+				if($itemsets_url_selection == 2): 
+					$itemsets_url = '/item-sets-tree';
+				elseif($itemsets_url_selection == 3): 
+					$itemsets_url = '/item-set';
+				endif;
+		?>
+			<div class="button__container">
+				<a href="<?php echo $site->url().$itemsets_url; ?>" class="button"><?php echo $itemsets_label; ?></a>
+			</div>
+		<?php endif; ?>
 	</div>
 </section>

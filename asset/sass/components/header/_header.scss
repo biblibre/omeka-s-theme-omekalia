@@ -197,14 +197,6 @@
 
 /* HEADER - SIMPLE SEARCH ------------------ */
 .simple-search {
-	
-
-	@include breakpoint(xs) {
-		
-	}
-	@include breakpoint(sm) {
-
-	}
 
 	&__content {
 		width: 100%;
@@ -214,6 +206,7 @@
 		position: relative;
 		display: flex;
 		flex-direction: column;
+		gap: $gutter--sm;
 		justify-content: center;
 		align-items: center;
 		padding: $gutter--md $gutter;
@@ -225,7 +218,6 @@
 
 		@include breakpoint(xs) {
 			flex-direction: row;
-			gap: $gutter--sm;
 		}
 		@include breakpoint(md) {
 			padding-left: 0;
@@ -257,7 +249,7 @@
 	}
 	input[type="text"] {
 		height: 40px;
-		padding: 0.75 * $gutter--xs $gutter--sm 0.75 * $gutter--xs $gutter;
+		padding: 0.75 * $gutter--xs $gutter--xxl 0.75 * $gutter--xs $gutter;
 		border: 2px solid $bg-white;
 		border-radius: $gutter--md 0 0 $gutter--md;
 		@include transition;
@@ -280,10 +272,35 @@
 			background-color: $bg-primary;
 		}
 	}
+	input[type="text"]:focus-visible + button[type="submit"] {
+		width: 170px;
+		margin-left: -150px;
+		background-color: $bg-primary;
+		border-color: $bg-primary;
+		color: $color-light;
+
+		.screen-reader-text {
+			position: initial !important;
+			clip-path: none;
+			padding-left: $gutter--xs;
+		}
+	}
+
+	form:has(input[type="text"]:focus-visible) + .button-container .button--advanced {
+		background-color: rgba($bg-white, 0.5);
+		color: $color-global;
+
+		&:hover {
+			background-color: $bg-primary;
+			border-color: $bg-primary;
+			color: $color-light;
+			@include box-shadow--md;
+		}
+	}
+
 	.button-container {		
 		position: relative;
 		z-index: 1;
-
 	}
 	.button--advanced {
 		display: flex;

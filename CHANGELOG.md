@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.0.4 - 2025-03-06
+
+New public release
+Style corrections
+Reoganisation and changes to theme settings
+
 ## 1.0.3 - 2025-02-06
 
 New public release
