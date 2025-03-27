@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.0.5 - 2025-03-27
+
+New public release
+Changes to theme settings - Order and text label
+Add language display to metadata values
+
 ## 1.0.4 - 2025-03-06
 
 New public release

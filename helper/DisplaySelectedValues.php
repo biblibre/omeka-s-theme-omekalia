@@ -53,8 +53,10 @@ class DisplaySelectedValues extends AbstractHelper
 		$view = $this->getView();
 		$translate = $view->plugin('translate');
 		$escape = $view->plugin('escapeHtml');
+		$lang = $view->lang();
 
 		if ($showValueAnnotations) $showValueAnnotations = (bool) $view->siteSetting('show_value_annotations', false);
+		$showLocale = (bool) $view->siteSetting('show_locale_label', true);
 
 		$propertiesToDisplay = explode(',', str_replace("\n", ',', $properties) );
 		$propertiesToDisplay = array_map('trim', $propertiesToDisplay);
@@ -95,6 +97,8 @@ class DisplaySelectedValues extends AbstractHelper
 
 						$propertyDataValues = array();
 						foreach ($propertyData['values'] as $value) {
+							$valueType = $value->type();
+							$valueLang = $value->lang();
 							$valueAnnotation = $value->valueAnnotation();
 							//$propertyDataValues[] = strip_tags($value->asHtml());
 							$propertyDataValuesTemp = $value->asHtml();
@@ -126,8 +130,13 @@ class DisplaySelectedValues extends AbstractHelper
 								<div class="collapsible annotation">'.$valueAnnotation->displayValues().'</div>';
 							endif;
 
+							if ($showLocale && $valueLang):
+								$htmlLang = '<span class="language">'.$valueLang.'</span> ';
+							else:
+								$htmlLang = '';
+							endif;
 
-							$propertyDataValues[] = $propertyDataValuesTemp;
+							$propertyDataValues[] = $htmlLang.$propertyDataValuesTemp;
 
 						}
 
