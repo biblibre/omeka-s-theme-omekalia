@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Omekalia\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-19 14:41+0200\n"
-"PO-Revision-Date: 2024-12-18 12:48+0100\n"
+"PO-Revision-Date: 2025-04-02 16:43+0200\n"
 "Last-Translator: Christophe Perrin <christophe@kaeness.fr>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -111,3 +111,67 @@ msgstr "Effacer la recherche"
 #: ../view/search/form/standard-match-group-filter.phtml:46
 msgid "Delete value"
 msgstr "Supprimer la valeur"
+
+#: ../view/item-set-calendar/site/item/browse.phtml:39
+msgid "Items"
+msgstr "Documents"
+
+#: ../view/item-set-calendar/site/item/browse.phtml:49
+msgid "January"
+msgstr "Janvier"
+
+#: ../view/item-set-calendar/site/item/browse.phtml:50
+msgid "February"
+msgstr "Février"
+
+#: ../view/item-set-calendar/site/item/browse.phtml:51
+msgid "March"
+msgstr "Mars"
+
+#: ../view/item-set-calendar/site/item/browse.phtml:52
+msgid "April"
+msgstr "Avril"
+
+#: ../view/item-set-calendar/site/item/browse.phtml:53
+msgid "May"
+msgstr "Mai"
+
+#: ../view/item-set-calendar/site/item/browse.phtml:54
+msgid "June"
+msgstr "Juin"
+
+#: ../view/item-set-calendar/site/item/browse.phtml:55
+msgid "July"
+msgstr "Juillet"
+
+#: ../view/item-set-calendar/site/item/browse.phtml:56
+msgid "August"
+msgstr "Août"
+
+#: ../view/item-set-calendar/site/item/browse.phtml:57
+msgid "September"
+msgstr "Septembre"
+
+#: ../view/item-set-calendar/site/item/browse.phtml:58
+msgid "October"
+msgstr "Octobre"
+
+#: ../view/item-set-calendar/site/item/browse.phtml:59
+msgid "November"
+msgstr "Novembre"
+
+#: ../view/item-set-calendar/site/item/browse.phtml:60
+msgid "December"
+msgstr "Décembre"
+
+#: ../view/item-set-calendar/site/item/browse.phtml:65
+msgid "By day"
+msgstr "Par jour"
+
+#: ../view/item-set-calendar/site/item/browse.phtml:111
+msgid "By month"
+msgstr "Par mois"
+
+#: ../view/item-set-calendar/site/item/browse.phtml:133
+msgid "By year"
+msgstr "Par année"

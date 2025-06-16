@@ -115,3 +115,70 @@ msgstr ""
 #: ../view/search/form/standard-match-group-filter.phtml:46
 msgid "Delete value"
 msgstr ""
+
+
+
+#: ../view/item-set-calendar/site/item/browse.phtml:39
+msgid "Items"
+msgstr ""
+
+#: ../view/item-set-calendar/site/item/browse.phtml:49
+msgid "January"
+msgstr ""
+
+#: ../view/item-set-calendar/site/item/browse.phtml:50
+msgid "February"
+msgstr ""
+
+#: ../view/item-set-calendar/site/item/browse.phtml:51
+msgid "March"
+msgstr ""
+
+#: ../view/item-set-calendar/site/item/browse.phtml:52
+msgid "April"
+msgstr ""
+
+#: ../view/item-set-calendar/site/item/browse.phtml:53
+msgid "May"
+msgstr ""
+
+#: ../view/item-set-calendar/site/item/browse.phtml:54
+msgid "June"
+msgstr ""
+
+#: ../view/item-set-calendar/site/item/browse.phtml:55
+msgid "July"
+msgstr ""
+
+#: ../view/item-set-calendar/site/item/browse.phtml:56
+msgid "August"
+msgstr ""
+
+#: ../view/item-set-calendar/site/item/browse.phtml:57
+msgid "September"
+msgstr ""
+
+#: ../view/item-set-calendar/site/item/browse.phtml:58
+msgid "October"
+msgstr ""
+
+#: ../view/item-set-calendar/site/item/browse.phtml:59
+msgid "November"
+msgstr ""
+msgstr ""
+
+#: ../view/item-set-calendar/site/item/browse.phtml:60
+msgid "December"
+msgstr ""
+
+#: ../view/item-set-calendar/site/item/browse.phtml:65
+msgid "By day"
+msgstr ""
+
+#: ../view/item-set-calendar/site/item/browse.phtml:111
+msgid "By month"
+msgstr ""
+
+#: ../view/item-set-calendar/site/item/browse.phtml:133
+msgid "By year"
+msgstr ""

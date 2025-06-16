@@ -1,0 +1,187 @@
+.item-set-calendar  {
+
+	.blocks > .wrap--xl {
+		padding: $gutter--md $gutter;
+		background-color: $bg-white;
+		@include box-shadow--md;
+
+		@include breakpoint(xs) {
+			padding: $gutter--lg $gutter--sm;
+		}
+		@include breakpoint(sm) {
+			padding: $gutter--xl;
+		}
+		@include breakpoint(lg) {
+			padding-left: $gutter--xxl;
+			padding-right: $gutter--xxl;
+		}
+	}
+
+	.item-set-items__title {
+		text-align: center;
+	}
+	.item-set-items__subtitle {
+		margin-bottom: $gutter--sm;
+		text-align: center;
+		color: $color-accent;
+	}
+}
+
+section[id*="item-set-calendar-by"] {
+	margin-top: $gutter--md;
+}
+.item-set-calendar {
+
+	&__title {
+		margin-bottom: $gutter--sm;
+		text-align: center;
+	}
+
+	&__list--by-year {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-column-gap: $gutter--md;
+		grid-row-gap: $gutter--md;
+		margin: $gutter--md 0;
+		padding-left: 0;
+		list-style-type: none;
+
+		@include breakpoint(sm) {
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-column-gap: $gutter--lg;
+			grid-row-gap: $gutter--lg;
+		}
+		@include breakpoint(md) {
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+		}
+		li {
+			position: relative;
+			padding: $gutter--sm;
+			background-color: $bg-light;
+			border-bottom: 10px solid $bg-secondary;
+			text-align: center;
+			font-family: $font-headings;
+			font-size: $font-size__h2;
+			font-weight: $semi-bold;
+			@include transition;
+
+			@include breakpoint(sm) {
+				padding: $gutter--md $gutter--lg;
+			}
+
+			&:hover,
+			&:focus-within {
+				background-color: $bg-primary;
+				border-color: $bg-primary;
+				@include box-shadow--md;
+			}
+
+			a {
+
+				&:hover,
+				&:focus {
+					color: $color-light;
+				}
+				&::after {
+					@include link-absolute;
+				}
+			}
+		}
+	}
+	&-months {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-row-gap: $gutter--lg;
+		padding-top: $gutter--lg;
+
+		@include breakpoint(sm) {
+			grid-template-columns: 1fr 1fr;
+			grid-column-gap: $gutter--lg;
+		}
+		@include breakpoint(md) {
+			grid-row-gap: $gutter--xl;
+			grid-column-gap: $gutter--xl;
+		}
+	}
+	&-month {
+
+		&__title {
+			color: $color-accent;
+		}
+		ul {
+			margin: 0;
+			padding: $gutter--md 0 0;
+			list-style-type: none;
+		}
+	}
+	&-days {
+
+	}
+	&-day {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: $gutter--lg;
+		margin: 1px;
+		background-color: $bg-white;
+		text-align: center;
+
+		a {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 80%;
+			width: 80%;
+			margin: 10%;
+			background-color: $bg-primary;
+			border: 1px solid $bg-primary;
+			font-weight: $semi-bold;
+			color: $color-light;
+
+			&:hover,
+			&:focus {
+				background-color: transparent;
+				color: $color-global;
+			}
+		}
+	}
+}
+// CALENDAR ITEM BY MONTH
+#item-set-calendar-by-month {
+
+	.item-set-calendar-months {
+
+	}
+}
+
+// CALENDAR ITEM BY DAY
+.item-set-calendar-calendar {
+	justify-content: space-around;
+	row-gap: $gutter--md;
+	margin-top: $gutter--lg;
+
+	@include breakpoint(md) {
+		justify-content: initial;
+		column-gap: $margin;
+	}
+
+	.item-set-calendar-month {
+		flex-basis: 100%;
+		padding: $gutter;
+		background-color: $bg-light;
+
+		@include breakpoint(xs) {
+			flex-basis: $one-half;
+			min-width: 300px;
+		}
+		@include breakpoint(sm) {
+			padding-bottom: $gutter--sm;
+		}
+		@include breakpoint(md) {
+			flex-basis: $one-third;
+		}
+	}
+	.item-set-calendar-month .item-set-calendar-day {
+		flex-basis: calc( calc(100% / 7) - 2px );
+	}
+}	

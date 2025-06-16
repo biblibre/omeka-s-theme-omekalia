@@ -38,12 +38,8 @@ $resourceDataContent = $this->DisplaySelectedValues($resource, $itemdata_lists);
 	<div class="resource__container">
 		<div class="resource__contents">
 			<div class="resource__thumbnail ">
-				<?php if (method_exists($resource, 'primaryMedia') && $primaryMedia = $resource->primaryMedia()): ?>
-					<img
-						src="<?php echo $escape($primaryMedia->thumbnailUrl('medium')); ?>"
-						title="<?php echo $escape($primaryMedia->displayTitle()); ?>"
-						alt="<?php echo $escape($primaryMedia->mediaType()); ?> thumbnail"
-					/>
+				<?php if ( $resourceThumbnail = $this->thumbnail($resource, 'medium', ['title' => $resource->displayTitle()]) ): ?>
+					<?php echo $resourceThumbnail; ?>
 				<?php elseif($itemdata_thumbnail): ?>
 					<img src="<?php echo $this->themeSettingAssetUrl('items_thumbnail'); ?>" alt="" />
 				<?php else: ?>

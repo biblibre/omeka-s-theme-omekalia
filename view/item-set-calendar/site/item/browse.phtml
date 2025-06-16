@@ -1,0 +1,174 @@
+<?php 
+$this->htmlElement('body')->appendAttribute('class', 'item resource browse item-set item-set-calendar');
+$this->headLink()->appendStylesheet($this->assetUrl('css/item-set-calendar.css', 'ItemSetCalendar'));
+
+
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+$thumbnail = $this->plugin('thumbnail');
+
+$pageTitle = $itemSet->displayTitle(); 
+
+$itemdata_lists = $this->themeSetting( 'itemdata_lists' ); 
+?>
+
+<?php if (isset($date)): ?>
+	<?php $pageTitle .= ' (' . $date . ')'; ?>
+<?php elseif (isset($year)): ?>
+	<?php $pageTitle .= ' (' . $year . ')'; ?>
+<?php endif; ?>
+
+<div class="breadcrumbs wrap wrap--lg">
+	<a href="<?php echo $this->url('site', [], [], true); ?>"><?php echo $translate('Home'); ?></a> &gt; <span><?php echo $pageTitle; ?></span>
+</div>
+
+<div class="blocks">
+
+	<div class="wrap wrap--md">
+		<div class="page-title"><?php echo $this->pageTitle($pageTitle, 1); ?></div>
+		<?php
+		// Item set info section
+			$image = $thumbnail($itemSet, 'large');
+		?>
+		<div class="itemset__content">
+			<?php echo ($image)? '<div class="itemset__thumbnail">'.$image.'</div>' : ''; ?> <!-- itemset_illus -->
+			<div class="metadata itemset__metadata">
+				<?php echo $itemSet->displayValues(); ?>
+			</div>
+		</div>
+
+	</div>
+	<div class="wrap wrap--xl">
+		<div class="item-set-items">
+			<?php echo '<h2 class="item-set-items__title">' . $this->escapeHtml($this->translate('Items')) . '</h2>'; ?>
+
+			<?php if (isset($date)): ?>
+				<ul class="item-set-calendar-unknown1">
+					<?php foreach ($items as $item): ?>
+						<li><?php echo $this->hyperlink($item->displayTitle(), $item->siteUrl()); ?></li>
+					<?php endforeach; ?>
+				</ul>
+			<?php elseif (isset($year)): ?>
+
+				<?php $months = [
+					1 => $this->translate('January'),
+					2 => $this->translate('February'),
+					3 => $this->translate('March'),
+					4 => $this->translate('April'),
+					5 => $this->translate('May'),
+					6 => $this->translate('June'),
+					7 => $this->translate('July'),
+					8 => $this->translate('August'),
+					9 => $this->translate('September'),
+					10 => $this->translate('October'),
+					11 => $this->translate('November'),
+					12 => $this->translate('December'),
+				]; ?>
+
+				<?php if (!empty($itemsByDay)): ?>
+					<section id="item-set-calendar-by-day">
+						<h3 class="item-set-items__subtitle"><?php echo $this->translate('By day'); ?></h3>
+
+						<div class="item-set-calendar-calendar">
+							<?php foreach ($months as $month => $monthName): ?>
+								<?php if (!empty($itemsByDay[$month])): ?>
+									<div class="item-set-calendar-month">
+										<h4  class="item-set-calendar__title"><?php echo $monthName; ?></h4>
+										<div class="item-set-calendar-days">
+											<?php $days_in_month = cal_days_in_month(CAL_GREGORIAN, $month, $year); ?>
+											<?php for($day = 1; $day <= $days_in_month; $day++): ?>
+												<div class="item-set-calendar-day">
+													<?php if (!empty($itemsByDay[$month][$day])): ?>
+														<?php if (count($itemsByDay[$month][$day]) === 1): ?>
+															<?php $item = reset($itemsByDay[$month][$day]); ?>
+															<?php echo $this->hyperlink($day, $item->siteUrl(), ['title' => $item->displayTitle()]); ?>
+														<?php else: ?>
+															<?php echo $this->hyperlink(
+																$day,
+																$this->url(
+																	'site/item-set',
+																	[],
+																	[
+																		'query' => [
+																			'date' => sprintf('%04d-%02d-%02d', $year, $month, $day),
+																		],
+																	],
+																	true
+																),
+																['title' => sprintf($this->translate('%d items'), count($itemsByDay[$month][$day]))]
+															); ?>
+														<?php endif; ?>
+													<?php else: ?>
+														<span><?php echo $day; ?></span>
+													<?php endif; ?>
+												</div>
+											<?php endfor; ?>
+										</div>
+									</div>
+								<?php endif; ?>
+							<?php endforeach; ?>
+						</div>
+					</section>
+				<?php endif; ?>
+
+				<?php if (!empty($itemsByMonth)): ?>
+					<section id="item-set-calendar-by-month">
+						<h3 class="item-set-items__subtitle"><?php echo $this->translate('By month'); ?></h3>
+
+						<div class="item-set-calendar-months">
+							<?php foreach ($months as $month => $monthName): ?>
+								<?php if (!empty($itemsByMonth[$month])): ?>
+									<div class="item-set-calendar-month">
+										<h4  class="item-set-calendar-month__title"><?php echo $monthName; ?></h4>
+
+										<ul>
+											<?php foreach ($itemsByMonth[$month] as $item): ?>
+											<?php
+												$heading = $headingTerm ? $item->value($headingTerm, ['default' => $translate('[Untitled]'), 'lang' => $valueLang]) : $item->displayTitle(null, $valueLang);
+												$bodyContent = $this->DisplaySelectedValues($item, $itemdata_lists, [ 'stripTags' => true ]);
+
+												$linkContent = sprintf('<div class="resource__thumbnail">%s</div><div class="resource__content"><h3 class="resource__title">%s</h3><div class="properties-wrapper">%s</div></div>',
+													$thumbnail($item, 'medium'),
+													$escape($heading),
+													$bodyContent);
+											?>
+												<li class="item resource resource__item"><div class="resource__container"><?php echo $item->linkRaw($linkContent, null, ['class' => 'resource-link']); ?></div></li>
+											<?php endforeach; ?>
+										</ul>
+									</div>
+								<?php endif; ?>
+							<?php endforeach; ?>
+						</div>
+					</section>
+				<?php endif; ?>
+
+				<?php if (!empty($itemsByYear)): ?>
+					<section id="item-set-calendar-by-year">
+						<h3 class="item-set-items__subtitle"><?php echo $this->translate('By year'); ?></h3>
+
+						<ul class="item-set-calendar-year resource-list">
+							<?php foreach ($itemsByYear as $item): ?>
+							<?php
+								$heading = $headingTerm ? $item->value($headingTerm, ['default' => $translate('[Untitled]'), 'lang' => $valueLang]) : $item->displayTitle(null, $valueLang);
+								$bodyContent = $this->DisplaySelectedValues($item, $itemdata_lists, [ 'stripTags' => true ]);
+
+								$linkContent = sprintf('<div class="resource__thumbnail">%s</div><div class="resource__content"><h3 class="resource__title">%s</h3><div class="properties-wrapper">%s</div></div>',
+									$thumbnail($item, 'medium'),
+									$escape($heading),
+									$bodyContent);
+							?>
+								<li class="item resource resource__item"><div class="resource__container"><?php echo $item->linkRaw($linkContent, null, ['class' => 'resource-link']); ?></div></li>
+							<?php endforeach; ?>
+						</ul>
+					</section>
+				<?php endif; ?>
+			<?php else: ?>
+				<ul class="item-set-calendar__list--by-year">
+					<?php foreach ($years as $year): ?>					
+						<li><?php echo $this->hyperlink($year, $this->url('site/item-set', [], ['query' => ['year' => $year]], true)); ?></li>
+					<?php endforeach; ?>
+				</ul>
+			<?php endif; ?>
+		</div>
+	</div>
+</div>

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.0.6 - 2025-06-13
+
+New public release
+Update Search template
+Update Item Set Calendar templates
+
 ## 1.0.5 - 2025-03-27
 
 New public release

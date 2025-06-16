@@ -6,6 +6,16 @@
 	margin-left: auto;
 }
 
+// link absolute position
+@mixin link-absolute {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
 // align small - 
 @mixin alignsmall {
 
