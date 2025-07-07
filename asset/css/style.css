@@ -4842,6 +4842,31 @@ body:not(.home) .partners--onlyhome {
   margin-bottom: 0;
 }
 
+/* AFFICHAGE ACCES RESTREINT ----------------------- */
+.item-access {
+  padding: 24px 16px;
+  margin-bottom: 16px;
+  background-color: #F3F3F4;
+  border-bottom: 8px solid var(--secondary);
+}
+@media (min-width: 600px) {
+  .item-access {
+    padding: 32px;
+  }
+}
+@media (min-width: 768px) {
+  .item-access {
+    padding: 64px;
+  }
+}
+.item-access__text {
+  max-width: 680px;
+}
+.item-access .button__container {
+  margin-top: 16px;
+  text-align: right;
+}
+
 .regions-container,
 .main-region {
   padding-left: 16px;

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.0.7 - 2025-07-07
+
+New public release
+Add message to item without media
+Update test in item template
+Remove one problematic french translation
+
 ## 1.0.6 - 2025-06-13
 
 New public release

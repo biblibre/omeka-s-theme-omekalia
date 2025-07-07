@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Omekalia\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-19 14:41+0200\n"
-"PO-Revision-Date: 2025-04-02 16:43+0200\n"
+"PO-Revision-Date: 2025-07-07 14:38+0200\n"
 "Last-Translator: Christophe Perrin <christophe@kaeness.fr>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -75,6 +75,10 @@ msgstr "Les documents"
 msgid "Browse items"
 msgstr "Parcourir les documents"
 
+#: ../view/omeka/site/item/show.phtml:106
+msgid "Document access"
+msgstr "Accès aux documents"
+
 #: ../view/omeka/site/item/show.phtml:127
 msgid "Related resources"
 msgstr "Documents en relation"
@@ -111,10 +115,6 @@ msgstr "Effacer la recherche"
 #: ../view/search/form/standard-match-group-filter.phtml:46
 msgid "Delete value"
 msgstr "Supprimer la valeur"
-
-#: ../view/item-set-calendar/site/item/browse.phtml:39
-msgid "Items"
-msgstr "Documents"
 
 #: ../view/item-set-calendar/site/item/browse.phtml:49
 msgid "January"
@@ -175,3 +175,6 @@ msgstr "Par mois"
 #: ../view/item-set-calendar/site/item/browse.phtml:133
 msgid "By year"
 msgstr "Par année"
+
+#~ msgid "Items"
+#~ msgstr "Documents"

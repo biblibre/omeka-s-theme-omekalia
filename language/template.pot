@@ -77,6 +77,10 @@ msgstr ""
 msgstr ""
 
 
+#: ../view/omeka/site/item/show.phtml:106
+msgid "Document access"
+msgstr ""
+
 #: ../view/omeka/site/item/show.phtml:127
 msgid "Related resources"
 msgstr ""
@@ -118,9 +122,6 @@ msgstr ""
 
 
 
-#: ../view/item-set-calendar/site/item/browse.phtml:39
-msgid "Items"
-msgstr ""
 
 #: ../view/item-set-calendar/site/item/browse.phtml:49
 msgid "January"

@@ -1,6 +1,5 @@
 /* Items
 --------------------------------------------- */
-
 .item.show .blocks,
 .items.search .blocks {
 
@@ -28,6 +27,28 @@
 		}
 	}
 }
+/* AFFICHAGE ACCES RESTREINT ----------------------- */
+.item-access {
+	padding: $gutter--sm $gutter;
+	margin-bottom: $gutter;
+	background-color: $bg-light;
+	border-bottom: $gutter--xs solid $bg-secondary;
+
+	@include breakpoint(xs) {
+		padding: $gutter--md;
+	}
+	@include breakpoint(sm) {
+		padding: $gutter--xl;
+	}
+	&__text {
+		max-width: $width--xs;
+	}
+	.button__container {
+		margin-top: $gutter;
+		text-align: right;
+	}
+}
+
 .regions-container,
 .main-region {
 	padding-left: $gutter;
