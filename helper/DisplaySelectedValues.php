@@ -65,6 +65,7 @@ class DisplaySelectedValues extends AbstractHelper
 		$propertiesForSearch = array_map('trim', $propertiesForSearch);
 
 		$metadataContent = '';
+		$metadataGroup = false;
 
 		if( isset($propertiesToDisplay) && count($propertiesToDisplay) > 0 ):
 			foreach ($propertiesToDisplay as $propertyValue):
@@ -100,7 +101,6 @@ class DisplaySelectedValues extends AbstractHelper
 							$valueType = $value->type();
 							$valueLang = $value->lang();
 							$valueAnnotation = $value->valueAnnotation();
-							//$propertyDataValues[] = strip_tags($value->asHtml());
 							$propertyDataValuesTemp = $value->asHtml();
 
 							if ($stripTags) {
@@ -152,9 +152,22 @@ class DisplaySelectedValues extends AbstractHelper
 
 					$metadataContent .= '<hr class="resource__divider"/>';
 
+				elseif ($propertyValue == '#group#'):
+
+					if ($metadataGroup) $metadataContent .= '</div>';
+					$metadataContent .= '<div class="data__group">';
+					$metadataGroup = true;
+
+				elseif ($propertyValue == '#/group#'):
+
+					if ($metadataGroup) $metadataContent .= '</div>';
+					$metadataGroup = false;
+
 				endif;
 
 			endforeach;
+
+			if ($metadataGroup) {$metadataContent .= '</div>';};
 
 			if ($metadataContent):
 				$metadataContent = '<dl>'.$metadataContent.'</dl>';

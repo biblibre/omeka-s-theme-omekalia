@@ -99,21 +99,34 @@ endif;
 
                                 //echo ($itemMedia)? 'Dollar Item Media = '.$itemMedia.'<br>' : 'item Media est vide !!! <br>';
 
+                                $access_img = $this->themeSetting('items_access_img');
                                 $access_title = $this->themeSetting('items_access_title');
                                 $access_text = $this->themeSetting('items_access_text');
                                 $access_label = $this->themeSetting('items_access_label');
                                 $access_url = $this->themeSetting('items_access_url');
                                 $access_title_connected = $this->themeSetting('items_access_title_connected');
                                 $access_text_connected = $this->themeSetting('items_access_text_connected');
+                                $access_label_connected = $this->themeSetting('items_access_label_connected');
+                                $access_url_connected = $this->themeSetting('items_access_url_connected');
                             ?>
                             <?php if (!($embedMedia || $itemMedia)) :  //echo "NO MEDIA"; ?>
                             
                             <div class="item-access">
+                                <?php if($access_img): ?>
+                                    <div class="item-access__thumbnail">
+                                        <img src="<?php echo $this->themeSettingAssetUrl('items_access_img'); ?>">
+                                    </div>
+                                <?php endif; ?>
+
+                                    <div class="item-access__content">
                                 <?php if (isset($user)): ?>
+                                        <p class="h2 item-access__title"><?php echo ($access_title_connected)? $access_title_connected : $translate('Document access'); ?></p>
 
-                                    <p class="h2 item-access__title"><?php echo ($access_title_connected)? $access_title_connected : $translate('Document access'); ?></p>
-
-                                    <?php echo ($access_text_connected)? '<div class="item-access__text">'.$access_text_connected.'</div>' : ''; ?>
+                                        <?php echo ($access_text_connected)? '<div class="item-access__text">'.$access_text_connected.'</div>' : ''; ?>
+                                        
+                                        <?php if($access_label_connected && $access_url_connected ): 
+                                            echo '<div class="button__container"><a href="'.$access_url_connected.'" class="button">'.$access_label_connected.'</a></div>';
+                                        endif; ?>
 
                                 <?php else: ?>
                                     <p class="h2 item-access__title"><?php echo ($access_title)? $access_title : $translate('Document access'); ?></p>
@@ -125,6 +138,8 @@ endif;
                                     endif; ?>
 
                                 <?php endif; ?>
+
+                                    </div>
                             </div>
 
                             <?php //else: echo "MEDIA OK"; ?>

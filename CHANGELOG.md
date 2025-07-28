@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.0.8 - 2025-07-28
+
+New public release
+Add message to item with restricted access to media
+Update styles
+
 ## 1.0.7 - 2025-07-07
 
 New public release

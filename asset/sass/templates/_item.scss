@@ -29,30 +29,59 @@
 }
 /* AFFICHAGE ACCES RESTREINT ----------------------- */
 .item-access {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-row-gap: $gutter;
 	padding: $gutter--sm $gutter;
 	margin-bottom: $gutter;
 	background-color: $bg-light;
 	border-bottom: $gutter--xs solid $bg-secondary;
 
+	@include breakpoint(xxs) {
+		grid-template-columns: 1fr 2fr;
+		grid-column-gap: $gutter;
+	}
 	@include breakpoint(xs) {
 		padding: $gutter--md;
 	}
 	@include breakpoint(sm) {
-		padding: $gutter--xl;
+		grid-column-gap: $gutter--sm;
+		padding: $gutter--lg;
 	}
-	&__text {
+
+	&__thumbnail {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		aspect-ratio: 1/1;
+		overflow: hidden;
+		background-color: $bg-white;
+
+		img {
+			object-fit: contain;
+			object-position: center;
+		}
+	}
+	&__content {
 		max-width: $width--xs;
 	}
 	.button__container {
-		margin-top: $gutter;
+		margin-top: $gutter--sm;
 		text-align: right;
 	}
+}
+.one-column .item-access {
+	max-width: $width--sm;
+	@include margin-auto;
 }
 
 .regions-container,
 .main-region {
 	padding-left: $gutter;
 	padding-right: $gutter;
+}
+.main-region:has(.metadata) {
+	padding-top: $gutter--xl;
 }
 .regions-container:not(.one-column) {
 
