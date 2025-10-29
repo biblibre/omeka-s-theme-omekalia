@@ -54,7 +54,7 @@ endif;
 	<div class="page-title"><?php echo $this->pageTitle($media->displayTitle(null, $valueLang), 1); ?></div>
 	<div class="wrap wrap--xl">
 		<?php $this->trigger('view.show.before'); ?>
-		<h3><?php echo $translate('Media'); ?></h3>
+		<h2 class="h3"><?php echo $translate('Media'); ?></h2>
 
 		<p class="media-parent-item">
 			<?php echo sprintf($translate('Part of %s'), $item->link($item->displayTitle(null, $valueLang))); ?>

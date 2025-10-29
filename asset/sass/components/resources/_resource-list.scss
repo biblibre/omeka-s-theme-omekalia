@@ -1,14 +1,19 @@
 .blocks ul.resource-list {
-	display: flex;
-	flex-flow: column wrap;
-	gap: $margin;
+	display: grid;
+	grid-row-gap: $gutter--md;
 	margin: $gutter--md 0;
 	padding: 0;
 
 	@include breakpoint(sm) {
-		flex-direction: row;
+		grid-template-columns: 1fr 1fr;
+		grid-column-gap: $gutter--lg;
+		grid-row-gap: $gutter--lg;
 		margin-top: $gutter--lg;
 		margin-bottom: $gutter--lg;
+	}
+	@include breakpoint(md) {
+		grid-column-gap: $gutter--xl;
+		grid-row-gap: $gutter--xl;
 	}
 
 	.resource__item {

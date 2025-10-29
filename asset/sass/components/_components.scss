@@ -1,27 +1,38 @@
-/* Header
+/* Accordion 
 --------------------------------------------- */
-@import "header/header";
+@import "accordion/accordion"; 
 
-/* Navigation
+/* Annotation 
 --------------------------------------------- */
-@import "navigation/navigation";
-// @import "navigation/menu-drawer";
+@import "annotation/annotation"; 
 
-/* Accordion
+/* Advanced Search 
 --------------------------------------------- */
-@import "accordion/accordion";
+@import "advanced-search/advanced-search"; 
 
-/* Annotation
+/* Blocks
 --------------------------------------------- */
-@import "annotation/annotation";
-
-/* Advanced Search
---------------------------------------------- */
-@import "advanced-search/advanced-search";
+@import "blocks/blocks";
 
 /* Breadcrumbs
 --------------------------------------------- */
 @import "breadcrumbs/breadcrumbs";
+
+/* carousel - Slider
+--------------------------------------------- */
+@import "carousel/carousel";
+
+/* Facets
+--------------------------------------------- */
+@import "facets/facets";
+
+/* Footer
+--------------------------------------------- */
+@import "footer/footer";
+
+/* Header
+--------------------------------------------- */
+@import "header/header";
 
 /* Linked Resources
 --------------------------------------------- */
@@ -31,17 +42,14 @@
 --------------------------------------------- */
 @import "metadata/metadata";
 
-/* Blocks
+/* Navigation
 --------------------------------------------- */
-@import "blocks/blocks";
+@import "navigation/navigation";
+// @import "navigation/menu-drawer";
 
 /* Pagination
 --------------------------------------------- */
 @import "pagination/pagination";
-
-/* Facets
---------------------------------------------- */
-@import "facets/facets";
 
 /* Resources
 --------------------------------------------- */
@@ -50,11 +58,3 @@
 /* Search Results
 --------------------------------------------- */
 @import "search-results/search-results";
-
-/* Footer
---------------------------------------------- */
-@import "footer/footer";
-
-/* Slider
---------------------------------------------- */
-@import "carousel/carousel";

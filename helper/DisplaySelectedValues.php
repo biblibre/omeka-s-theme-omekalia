@@ -1,4 +1,8 @@
 <?php 
+/*****
+ * DisplaySelectedValues Helper
+ * Last Update : 2025-10-27
+ *****/
 namespace OmekaTheme\Helper;
 
 use Laminas\View\Helper\AbstractHelper;
@@ -58,10 +62,14 @@ class DisplaySelectedValues extends AbstractHelper
 		if ($showValueAnnotations) $showValueAnnotations = (bool) $view->siteSetting('show_value_annotations', false);
 		$showLocale = (bool) $view->siteSetting('show_locale_label', true);
 
-		$propertiesToDisplay = explode(',', str_replace("\n", ',', $properties) );
-		$propertiesToDisplay = array_map('trim', $propertiesToDisplay);
+		if (gettype($properties) == 'string') {
+			$properties = explode(',', str_replace("\n", ',', $properties) );
+		}
+		$propertiesToDisplay = array_map('trim', $properties);
 
-		$propertiesForSearch = explode(',', str_replace("\n", ',', $propertiesForSearch) );
+		if (gettype($propertiesForSearch) == 'string') {
+			$propertiesForSearch = explode(',', str_replace("\n", ',', $propertiesForSearch) );
+		}
 		$propertiesForSearch = array_map('trim', $propertiesForSearch);
 
 		$metadataContent = '';
@@ -162,6 +170,10 @@ class DisplaySelectedValues extends AbstractHelper
 
 					if ($metadataGroup) $metadataContent .= '</div>';
 					$metadataGroup = false;
+
+				elseif ( substr($propertyValue, 0, 7) == '#title#'):
+
+					$metadataContent .= '<p><strong>'.(substr( $propertyValue, 7)).'</strong></p>';
 
 				endif;
 

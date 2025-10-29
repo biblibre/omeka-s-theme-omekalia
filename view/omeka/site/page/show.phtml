@@ -34,16 +34,21 @@ $container = $nav->getContainer();
 $activePage = $nav->findActive($container); 
 ?>
 
-<?php if ($activePage): ?>
-
+<?php if ($activePage): ?>		
 	<?php if ($activePage['depth'] !== 0): ?>
-	<nav class="breadcrumbs wrap wrap--lg"><a href="<?php echo $site->url(); ?>"><?php echo $translate('Home'); ?></a> &gt; <?php echo $nav->breadcrumbs(); ?></nav>
+	<?php /* current page in navigation niveau 1 et + */ ?>
+	<nav class="breadcrumbs wrap wrap--smd"><a href="<?php echo $site->url(); ?>"><?php echo $translate('Home'); ?></a> &gt; <?php echo $nav->breadcrumbs(); ?></nav>
 	
 	<?php elseif ( ($class_plus !== ' home') ): ?>
-		<nav class="breadcrumbs wrap wrap--lg"><a href="<?php echo $site->url(); ?>"><?php echo $translate('Home'); ?></a> &gt; <span><?php echo $page->title(); ?></span></nav>
+	<?php /* current page in navigation niveau 0 not home */ ?>
+		<nav class="breadcrumbs wrap wrap--smd"><a href="<?php echo $site->url(); ?>"><?php echo $translate('Home'); ?></a> &gt; <span><?php echo $page->title(); ?></span></nav>
+	<?php endif; ?>
+<?php else: ?>
+	<?php /* current page not in navigation not home */ ?>
+	<?php if ( ($class_plus !== ' home') ): ?>
+	<nav class="breadcrumbs wrap wrap--smd"><a href="<?php echo $site->url(); ?>"><?php echo $translate('Home'); ?></a> &gt; <span><?php echo $page->title(); ?></span></nav>
 	<?php endif; ?>
 <?php endif; ?>
-
 
 
 <div class="blocks">
