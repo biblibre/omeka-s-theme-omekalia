@@ -62,3 +62,19 @@
 		}
 	}
 }
+
+
+/* MESSAGES ------------------------------------------------ */
+.messages {
+	max-width: $width--lg;
+	@include margin-auto;
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-top: $gutter--sm;
+	padding-bottom: $gutter--sm;
+	background-color: $bg-white;
+
+	::marker {
+		color: $bg-marker--2;
+	}
+}

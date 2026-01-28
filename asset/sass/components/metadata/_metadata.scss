@@ -37,7 +37,8 @@
 			box-shadow: none;
 		}
 
-		i::before {
+		i::before,
+		span[class*="fa"]::before {
 			position: relative;
 			bottom: 0.5 * $gutter--xs;
 			padding-left: 4px;

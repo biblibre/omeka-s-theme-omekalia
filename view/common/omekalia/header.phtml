@@ -14,16 +14,48 @@ $siteTitle = $site->title();
 	$class_alignment = ' '.$logo_alignment;
 
 	$class_logo = " no-logo";
-	if ( $logo ): $class_logo = " with-logo"; endif;
+	if ( $logo )
+		$class_logo = " with-logo";
 	
 	$class_logo_bis = " no-logo-bis";
-	if ( $logo_bis && $logo_bis_label ): $class_logo_bis = " with-logo-bis"; endif;
+	if ( $logo_bis && $logo_bis_label )
+		$class_logo_bis = " with-logo-bis";
 	
+	$connectShow = $this->themeSetting( 'connect_show',0);
+	if ( $connectShow ) {
+		$connectLabel = $this->themeSetting( 'connect_label');
+		if ($connectLabel == '')
+			$connectLabel = $translate('Login');
+	}
+
+	$extConnectShow = $this->themeSetting( 'ext_connect_show',0);
+	if ( $extConnectShow ) {
+		$extConnectType = $this->themeSetting( 'ext_connect_type','');
+		$extConnectLabel = $this->themeSetting( 'ext_connect_label');
+		if ($extConnectLabel == '')
+			$connectLabel = $translate('SSO Login');
+
+		if ( $extConnectType == 'cas' && ($this->getHelperPluginManager()->has('casLoginUrl')) ) {
+			$extConnectURL = $this->casLoginUrl(['redirect_url' => $_SERVER['REQUEST_URI']]);
+
+		} elseif ( $extConnectType == 'ldap' && ($this->getHelperPluginManager()->has('ldapLoginUrl')) ) {
+			$extConnectURL = $this->ldapLoginUrl(['redirect_url' => $_SERVER['REQUEST_URI']]);
+
+		} else {
+			$extConnectURL = false;
+			$extConnectShow = 0;
+		}
+
+	}
+
 	$class_connect = " no-connect";
-	if ( $this->themeSetting( 'connect_show') == 1 ): $class_connect = ""; endif;
-	
+	if ( $connectShow || $extConnectShow )
+		$class_connect = "";
+
 	$class_subtitle = "";
-	if ( $subtitle ): $class_subtitle = " with-subtitle"; endif;
+	if ( $subtitle )
+		$class_subtitle = " with-subtitle";
+
 ?>
 <header class="header">
 	<?php if ($this->getHelperPluginManager()->has('languageSwitcher')): ?>
@@ -42,16 +74,27 @@ $siteTitle = $site->title();
 	<?php endif; ?>
 
 	<div class="wrap wrap--lg<?php echo $class_logo_bis; ?><?php echo $class_connect; ?>">
-		<?php if( $this->themeSetting( 'connect_show') == 1 ): ?>
+
+		<?php if( $connectShow || $extConnectShow ): ?>
 			<?php if (isset($user)): ?>
 			<div class="header__connect connected">
-					<span class="user"><i class="fa fa-user-circle"></i><?php echo $user->getName(); ?></span><a href="/logout" class="intern logout"><span><?php echo $translate('Logout'); ?></span></a>	
+					<span class="user"><span class="fa fa-user-circle"></span><?php echo $user->getName(); ?></span><a href="/logout" class="intern logout"><span><?php echo $translate('Logout'); ?></span></a>	
 			</div>
 			
 			<?php else: ?>
+
 			<div class="header__connect disconnected">					
-				<span class="user"><i class="fa fa-user-circle"></i><?php echo $this->hyperlink( $translate('Visitor Login'), $this->url('login', [], ['query' => ['redirect_url' => $_SERVER['REQUEST_URI']]])); ?></span>
+
+				<?php if( $extConnectShow && $extConnectURL ): ?>
+					<span class="user"><span class="far fa-user-circle"></span><a href="<?= $extConnectURL ?>" class="cas login"><span><?= $extConnectLabel ?></span></a></span>
+				<?php endif; ?>
+
+				<?php if( $connectShow ): ?>
+					<span class="user"><span class="fa fa-user-circle"></span><?php echo $this->hyperlink( $connectLabel, $this->url('login', [], ['query' => ['redirect_url' => $_SERVER['REQUEST_URI']]])); ?></span>
+				<?php endif; ?>
+
 			</div>
+
 			<?php endif; ?>
 		<?php endif; ?>
 

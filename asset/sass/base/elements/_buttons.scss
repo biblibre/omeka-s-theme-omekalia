@@ -72,7 +72,8 @@ input[type="submit"] {
 			@include box-shadow--md;
 		}		
 
-		i {
+		i,
+		span[class*="fa"] {
 			margin-right: $gutter;
 			font-size: 1.5em;
 		}

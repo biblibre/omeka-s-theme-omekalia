@@ -238,10 +238,10 @@ endif;
 
                     <div class="splide__arrows">
                         <button class="splide__arrow splide__arrow--prev">
-                            <i class="fa fa-caret-left"></i><span class="screen-reader-text"><?php echo $translate('Previous'); ?></span>
+                            <span class="fa fa-caret-left"></span><span class="screen-reader-text"><?php echo $translate('Previous'); ?></span>
                         </button>
                         <button class="splide__arrow splide__arrow--next">
-                            <i class="fa fa-caret-right"></i><span class="screen-reader-text"><?php echo $translate('Next'); ?></span>
+                            <span class="fa fa-caret-right"></span><span class="screen-reader-text"><?php echo $translate('Next'); ?></span>
                         </button>
                     </div>
 
@@ -320,14 +320,14 @@ $(document).ready(function() {
         if (href && href.indexOf('http') === 0 && this.hostname !== window.location.hostname) {
             $(this).attr('target', '_blank'); // Ajoute target="_blank"
             $(this).attr('title', '<?php echo $translate('Open new tab'); ?>'); // Ajoute un titre
-            $(this).append('<i class="fas fa-external-link-square-alt"></i>'); // Ajoute l'icône après le libellé du lien
+            $(this).append('<span class="fas fa-external-link-square-alt"></span>'); // Ajoute l'icône après le libellé du lien
         }
     });
     $('body .regions-container a.resource-link').each(function() {
         var href = $(this).attr('href');
         if (this.hostname == window.location.hostname) {
             $(this).find('img').remove(); // Supprime les images
-            $(this).append('<i class="o-icon-uri"></i>'); // Ajoute l'icône après le libellé du lien
+            $(this).append('<span class="o-icon-uri"></span>'); // Ajoute l'icône après le libellé du lien
         }
     });
 

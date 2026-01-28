@@ -16,8 +16,8 @@ $searchValue = $this->escapeHtml($this->params()->fromQuery('q', ''));
 	<input type="text" name="q" value="<?php echo $searchValue; ?>"
 		placeholder="<?php echo $translate('Search'); ?>"
 		aria-label="<?php echo $translate('Search'); ?>">
-	<button type="submit"><i class="fa fa-search"></i><span class="screen-reader-text"><?php echo $translate('Search'); ?></span></button>
+	<button type="submit"><span class="fa fa-search"></span><span class="screen-reader-text"><?php echo $translate('Search'); ?></span></button>
 </form>
 <div class="button-container">
-	<a href="<?php echo $site->url(); ?>/search" class="button button--advanced"><i class="fas fa-plus-circle"></i><?php echo $translate('Advanced search'); ?></a>
+	<a href="<?php echo $site->url(); ?>/search" class="button button--advanced"><span class="fas fa-plus-circle"></span><?php echo $translate('Advanced search'); ?></a>
 </div>

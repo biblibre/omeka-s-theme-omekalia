@@ -93,6 +93,13 @@ msgstr ""
 msgid "Visitor Login"
 msgstr ""
 
+common/omekalia/header.phtml:53
+msgid "Login"
+msgstr ""
+
+#: ../view/common/omekalia/header.phtml:53
+msgid "SSO Login"
+msgstr ""
 
 
 #: ../view/search/facets.phtml:43

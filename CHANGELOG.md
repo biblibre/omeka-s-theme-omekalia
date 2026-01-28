@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.0.10 - 2026-01-28
+
+New public release
+Update theme helper
+Add connection settings for CAS login
+Markup and style changes
+
 ## 1.0.9 - 2025-10-29
 
 New public release

@@ -164,17 +164,24 @@
 		padding: 0.75 * $gutter--xs 0;
 		text-align: right;
 		line-height: $line-height--xs;
-		font-size: 1.125em;
 
 		a {
 			color: $color-global;
+
+			&:hover,
+			&:focus {
+				box-shadow: inset 0 -2px 0 0 $border--2;
+			}
 		}
 	}
 	.user {
 		display: block;
 
-		i {
+		i,
+		span[class*="fa"] {
 			padding-right: $gutter--xs;
+			font-size: 110%;
+			color: $color-accent;
 		}
 	}
 }

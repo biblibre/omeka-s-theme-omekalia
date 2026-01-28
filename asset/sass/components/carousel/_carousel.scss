@@ -18,12 +18,14 @@
 		&:focus {
 			@include box-shadow--sm;
 
-			i {
+			i,
+			span[class*="fa"] {
 				font-size: 2em;
 			}
 		}
 
-		i {
+		i,
+		span[class*="fa"] {
 			width: 100%;
 			font-size: 1.7em;
 			@include transition;
@@ -39,7 +41,8 @@
 				left: -3em;
 			}
 
-			i::before {
+			i::before,
+			span[class*="fa"]::before {
 				margin-right: 0.5 * $gutter--xs;
 			}
 		}
@@ -53,7 +56,8 @@
 				right: -3em;
 			}
 
-			i::before {
+			i::before,
+			span[class*="fa"]::before {
 				margin-left: 0.5 * $gutter--xs;
 			}
 		}

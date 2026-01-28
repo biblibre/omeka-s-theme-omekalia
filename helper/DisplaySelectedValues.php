@@ -1,7 +1,7 @@
 <?php 
 /*****
  * DisplaySelectedValues Helper
- * Last Update : 2025-10-27
+ * Last Update : 2025-11-10
  *****/
 namespace OmekaTheme\Helper;
 
@@ -62,14 +62,10 @@ class DisplaySelectedValues extends AbstractHelper
 		if ($showValueAnnotations) $showValueAnnotations = (bool) $view->siteSetting('show_value_annotations', false);
 		$showLocale = (bool) $view->siteSetting('show_locale_label', true);
 
-		if (gettype($properties) == 'string') {
-			$properties = explode(',', str_replace("\n", ',', $properties) );
-		}
+		if (gettype($properties) == 'string') $properties = explode(',', str_replace("\n", ',', $properties) );
 		$propertiesToDisplay = array_map('trim', $properties);
 
-		if (gettype($propertiesForSearch) == 'string') {
-			$propertiesForSearch = explode(',', str_replace("\n", ',', $propertiesForSearch) );
-		}
+		if (gettype($propertiesForSearch) == 'string') $propertiesForSearch = explode(',', str_replace("\n", ',', $propertiesForSearch) );
 		$propertiesForSearch = array_map('trim', $propertiesForSearch);
 
 		$metadataContent = '';
@@ -122,7 +118,6 @@ class DisplaySelectedValues extends AbstractHelper
 								if (preg_match( '/<a\s+[^>]*href=["\'][^"\']+["\'][^>]*>/i', $propertyDataValuesTemp, $propertyDataValueUrl )) {
 									// la chaine $propertyDataValuesTemp contient un lien web
 									$propertyDataValuesTemp = '<a href="'.$searchLinkUrlComplete.'">'.$propertyDataValueNoHtml.'<i class="o-icon-search"></i></a>';
-//									$propertyDataValuesTemp .= '<a class="uri-value-link" target="_blank" href="'.$propertyDataValueUrl[0].'" title="Ouvre un nouvel onglet"><i class="fas fa-external-link-square-alt"></i></a>';
 									$propertyDataValuesTemp .= '&nbsp;<span class="uri-value-link--icon">'.$propertyDataValueUrl[0].'</a></span>';
 								} else {
 									// pas de lien dans la chaine
@@ -144,14 +139,25 @@ class DisplaySelectedValues extends AbstractHelper
 								$htmlLang = '';
 							endif;
 
-							$propertyDataValues[] = $htmlLang.$propertyDataValuesTemp;
+							$classDD = ['value'];
+							if ('resource' == $valueType || strpos($valueType, 'resource') !== false) {
+								$classDD[] = 'resource';
+								$classDD[] = $escape($value->valueResource()->resourceName());
+							} elseif ('uri' == $valueType) {
+								$classDD[] = 'uri';
+							}
+							if (!$value->isPublic()) {
+								$classDD[] = 'private';
+							}
+							$htmlOpenTag = '<dd class="'.implode(' ', $classDD).'"'.(($valueLang)? ' lang="'.$escape($valueLang).'"':'').'>';
+							$htmlCloseTag = '</dd>';
+
+							$propertyDataValues[] = $htmlOpenTag.$htmlLang.$propertyDataValuesTemp.$htmlCloseTag;
 
 						}
 
-						$metadataContent .= '<dd class="resource__value value">';
-						$metadataContent .= implode( $multiValuesSeparator, $propertyDataValues );
-						$view->trigger('view.show.value', ['value' => $value]);
-						$metadataContent .= '</dd>';
+						$metadataContent .= implode( ' ', $propertyDataValues );
+						//$view->trigger('view.show.value', ['value' => $value]);
 
 						$metadataContent .= '</div>';
 					endif;
@@ -182,7 +188,7 @@ class DisplaySelectedValues extends AbstractHelper
 			if ($metadataGroup) {$metadataContent .= '</div>';};
 
 			if ($metadataContent):
-				$metadataContent = '<dl>'.$metadataContent.'</dl>';
+				$metadataContent = '<dl style="--separator:\''.$multiValuesSeparator.'\'">'.$metadataContent.'</dl>';
 			endif;
 
 		endif;

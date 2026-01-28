@@ -12,7 +12,7 @@ $(document).ready(function() {
 		if (href && href.indexOf('http') === 0 && this.hostname !== window.location.hostname) {
 			$(this).attr('target', '_blank'); // Ajoute target="_blank"
 			$(this).attr('title', '<?php echo $translate('Open new tab'); ?>'); // Ajoute un titre
-			$(this).append('<i class="fas fa-external-link-square-alt"></i>'); // Ajoute l'icône après le libellé du lien
+			$(this).append('<span class="fas fa-external-link-square-alt"></span>'); // Ajoute l'icône après le libellé du lien
 		}
 	});
 });
