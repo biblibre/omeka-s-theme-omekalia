@@ -4,7 +4,7 @@ a {
 }
 .block {
 
-	a:not(.button) {
+	a {
 		font-weight: $medium;
 		color: $color-global;
 		border-bottom: 2px solid $border--link;

@@ -199,5 +199,12 @@
 				@include box-shadow--md;
 			}
 		}
+		// Correctif pour les meta avec relation en attendant un meilleur design avec visuels - ou sans ! -
+		.resource-link {
+
+			img {
+				display: none;
+			}
+		}
 	}
 }

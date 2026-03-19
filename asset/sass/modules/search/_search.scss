@@ -42,18 +42,19 @@
 	}
 }
 
-.field {
+.search-form-page .field {
 
 	label,
 	.label {
 		display: block;
 		margin-bottom: $gutter--sm;
 		text-transform: none;
-		font-size: 1.55556em;
+		font-size: $font-size__h2;
 	}
 	input[type="text"] {
 		background-color: $bg-body;
 		border-color: $bg-body;
+		border-radius: $radius;
 
 		&:focus,
 		&:focus-visible {

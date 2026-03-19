@@ -14,6 +14,7 @@ textarea {
 	width: 100%;
 	max-width: 100%;
 	padding: 0.5 * $gutter--xs $gutter;
+	padding: $gutter--xs $gutter;
 	border: 2px solid $bg-medium;
 	line-height: 1;
 	font-size: 1em;
@@ -25,22 +26,10 @@ textarea {
 		outline: 1px solid $bg-primary;
 	}
 }
-input[type="text"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="password"],
-input[type="search"] {
-	border-radius: $radius;
-}
-textarea {
-	border-radius: $radius--sm;
-}
 
 select {
 	appearance: none;
 	min-width: 200px;
-	padding: $gutter--xs $gutter--sm;
 	background: var(--icon-arrow-down) no-repeat right 8px center/16px;
 	@include transition;
 
@@ -51,4 +40,19 @@ select {
 
 input::placeholder {
 
+}
+
+input[type="file"]::file-selector-button {
+	padding: 10px 15px;
+	background-color: $bg-white;
+	border: 0;
+	box-shadow: inset 0 -4px 0 0 $border--1;
+	font-family: $font-headings;
+	cursor: pointer;
+	@include transition;
+
+	&:hover {
+		background-color: $bg-primary;
+		color: $color-light;
+	}
 }

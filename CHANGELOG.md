@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.0.11 - 2026-03-19
+
+New public release
+Add styles and template for Formularium module
+Update styles
+
 ## 1.0.10 - 2026-01-28
 
 New public release

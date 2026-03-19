@@ -1,0 +1,10 @@
+<?php
+/* Formularium 0.2.1 */
+
+$this->htmlElement('body')->appendAttribute('class', 'page-formularium');
+?>
+<div class="blocks--container">
+	<div class="wrap wrap--xs">
+		<?= $this->partial('formularium/common/formularium-form', ['form' => $form, 'formulariumForm' => $formulariumForm]); ?>
+	</div>
+</div>

@@ -904,6 +904,7 @@ textarea {
   width: 100%;
   max-width: 100%;
   padding: 4px 16px;
+  padding: 8px 16px;
   border: 2px solid #EBEBEB;
   line-height: 1;
   font-size: 1em;
@@ -929,31 +930,49 @@ textarea:focus-visible {
   outline: 1px solid var(--primary);
 }
 
-input[type=text],
-input[type=number],
-input[type=email],
-input[type=url],
-input[type=password],
-input[type=search] {
-  border-radius: 20px;
-}
-
-textarea {
-  border-radius: 4px;
-}
-
 select {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
   min-width: 200px;
-  padding: 8px 24px;
   background: var(--icon-arrow-down) no-repeat right 8px center/16px;
   -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
 select:focus {
   background-image: var(--icon-arrow-up);
+}
+
+input[type=file]::-webkit-file-upload-button {
+  padding: 10px 15px;
+  background-color: #FFF;
+  border: 0;
+  -webkit-box-shadow: inset 0 -4px 0 0 var(--primary);
+          box-shadow: inset 0 -4px 0 0 var(--primary);
+  font-family: var(--font-headings), sans-serif;
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+input[type=file]::file-selector-button {
+  padding: 10px 15px;
+  background-color: #FFF;
+  border: 0;
+  -webkit-box-shadow: inset 0 -4px 0 0 var(--primary);
+          box-shadow: inset 0 -4px 0 0 var(--primary);
+  font-family: var(--font-headings), sans-serif;
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+input[type=file]::-webkit-file-upload-button:hover {
+  background-color: var(--primary);
+  color: #FFF;
+}
+input[type=file]::file-selector-button:hover {
+  background-color: var(--primary);
+  color: #FFF;
 }
 
 /* HR
@@ -981,19 +1000,19 @@ a {
   transition: all 0.5s ease-in-out;
 }
 
-.block a:not(.button) {
+.block a {
   font-weight: 500;
   color: #000;
   border-bottom: 2px solid var(--secondary-light);
 }
-.block a:not(.button):hover, .block a:not(.button):focus, .block a:not(.button):visited:hover, .block a:not(.button):visited:focus {
+.block a:hover, .block a:focus, .block a:visited:hover, .block a:visited:focus {
   background-color: var(--primary);
   border-color: var(--primary);
   color: #FFF;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
-.block a:not(.button):visited {
+.block a:visited {
   color: #404040;
   border-bottom-color: #737373;
 }
@@ -1469,6 +1488,11 @@ h6,
 
 /* Annotation 
 --------------------------------------------- */
+.block .expand,
+.block .collapse {
+  border-bottom: 0;
+}
+
 .expand:after,
 .collapse:after {
   padding: 0 3px;
@@ -4019,6 +4043,7 @@ body:not(.home) .partners--onlyhome {
 .resource__container {
   container-name: itemcontents;
   container-type: inline-size;
+  height: 100%;
 }
 .resource__item {
   position: relative;
@@ -4038,6 +4063,7 @@ body:not(.home) .partners--onlyhome {
   grid-template-columns: 1fr;
   grid-row-gap: 16px;
   width: 100%;
+  height: 100%;
   padding: 16px 0;
   color: #000;
 }
@@ -4475,6 +4501,9 @@ body:not(.home) .partners--onlyhome {
   padding-top: 24px;
   padding-bottom: 24px;
   background-color: #FFF;
+}
+.messages ::marker {
+  color: var(--secondary);
 }
 
 /* Item show
@@ -4976,6 +5005,9 @@ body:not(.home) .partners--onlyhome {
   -webkit-box-shadow: 0 0 16px rgba(64, 64, 64, 0.5);
           box-shadow: 0 0 16px rgba(64, 64, 64, 0.5);
 }
+.itemset__metadata .resource-link img {
+  display: none;
+}
 
 /*--------------------------------------------------------------
 # Home
@@ -5226,6 +5258,91 @@ body:not(.home) .partners--onlyhome {
 /*--------------------------------------------------------------
 # Modules
 --------------------------------------------------------------*/
+/* FORMULARIUM
+----------------------------------------------------------- */
+.page-formularium .blocks--container > .wrap, .page-formularium .search-results .blocks--container > .noresults, .search-results .page-formularium .blocks--container > .noresults {
+  padding-bottom: 32px;
+}
+@media (min-width: 600px) {
+  .page-formularium .blocks--container > .wrap, .page-formularium .search-results .blocks--container > .noresults, .search-results .page-formularium .blocks--container > .noresults {
+    padding-bottom: 48px;
+  }
+}
+@media (min-width: 768px) {
+  .page-formularium .blocks--container > .wrap, .page-formularium .search-results .blocks--container > .noresults, .search-results .page-formularium .blocks--container > .noresults {
+    padding-bottom: 64px;
+  }
+}
+
+.page-formularium .formularium-form-component:has(h1, .partners__title, .item.show .slider-items__title, .home section:not(.carousel) h2[class*=title]) {
+  position: relative;
+  width: calc(100% + 2 * 16px);
+  margin-left: -16px;
+  margin-right: -16px;
+  margin-bottom: 64px;
+  padding-top: 64px;
+  padding-bottom: 64px;
+  background-color: #F3F3F4;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .page-formularium .formularium-form-component:has(h1, .partners__title, .item.show .slider-items__title, .home section:not(.carousel) h2[class*=title]) {
+    margin-left: calc((-99vw + 100%) / 2);
+    margin-right: calc((-99vw + 100%) / 2);
+    width: 99vw;
+    max-width: 99vw;
+  }
+}
+.page-formularium .formularium-form-component:has(h1, .partners__title, .item.show .slider-items__title, .home section:not(.carousel) h2[class*=title])::before, .page-formularium .formularium-form-component:has(h1, .partners__title, .item.show .slider-items__title, .home section:not(.carousel) h2[class*=title])::after {
+  position: absolute;
+  content: "";
+  left: calc((100% - 1600px) / 2);
+  right: calc((100% - 1600px) / 2);
+  width: 1600px;
+  background-color: #FFF;
+}
+.page-formularium .formularium-form-component:has(h1, .partners__title, .item.show .slider-items__title, .home section:not(.carousel) h2[class*=title])::before {
+  bottom: -24px;
+  height: 24px;
+  -webkit-box-shadow: 0 0 20px 4px rgba(64, 64, 64, 0.25);
+          box-shadow: 0 0 20px 4px rgba(64, 64, 64, 0.25);
+}
+.page-formularium .formularium-form-component:has(h1, .partners__title, .item.show .slider-items__title, .home section:not(.carousel) h2[class*=title])::after {
+  top: 100%;
+  height: 48px;
+}
+.page-formularium .formularium-form-component:has(h1, .partners__title, .item.show .slider-items__title, .home section:not(.carousel) h2[class*=title]) h1, .page-formularium .formularium-form-component:has(h1, .partners__title, .item.show .slider-items__title, .home section:not(.carousel) h2[class*=title]) .partners__title, .page-formularium .formularium-form-component:has(h1, .partners__title, .item.show .slider-items__title, .home section:not(.carousel) h2[class*=title]) .item.show .slider-items__title, .item.show .page-formularium .formularium-form-component:has(h1, .partners__title, .item.show .slider-items__title, .home section:not(.carousel) h2[class*=title]) .slider-items__title, .page-formularium .formularium-form-component:has(h1, .partners__title, .item.show .slider-items__title, .home section:not(.carousel) h2[class*=title]) .home section:not(.carousel) h2[class*=title], .home section:not(.carousel) .page-formularium .formularium-form-component:has(h1, .partners__title, .item.show .slider-items__title, .home section:not(.carousel) h2[class*=title]) h2[class*=title], .page-formularium .formularium-form-component:has(h1, .partners__title, .item.show .slider-items__title, .home section:not(.carousel) h2[class*=title]) > * {
+  position: relative;
+  max-width: 1366px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 0;
+}
+
+.formularium-form-component {
+  margin-bottom: 24px;
+}
+.formularium-form-component .field label {
+  margin-bottom: 8px;
+  font-size: 1.16667em;
+}
+.formularium-form-component .field:has(input[name="Acceptation des données"]) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 8px;
+}
+.formularium-form-component .field:has(input[name="Acceptation des données"]) .field-meta {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+}
+.formularium-form-component .field:has(input[name="Acceptation des données"]) .inputs {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+}
+
 /* ITEM SET CALENDAR
 ----------------------------------------------------------- */
 .item-set-calendar .blocks > .wrap--xl {
@@ -5820,60 +5937,61 @@ octopusviewer-viewer {
   height: 40px;
 }
 
-.field label,
-.field .label {
+.search-form-page .field label,
+.search-form-page .field .label {
   display: block;
   margin-bottom: 24px;
   text-transform: none;
   font-size: 1.55556em;
 }
-.field input[type=text] {
+.search-form-page .field input[type=text] {
   background-color: #F3F3F4;
   border-color: #F3F3F4;
+  border-radius: 20px;
 }
-.field input[type=text]:focus, .field input[type=text]:focus-visible {
+.search-form-page .field input[type=text]:focus, .search-form-page .field input[type=text]:focus-visible {
   border-color: var(--primary);
 }
-.field:first-of-type .inputs {
+.search-form-page .field:first-of-type .inputs {
   max-width: 768px;
 }
-.field:not(:first-of-type) {
+.search-form-page .field:not(:first-of-type) {
   margin-top: 48px;
 }
 @media (min-width: 768px) {
-  .field:not(:first-of-type) {
+  .search-form-page .field:not(:first-of-type) {
     margin-top: 64px;
   }
 }
-.field#resource-class, .field#item-sets {
+.search-form-page .field#resource-class, .search-form-page .field#item-sets {
   margin-bottom: 32px;
 }
 @media (min-width: 1080px) {
-  .field#resource-class, .field#item-sets {
+  .search-form-page .field#resource-class, .search-form-page .field#item-sets {
     margin-bottom: 48px;
   }
 }
-.field#resource-class .label, .field#item-sets .label {
+.search-form-page .field#resource-class .label, .search-form-page .field#item-sets .label {
   margin-bottom: 0;
 }
-.field#resource-class .field-meta, .field#item-sets .field-meta {
+.search-form-page .field#resource-class .field-meta, .search-form-page .field#item-sets .field-meta {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: auto 1fr;
   grid-template-columns: auto 1fr;
   margin-bottom: 24px;
 }
-.field#resource-class .field-meta .collapsible, .field#item-sets .field-meta .collapsible {
+.search-form-page .field#resource-class .field-meta .collapsible, .search-form-page .field#item-sets .field-meta .collapsible {
   -ms-grid-column-span: 2;
   grid-column: span 2;
   margin: 0;
   padding: 0;
   background-color: transparent;
 }
-.field#resource-class .field-meta .field-description, .field#item-sets .field-meta .field-description {
+.search-form-page .field#resource-class .field-meta .field-description, .search-form-page .field#item-sets .field-meta .field-description {
   max-width: 680px;
 }
-.field#resource-class .value, .field#item-sets .value {
+.search-form-page .field#resource-class .value, .search-form-page .field#item-sets .value {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: auto 8px 40px;
@@ -5881,10 +5999,10 @@ octopusviewer-viewer {
   grid-column-gap: 8px;
   max-width: 680px;
 }
-.field#resource-class .value + .value, .field#item-sets .value + .value {
+.search-form-page .field#resource-class .value + .value, .search-form-page .field#item-sets .value + .value {
   margin-top: 16px;
 }
-.field#resource-class .value:last-child, .field#item-sets .value:last-child {
+.search-form-page .field#resource-class .value:last-child, .search-form-page .field#item-sets .value:last-child {
   margin-bottom: 24px;
 }
 

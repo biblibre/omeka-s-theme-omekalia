@@ -42,6 +42,7 @@
 	&__container {
 		container-name: itemcontents;
 		container-type: inline-size;
+		height: 100%;
 	}
 	&__item {
 		position: relative;
@@ -67,6 +68,7 @@
 			grid-template-columns: 1fr;
 			grid-row-gap: $gutter;
 			width: 100%;
+			height: 100%;
 			padding: $gutter 0;
 			color: $color-global;
 

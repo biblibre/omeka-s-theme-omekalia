@@ -1,3 +1,7 @@
+.block .expand,
+.block .collapse {
+	border-bottom: 0;
+}
 .expand:after,
 .collapse:after {
 	padding: 0 3px;
