@@ -1,6 +1,6 @@
 .search-results-wrapper {
 	position: relative;
-	flex-flow: column wrap;
+	flex-direction: column;
 
 	@include breakpoint(md) {
 		flex-flow: row wrap;
@@ -40,6 +40,7 @@
 	}
 }
 .search-results {
+	order: 2;
 	
 	&-display {
 		display: flex;

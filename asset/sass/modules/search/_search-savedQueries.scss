@@ -1,0 +1,99 @@
+.page-layout-normal .block.block-savedQueries {
+	@include alignmedium;
+}
+.block-savedQueries {
+	
+	table {
+		border-collapse: collapse;
+		border-top: 2px solid $border--2;
+		border-bottom: 2px solid $border--2;
+	}
+	th,
+	td {
+		padding: $gutter--xs;
+	}
+	thead {
+
+		th {
+			display: none;
+			border-bottom: 2px solid $border--2;
+			font-family: $font-headings;
+			text-transform: uppercase;
+			font-weight: $semi-bold;
+			font-size: $font-size__h4;
+
+			@include breakpoint(md) {
+				display: table-cell;
+			}
+		}
+	}
+	tbody {
+
+		tr {
+			display: flex;
+			flex-flow: row wrap;
+
+			@include breakpoint(md) {
+				display: table-row;
+			}
+		}
+		tr:nth-of-type(even) {
+			background-color: $bg-light;
+		}
+		td:first-of-type {
+			flex-basis: 100%;
+			line-height: $line-height--sm;
+			font-weight: $semi-bold;
+			font-size: $font-size__h4;
+		}
+		td:first-of-type,
+		td:nth-of-type(2) {
+			flex-basis: 100%;
+		}
+		td:last-of-type,
+		td:nth-of-type(3) {
+			flex-basis: fit-content;
+			flex-grow: 1;
+			text-align: center;
+		}
+		td:nth-of-type(3) {
+			min-width: 140px;
+		}
+		a.o-icon-external {
+			@extend .button--small;
+
+			&::before {
+				margin-right: $gutter--xs;
+			}
+		}
+		button[type="submit"] {
+			width: 40px;
+			height: 40px;
+			padding: 0;
+			border-bottom: 0;
+			border-radius: $radius;
+			background-color: $bg-grey;
+
+			&:hover,
+			&:focus {
+				@include box-shadow--sm;
+			}
+
+			.o-icon-delete {
+				display: inline-block;
+				width: 40px;
+				height: 40px;
+				padding: $gutter--xs;
+				border-bottom: 0;
+				border-radius: $radius;
+				color: $color-light;
+
+				&::before {
+					content: "";
+					font-size: 1.4em;
+				}
+			}
+		}
+
+	}
+}

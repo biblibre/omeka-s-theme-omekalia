@@ -34,7 +34,7 @@ $container = $nav->getContainer();
 $activePage = $nav->findActive($container); 
 ?>
 
-<?php if ($activePage): ?>		
+<?php if ($activePage): ?>
 	<?php if ($activePage['depth'] !== 0): ?>
 	<?php /* current page in navigation niveau 1 et + */ ?>
 	<nav class="breadcrumbs wrap wrap--smd"><a href="<?php echo $site->url(); ?>"><?php echo $translate('Home'); ?></a> &gt; <?php echo $nav->breadcrumbs(); ?></nav>

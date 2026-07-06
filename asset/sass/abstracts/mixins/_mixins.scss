@@ -16,7 +16,7 @@
 	left: 0;
 }
 
-// align small - 
+// align small -  A SUPPRIMER **********************
 @mixin alignsmall {
 
 	@include breakpoint(md) {
@@ -32,7 +32,43 @@
 		max-width: $width--sm;
 	}
 }
-// align medium - 
+// align small - max-width : 768px / $width--sm
+@mixin align--sm {
+
+	@include breakpoint(md) {
+		margin-left: -$one-sixth / 2;
+		margin-right: -$one-sixth / 2;
+		max-width: calc( 100% + #{$one-sixth} );
+		width: calc( 100% + #{$one-sixth} );
+	}
+	@include breakpoint(lg) {
+		margin-left: calc(calc(100% - #{$width--sm}) / 2);
+		margin-right: calc(calc(100% - #{$width--sm}) / 2);
+		width: $width--sm;
+		max-width: $width--sm;
+	}
+}
+
+
+// align smd - max-width : 960px / $width
+@mixin align--width {
+
+	@include breakpoint(md) {
+		margin-left: -$one-sixth / 2;
+		margin-right: -$one-sixth / 2;
+		max-width: calc( 100% + #{$one-sixth} );
+		width: calc( 100% + #{$one-sixth} );
+	}
+	@include breakpoint(lg) {
+		margin-left: calc(calc(100% - #{$width}) / 2);
+		margin-right: calc(calc(100% - #{$width}) / 2);
+		width: $width;
+		max-width: $width;
+	}
+}
+
+
+// align medium - A SUPPRIMER **********************
 @mixin alignmedium {
 
 	@include breakpoint(md) {
@@ -48,17 +84,83 @@
 		max-width: $width--md;
 	}
 }
-// align wide
-@mixin alignwide {
-	margin-left: calc(calc(100% - #{$content-wide}) / 2);
-	margin-right: calc(calc(100% - #{$content-wide}) / 2);
-	width: $content-wide;
-	max-width: $content-wide;
+// align medium - max-width : 1080px / $width--md
+@mixin align--md {
+
+	@include breakpoint(sm) {
+		margin-left: calc(calc(100% - #{$width--sm} + #{$gutter--md} ) / 2);
+		margin-right: calc(calc(100% - #{$width--sm} + #{$gutter--md} ) / 2);
+		width: calc(#{$width--sm} - #{$gutter--md});
+		max-width: calc(#{$width--sm} - #{$gutter--md});
+	}
+	@include breakpoint(md) {
+		margin-left: calc(calc(100% - #{$width--md} + #{$gutter--md} ) / 2);
+		margin-right: calc(calc(100% - #{$width--md} + #{$gutter--md} ) / 2);
+		width: calc(#{$width--md} - #{$gutter--md});
+		max-width: calc(#{$width--md} - #{$gutter--md});
+	}
+	@include breakpoint(lg) {
+		margin-left: calc(calc(100% - #{$width--md}) / 2);
+		margin-right: calc(calc(100% - #{$width--md}) / 2);
+		width: $width--md;
+		max-width: $width--md;
+	}
 }
+// ALIGN WIDE - max-width : 1366px / $width--lg
+@mixin align--lg {
+
+	@include breakpoint(sm) {
+		margin-left: calc(calc(100% - #{$width--sm}) / 2);
+		margin-right: calc(calc(100% - #{$width--sm}) / 2);
+		width: $width--sm;
+		max-width: $width--sm;
+	}
+	@include breakpoint(md) {
+		margin-left: calc(calc(100% - #{$width--md}) / 2);
+		margin-right: calc(calc(100% - #{$width--md}) / 2);
+		width: $width--md;
+		max-width: $width--md;
+	}
+	@include breakpoint(xl) {
+		margin-left: calc(calc(100% - #{$width--lg}) / 2);
+		margin-right: calc(calc(100% - #{$width--lg}) / 2);
+		width: $width--lg;
+		max-width: $width--lg;
+	}
+}
+// align large - max-width : 1600px / $width--xl
+@mixin align--xl {
+	
+	@include breakpoint(sm) {
+		margin-left: calc(calc(100% - #{$width--sm}) / 2);
+		margin-right: calc(calc(100% - #{$width--sm}) / 2);
+		width: $width--sm;
+		max-width: $width--sm;
+	}
+	@include breakpoint(md) {
+		margin-left: calc(calc(100% - #{$width--md}) / 2);
+		margin-right: calc(calc(100% - #{$width--md}) / 2);
+		width: $width--md;
+		max-width: $width--md;
+	}
+	@include breakpoint(lg) {
+		margin-left: calc(calc(100% - calc( #{$width--lg} - #{$gutter} ) )  / 2);
+		margin-right: calc(calc(100% - calc( #{$width--lg} - #{$gutter} ) )  / 2);
+		width: calc( #{$width--lg} - #{$gutter--md} );
+		max-width: calc( #{$width--lg} - #{$gutter--md} );
+	}
+	@include breakpoint(xl) {
+		margin-left: calc(calc(100% - #{$width--xl}) / 2);
+		margin-right: calc(calc(100% - #{$width--xl}) / 2);
+		width: $width--xl;
+		max-width: $width--xl;
+	}
+}
+
 // align full
 @mixin alignfull {
-	margin-left: calc(calc(-99vw + 100%) / 2);
-	margin-right: calc(calc(-99vw + 100%) / 2);
+	margin-left: calc(calc(-100vw + 100%) / 2);
+	margin-right: calc(calc(-100vw + 100%) / 2);
 	width: 99vw;
 	max-width: 99vw;
 }

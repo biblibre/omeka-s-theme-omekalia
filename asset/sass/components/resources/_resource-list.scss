@@ -1,7 +1,8 @@
 .blocks ul.resource-list {
 	display: grid;
 	grid-row-gap: $gutter--md;
-	margin: $gutter--md 0;
+	margin-top: $gutter--md;
+	margin-bottom: $gutter--md;
 	padding: 0;
 
 	@include breakpoint(sm) {
@@ -22,6 +23,9 @@
 		@include breakpoint(sm) {
 			flex-basis: $one-half;
 		}
+	}
+	.resource::before {
+		content: none;
 	}
 }
 .search-results .resource-list {

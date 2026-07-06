@@ -57,7 +57,6 @@
 .formularium-form-component {
 	margin-bottom: $gutter--sm;
 
-
 	.field {
 
 		label {
@@ -65,7 +64,8 @@
 			font-size: $font-size__h4;
 		}
 
-		&:has(input[name="Acceptation des données"]) {
+		&:has(input[name="Acceptation des données"],input[name="Acceptation"]),
+		&:has(input[type="checkbox"]) {
 			display: flex;
 			gap: $gutter--xs;
 
@@ -77,4 +77,11 @@
 			}
 		}
 	}
+}
+
+/* BLOC PAGE
+------------------------------------------------------------ */
+.formularium-resource-page-block-layout-formularium-form {
+	max-width: $width--sm;
+	@include margin-auto;
 }

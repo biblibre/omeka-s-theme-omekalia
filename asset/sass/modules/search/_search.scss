@@ -33,7 +33,7 @@
 		padding: $gutter--lg;
 	}
 	@include breakpoint(xl) {
-		@include alignwide;
+		@include align--xl;
 	}
 
 	select,
@@ -339,5 +339,20 @@
 		@extend .wrap;
 		@extend .wrap--sm;
 		text-align: center;
+	}
+}
+
+/* REGISTRATION SEARCH QUERY
+-------------------------------------------------------------------------- */
+#save-query-form {
+	display: flex;
+	flex-direction: column;
+	row-gap: $gutter;
+	width: 100%;
+	max-width: $width--xs;
+	margin-top: $gutter--lg;
+
+	div:has(button) {
+		text-align: right;
 	}
 }

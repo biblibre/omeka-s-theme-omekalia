@@ -82,6 +82,13 @@
 }
 .main-region:has(.metadata) {
 	padding-top: $gutter--xl;
+
+	.metadata {
+
+		& > * + * {
+			margin-top: $gutter--xl;
+		}
+	}
 }
 .regions-container:not(.one-column) {
 
@@ -97,8 +104,6 @@
 		@include breakpoint(lg) {
 			margin-top: 0;
 		}
-	}
-	.section-2 {
 	}
 }
 .region {

@@ -35,7 +35,7 @@
 		box-shadow: 16px 0 16px -16px rgba($bg-dark, 0.25), -16px 0 16px -16px rgba($bg-dark, 0.25);
 
 		@include breakpoint(xl) {
-			@include alignwide;
+			@include align--xl;
 		}
 	}
 

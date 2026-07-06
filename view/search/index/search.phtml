@@ -1,4 +1,4 @@
-<?php
+<?php /* Search 0.20.2 */
 /*
  * Copyright BibLibre, 2016
  * Copyright Daniel Berthereau, 2017-2018
@@ -27,7 +27,18 @@
  * knowledge of the CeCILL license and that you accept its terms.
  */
 ?>
-
+<?php
+/**
+ * @var \Laminas\View\Renderer\PhpRenderer $this
+ * @var \Search\Query $query
+ * @var \Omeka\Api\Representation\SiteRepresentation $site
+ * @var array $sortOptions
+ * @var bool $saveQueryParam
+ * @var int $searchPageId
+ * @var array $queryParams
+ * @var array $facets
+ */
+?>
 
 <?php
 	$translate = $this->plugin('translate');
@@ -60,6 +71,11 @@
 	<div class="wrap wrap--xl">
 		<div class="advsearch__container">
 			<div class="wrap wrap--lg">
+
+				<?php if (!empty($summary)): ?>
+					<?= $this->partial('search/search-summary', ['summary' => $summary]) ?>
+				<?php endif; ?>
+
 				<a href="#" id="search-form-show-link" style="display: none" class="button button--edit"><span class="fas fa-undo-alt"></span><?php echo $this->translate('Edit search'); ?></a>
 
 				<?php if (isset($response)): ?>
@@ -89,6 +105,14 @@
 									'response' => $response,
 									'resourceName' => 'items',
 									'site' => $site
+								]); ?>
+
+								<?php $mediaCount = $response->getResourceTotalResults('media'); ?>
+								<?php echo $this->partial('search/resource-list', [
+									'title' => sprintf($this->translatePlural('%s media', '%s media', $mediaCount), $mediaCount),
+									'response' => $response,
+									'resourceName' => 'media',
+									'site' => $site,
 								]); ?>
 
 								<?php

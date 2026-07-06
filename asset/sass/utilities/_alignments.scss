@@ -2,5 +2,8 @@
 	@include alignfull;
 }
 .alignwide {
-	@include alignwide;
+	@include align--xl;
+}
+.align--xl {
+	@include align--xl;
 }

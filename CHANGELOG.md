@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.0.12 - 2026-07-06
+
+New public release
+Update styles and template for Search
+Update template for Item Set Calendar
+Update styles for Formularium
+Update global styles
+Update translations
+
 ## 1.0.11 - 2026-03-19
 
 New public release

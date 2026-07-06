@@ -7,6 +7,7 @@
 }
 
 .search-facets {
+	order: 1;
 	flex-basis: 100%;
 	margin-bottom: $gutter--sm;
 	padding: $gutter;
@@ -90,7 +91,17 @@
 			box-shadow: inset 0 -3px 0 0 $border--link;			
 		}
 	}
-	&__count {
-		
+}
+.search-results__overwrapper .advsearch__container:has(.search-results-wrapper) {
+
+	.search-facet-item {
+
+		.inactive,
+		.active {
+
+			input {
+				height: auto;
+			}
+		}
 	}
 }

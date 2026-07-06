@@ -1,0 +1,76 @@
+body.selection.browse ul.resource-list .resource {
+	display: flex;
+	flex-direction: column;
+}
+.page-layout-normal .block.block-selection,
+.page-layout-grid .block.block-selection {
+	@include alignmedium;
+
+	.resource {		
+
+		&-list {
+
+			@include breakpoint(md) {
+				grid-template-columns: 1fr 1fr 1fr;
+			}
+		}
+	}
+}
+.block-selection {
+
+	.resource {		
+
+		&-link {
+			display: flex;
+			flex-direction: column;
+			background: $bg-light;
+			border: 0;
+
+			&:hover,
+			&:visited:hover,
+			&:focus {
+				background: $bg-light;
+
+				.resource-name {
+					background-color: $bg-light;
+					color: $color-global;
+					box-shadow: inset 0 3px 0 0 $primary;
+				}
+			}
+		}
+		&-name {
+			align-self: stretch;
+			display: block;
+			width: 100%;
+			padding: $gutter--xs $gutter;
+			background: $bg-white;
+			font-family: $font-headings;
+			line-height: $line-height--sm;
+			@include transition;
+		}
+	}
+	.actions {
+		margin-top: auto;
+		padding-top: $gutter;
+		padding-inline-start: 0;
+
+		li::before {
+			content: none;
+		}
+		.selection-delete {
+			@extend .button--small;
+
+			&:hover,
+			&:focus {
+				color: $color-global;
+			}
+
+			&::before {
+				content: "\f00d";
+				font-family: $font-icon;
+				font-weight: 900;
+			}
+		}
+	}
+		
+}

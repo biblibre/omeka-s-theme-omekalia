@@ -28,6 +28,20 @@
 			grid-template-columns: 1fr 1fr;
 			grid-column-gap: $gutter--sm;
 		}
+		.main-region {
+
+			@include breakpoint(sm) {
+				grid-column: span 2;
+			}
+
+			& > .wrap:has(> div) {
+				padding-top: $gutter--xl;
+
+				& > div + div {
+					margin-top: $gutter--xl;
+				}
+			}
+		}
 	}
 }
 .media-render.file {

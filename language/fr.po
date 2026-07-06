@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Omekalia\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-19 14:41+0200\n"
-"PO-Revision-Date: 2026-01-23 15:45+0100\n"
+"PO-Revision-Date: 2026-07-06 10:16+0200\n"
 "Last-Translator: Christophe Perrin - Kaeness <christophe@kaeness.fr>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 "X-Poedit-Basepath: ..\n"
 
 #: ../view/common/omekalia/back-to-top.phtml:2
@@ -124,63 +124,67 @@ msgstr "Effacer la recherche"
 msgid "Delete value"
 msgstr "Supprimer la valeur"
 
-#: ../view/item-set-calendar/site/item/browse.phtml:49
+#: ../view/item-set-calendar/site/item/browse.phtml:47
+msgid "Back to view per year"
+msgstr "Retour vue par année"
+
+#: ../view/item-set-calendar/site/item/browse.phtml:63
 msgid "January"
 msgstr "Janvier"
 
-#: ../view/item-set-calendar/site/item/browse.phtml:50
+#: ../view/item-set-calendar/site/item/browse.phtml:64
 msgid "February"
 msgstr "Février"
 
-#: ../view/item-set-calendar/site/item/browse.phtml:51
+#: ../view/item-set-calendar/site/item/browse.phtml:65
 msgid "March"
 msgstr "Mars"
 
-#: ../view/item-set-calendar/site/item/browse.phtml:52
+#: ../view/item-set-calendar/site/item/browse.phtml:66
 msgid "April"
 msgstr "Avril"
 
-#: ../view/item-set-calendar/site/item/browse.phtml:53
+#: ../view/item-set-calendar/site/item/browse.phtml:67
 msgid "May"
 msgstr "Mai"
 
-#: ../view/item-set-calendar/site/item/browse.phtml:54
+#: ../view/item-set-calendar/site/item/browse.phtml:68
 msgid "June"
 msgstr "Juin"
 
-#: ../view/item-set-calendar/site/item/browse.phtml:55
+#: ../view/item-set-calendar/site/item/browse.phtml:69
 msgid "July"
 msgstr "Juillet"
 
-#: ../view/item-set-calendar/site/item/browse.phtml:56
+#: ../view/item-set-calendar/site/item/browse.phtml:70
 msgid "August"
 msgstr "Août"
 
-#: ../view/item-set-calendar/site/item/browse.phtml:57
+#: ../view/item-set-calendar/site/item/browse.phtml:71
 msgid "September"
 msgstr "Septembre"
 
-#: ../view/item-set-calendar/site/item/browse.phtml:58
+#: ../view/item-set-calendar/site/item/browse.phtml:72
 msgid "October"
 msgstr "Octobre"
 
-#: ../view/item-set-calendar/site/item/browse.phtml:59
+#: ../view/item-set-calendar/site/item/browse.phtml:73
 msgid "November"
 msgstr "Novembre"
 
-#: ../view/item-set-calendar/site/item/browse.phtml:60
+#: ../view/item-set-calendar/site/item/browse.phtml:74
 msgid "December"
 msgstr "Décembre"
 
-#: ../view/item-set-calendar/site/item/browse.phtml:65
+#: ../view/item-set-calendar/site/item/browse.phtml:79
 msgid "By day"
 msgstr "Par jour"
 
-#: ../view/item-set-calendar/site/item/browse.phtml:111
+#: ../view/item-set-calendar/site/item/browse.phtml:125
 msgid "By month"
 msgstr "Par mois"
 
-#: ../view/item-set-calendar/site/item/browse.phtml:133
+#: ../view/item-set-calendar/site/item/browse.phtml:156
 msgid "By year"
 msgstr "Par année"
 

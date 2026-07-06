@@ -104,6 +104,9 @@ endif;
                                 $access_text = $this->themeSetting('items_access_text');
                                 $access_label = $this->themeSetting('items_access_label');
                                 $access_url = $this->themeSetting('items_access_url');
+                                if ($access_url) {
+                                    $access_url = str_ireplace('{url}', urlencode("//{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}"), $access_url);
+                                }
                                 $access_title_connected = $this->themeSetting('items_access_title_connected');
                                 $access_text_connected = $this->themeSetting('items_access_text_connected');
                                 $access_label_connected = $this->themeSetting('items_access_label_connected');
@@ -166,6 +169,9 @@ endif;
                                 $access_text = $this->themeSetting('items_access_text');
                                 $access_label = $this->themeSetting('items_access_label');
                                 $access_url = $this->themeSetting('items_access_url');
+                                if ($access_url) {
+                                    $access_url = str_ireplace('{url}', urlencode("//{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}"), $access_url);
+                                }
                                 $access_title_connected = $this->themeSetting('items_access_title_connected');
                                 $access_text_connected = $this->themeSetting('items_access_text_connected');
                             ?>

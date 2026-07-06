@@ -1,7 +1,7 @@
 .block ul {
 	padding-inline-start: $gutter--md;
 }
-.block ul li:not([role]) {
+.block ul li {
 	position: relative;
 	list-style-type: none;
 

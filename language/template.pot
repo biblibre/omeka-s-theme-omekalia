@@ -127,66 +127,67 @@ msgstr ""
 msgid "Delete value"
 msgstr ""
 
+#: ../view/item-set-calendar/site/item/browse.phtml:47
+msgid "Back to view per year"
+msgstr ""
 
-
-
-#: ../view/item-set-calendar/site/item/browse.phtml:49
+#: ../view/item-set-calendar/site/item/browse.phtml:63
 msgid "January"
 msgstr ""
 
-#: ../view/item-set-calendar/site/item/browse.phtml:50
+#: ../view/item-set-calendar/site/item/browse.phtml:64
 msgid "February"
 msgstr ""
 
-#: ../view/item-set-calendar/site/item/browse.phtml:51
+#: ../view/item-set-calendar/site/item/browse.phtml:65
 msgid "March"
 msgstr ""
 
-#: ../view/item-set-calendar/site/item/browse.phtml:52
+#: ../view/item-set-calendar/site/item/browse.phtml:66
 msgid "April"
 msgstr ""
 
-#: ../view/item-set-calendar/site/item/browse.phtml:53
+#: ../view/item-set-calendar/site/item/browse.phtml:67
 msgid "May"
 msgstr ""
 
-#: ../view/item-set-calendar/site/item/browse.phtml:54
+#: ../view/item-set-calendar/site/item/browse.phtml:68
 msgid "June"
 msgstr ""
 
-#: ../view/item-set-calendar/site/item/browse.phtml:55
+#: ../view/item-set-calendar/site/item/browse.phtml:69
 msgid "July"
 msgstr ""
 
-#: ../view/item-set-calendar/site/item/browse.phtml:56
+#: ../view/item-set-calendar/site/item/browse.phtml:70
 msgid "August"
 msgstr ""
 
-#: ../view/item-set-calendar/site/item/browse.phtml:57
+#: ../view/item-set-calendar/site/item/browse.phtml:71
 msgid "September"
 msgstr ""
 
-#: ../view/item-set-calendar/site/item/browse.phtml:58
+#: ../view/item-set-calendar/site/item/browse.phtml:72
 msgid "October"
 msgstr ""
 
-#: ../view/item-set-calendar/site/item/browse.phtml:59
+#: ../view/item-set-calendar/site/item/browse.phtml:73
 msgid "November"
 msgstr ""
 msgstr ""
 
-#: ../view/item-set-calendar/site/item/browse.phtml:60
+#: ../view/item-set-calendar/site/item/browse.phtml:74
 msgid "December"
 msgstr ""
 
-#: ../view/item-set-calendar/site/item/browse.phtml:65
+#: ../view/item-set-calendar/site/item/browse.phtml:79
 msgid "By day"
 msgstr ""
 
-#: ../view/item-set-calendar/site/item/browse.phtml:111
+#: ../view/item-set-calendar/site/item/browse.phtml:125
 msgid "By month"
 msgstr ""
 
-#: ../view/item-set-calendar/site/item/browse.phtml:133
+#: ../view/item-set-calendar/site/item/browse.phtml:156
 msgid "By year"
 msgstr ""

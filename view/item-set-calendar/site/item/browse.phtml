@@ -40,6 +40,15 @@ $itemdata_lists = $this->themeSetting( 'itemdata_lists' );
 	</div>
 	<div class="wrap wrap--xl">
 		<div class="item-set-items">
+			<?php if (isset($year)): ?>
+		        <div class="item-set-navigation">
+		            <a href="<?= $this->itemSet->siteUrl() ?>" class="button button--small item-set-navigation-back-button">
+		                <i class="fas fa-angle-left" aria-hidden="true"></i>
+		                <?= $this->escapeHtml($this->translate('Back to view per year')) ?>
+		            </a>
+		        </div>
+		    <?php endif; ?>
+
 			<?php echo '<h2 class="item-set-items__title">' . $this->escapeHtml($this->translate('Items')) . '</h2>'; ?>
 
 			<?php if (isset($date)): ?>
