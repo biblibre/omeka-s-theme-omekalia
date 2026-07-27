@@ -38,6 +38,55 @@
 			}
 		}
 	}
+	.active-facets {
+		padding: $gutter $gutter--sm;
+		border-bottom: 2px solid $border--f;
+
+		&__group {
+			margin-bottom: 0;
+
+			& + .active-facets__group {
+				margin-top: $gutter;
+			}
+		}
+		&__group-label {
+			margin-bottom: $gutter--xs;
+			font-weight: $medium;
+			font-size: $font-size;
+		}
+		&__element {
+			font-size: $font-size--sm;
+		}
+		&__element-name {
+			background-color: $bg-search;
+			border-radius: 0;
+			font-weight: $medium;
+		}
+		&__element-value {
+			background-color: $bg-white;
+			border-radius: 0;
+			font-size: $font-size--sm;
+		}
+		&__element-remove {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 0;
+			
+			&:hover,
+			&:focus {
+				background-color: $bg-primary;
+				color: $color-light;
+
+				.icon-delete::before {
+					background-color: $color-light;
+				}
+			}
+			.icon-delete::before {
+				background-color: $color-global;
+			}
+		}
+	}
 }
 .search-facet {
 	margin-bottom: $gutter--md;
@@ -69,12 +118,89 @@
 		font-weight: $normal;
 	}
 
+	&-operator {
+		margin-bottom: $gutter--xs;
+		font-size: $font-size--sm;
+		opacity: 1;
+	}
+
+	&__filters {
+		display: flex;
+		column-gap: $gutter;
+		padding: $gutter $gutter--sm 0;
+
+		button {
+			padding: $gutter--xs $gutter;
+			clip-path: none;
+			text-transform: none;
+			font-family: $font-family;
+			font-weight: $normal;
+
+			&::before {
+				margin-right: 8px;
+				font-family: $font-icon;
+				font-weight: 900;
+			}
+		}
+	}
+}
+
+.search-facet {
+
 	&-item {
 		margin-bottom: 0.5 * $gutter;
 		padding-left: $gutter--sm;
 		text-transform: uppercase;
 		line-height: $line-height--sm;
 
+		// Facets with label / input and multi selection parameters
+		input {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			margin: -1px;
+			padding: 0;
+			border: 0;
+			clip: rect(0 0 0 0);
+			overflow: hidden;
+		}
+		label {
+			position: relative;
+			display: inline-block;
+			align-items: center;
+			margin-left: $gutter--md;
+			font-weight: $semi-bold;
+			line-height: $line-height--sm;
+			@include transition;
+
+			&::before {
+				content: '';
+				position: absolute;
+				left: -$gutter--md;
+				top: 0;
+				display: block;
+				height: calc( #{$gutter--sm} - 2px );
+				width: $gutter--sm;
+				background: url(../img/icon_search_facet.svg) no-repeat left top /contain; 
+			}
+			&:hover {
+				cursor: pointer;
+				box-shadow: inset 0 -6px 0 0 $bg-link, 0 2px 0 0 $border;
+			}
+		}
+		span:has(input:checked) {
+
+			label::after {
+				content: '\25A0';
+				position: absolute;
+				top: -2px;
+				left: calc(-#{$gutter--md} + 0.75 * #{$gutter--xs});
+				line-height: 1.2;
+				color: $bg-primary;
+			}
+		}
+
+		// Facets with simple a
 		a,
 		.active a {
 			position: relative;	
@@ -90,6 +216,25 @@
 		.active a {
 			box-shadow: inset 0 -3px 0 0 $border--link;			
 		}
+	}
+
+	&__count {
+		margin-left: 0.75 * $gutter--xs;
+		font-weight: $light;
+		font-size: $font-size--sm;
+	}
+	.hidden-facets {
+		margin-top: 0.75 * $gutter;
+
+		& + button.o-icon-down::before {
+			content: '-';
+			margin-top: -2px;
+		}
+	}
+
+	button {
+		margin-top: $gutter--sm;
+		padding-left: $gutter--sm;
 	}
 }
 .search-results__overwrapper .advsearch__container:has(.search-results-wrapper) {

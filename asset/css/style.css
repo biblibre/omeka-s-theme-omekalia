@@ -2375,6 +2375,57 @@ h6,
 .search-facets .search-facet::before {
   content: none;
 }
+.search-facets .active-facets {
+  padding: 16px 24px;
+  border-bottom: 2px solid #FFF;
+}
+.search-facets .active-facets__group {
+  margin-bottom: 0;
+}
+.search-facets .active-facets__group + .active-facets__group {
+  margin-top: 16px;
+}
+.search-facets .active-facets__group-label {
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 1em;
+}
+.search-facets .active-facets__element {
+  font-size: 0.88889em;
+}
+.search-facets .active-facets__element-name {
+  background-color: #EBEBEB;
+  border-radius: 0;
+  font-weight: 500;
+}
+.search-facets .active-facets__element-value {
+  background-color: #FFF;
+  border-radius: 0;
+  font-size: 0.88889em;
+}
+.search-facets .active-facets__element-remove {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 0;
+}
+.search-facets .active-facets__element-remove:hover, .search-facets .active-facets__element-remove:focus {
+  background-color: var(--primary);
+  color: #FFF;
+}
+.search-facets .active-facets__element-remove:hover .icon-delete::before, .search-facets .active-facets__element-remove:focus .icon-delete::before {
+  background-color: #FFF;
+}
+.search-facets .active-facets__element-remove .icon-delete::before {
+  background-color: #000;
+}
+
 .search-facet {
   margin-bottom: 32px;
 }
@@ -2400,11 +2451,83 @@ h6,
 .search-facet__title {
   font-weight: 400;
 }
+.search-facet-operator {
+  margin-bottom: 8px;
+  font-size: 0.88889em;
+  opacity: 1;
+}
+.search-facet__filters {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 16px;
+     -moz-column-gap: 16px;
+          column-gap: 16px;
+  padding: 16px 24px 0;
+}
+.search-facet__filters button {
+  padding: 8px 16px;
+  clip-path: none;
+  text-transform: none;
+  font-family: var(--font-global), Helvetica, Arial, serif;
+  font-weight: 400;
+}
+.search-facet__filters button::before {
+  margin-right: 8px;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+
 .search-facet-item {
   margin-bottom: 8px;
   padding-left: 24px;
   text-transform: uppercase;
   line-height: 1.25;
+}
+.search-facet-item input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+.search-facet-item label {
+  position: relative;
+  display: inline-block;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 32px;
+  font-weight: 600;
+  line-height: 1.25;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+.search-facet-item label::before {
+  content: "";
+  position: absolute;
+  left: -32px;
+  top: 0;
+  display: block;
+  height: calc(24px - 2px);
+  width: 24px;
+  background: url(../img/icon_search_facet.svg) no-repeat left top/contain;
+}
+.search-facet-item label:hover {
+  cursor: pointer;
+  -webkit-box-shadow: inset 0 -6px 0 0 var(--primary), 0 2px 0 0 var(--secondary);
+          box-shadow: inset 0 -6px 0 0 var(--primary), 0 2px 0 0 var(--secondary);
+}
+.search-facet-item span:has(input:checked) label::after {
+  content: "■";
+  position: absolute;
+  top: -2px;
+  left: calc(-32px + 0.75 * 8px);
+  line-height: 1.2;
+  color: var(--primary);
 }
 .search-facet-item a,
 .search-facet-item .active a {
@@ -2421,6 +2544,22 @@ h6,
 .search-facet-item .active a {
   -webkit-box-shadow: inset 0 -3px 0 0 var(--secondary-light);
           box-shadow: inset 0 -3px 0 0 var(--secondary-light);
+}
+.search-facet__count {
+  margin-left: 6px;
+  font-weight: 300;
+  font-size: 0.88889em;
+}
+.search-facet .hidden-facets {
+  margin-top: 12px;
+}
+.search-facet .hidden-facets + button.o-icon-down::before {
+  content: "-";
+  margin-top: -2px;
+}
+.search-facet button {
+  margin-top: 24px;
+  padding-left: 24px;
 }
 
 .search-results__overwrapper .advsearch__container:has(.search-results-wrapper) .search-facet-item .inactive input,

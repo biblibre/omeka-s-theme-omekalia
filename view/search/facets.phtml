@@ -1,4 +1,4 @@
-<?php /* Search 0.20.2 */
+<?php /* Search 0.23.0 */
 /*
  * Copyright BibLibre, 2016
  *
@@ -43,12 +43,15 @@ $facetedFiltering =
 	<aside class="search-facets simple-accordion simple-accordion--md simple-accordion__container">
 		<div class="simple-accordion__heading">
 			<h2 class="search-facets__title simple-accordion__title"><?php echo $this->translate('Facets'); ?><span class="simple-accordion__icon fa fa-caret-down"></span></h2>
+		</div>
+		<div class="simple-accordion__panel">
+
 			<?php if ($facetedFiltering): ?>
                 <button class="fas fa-filter" id="submit-facets" title="<?php echo $this->escapeHtml($this->translate("Filter with selected facets")); ?>"></button>
                 <button class="fas fa-times" id="reset-facets" title="<?php echo $this->escapeHtml($this->translate("Reset all filters")); ?>"></button>
             <?php endif; ?>
-		</div>
-		<div class="simple-accordion__panel">
+             <?= $this->partial('search/active-facets') ?>
+             
 			<ul>
 
 				<?php /* foreach ($facets as $name => $facetValues): ?>
@@ -66,8 +69,10 @@ $facetedFiltering =
 
 				<?php foreach ($settings['facets'] as $facetSettings): ?>
 					<?php $name = $facetSettings['name']; ?>
-					<?php $facet_display_limit = $facetSettings['facet_display_limit'] ?? 10; ?>
-					<?php $facet_values = $facets[$name] ?? []; ?>
+                    <?php $facet_display_limit = $facetSettings['facet_display_limit'] ?? 10; ?>
+                    <?php $facet_values = $facets[$name] ?? []; ?>
+                    <?php $operatorLabel = ($facetSettings['operator'] ?? 'AND') === 'OR' ? $this->translate('Matching any of:') : $this->translate('Matching all of:'); ?>
+					
 					<?php if ($facet_values): ?>
 						<?php $visible_facets = array_slice($facet_values, 0, $facet_display_limit); ?>
 						<?php $hidden_facets = array_slice($facet_values, $facet_display_limit); ?>
@@ -93,11 +98,11 @@ $facetedFiltering =
 									</ul>
 								</div>
 								<button class="search-facet-expand-button search-facet-toggle-btn">
-									<i class="fas fa-chevron-down"></i>
+									<span class="fas fa-chevron-down"></span>
 									<?php echo $this->escapeHtml($settings["facet_limit_expand_label"]); ?>
 								</button>
 								<button class="search-facet-collapse-button search-facet-toggle-btn">
-									<i class="fas fa-chevron-up"></i>
+									<span class="fas fa-chevron-up"></span>
 									<?php echo $this->escapeHtml($settings["facet_limit_collapse_label"]); ?>
 								</button>
 							<?php endif; ?>
