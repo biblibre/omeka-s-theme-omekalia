@@ -22,7 +22,7 @@ $hyperlink = $this->plugin('hyperlink');
                     default:
                         throw new \InvalidArgumentException(sprintf('Invalid link type "%s"', $linkType));
                 }
-                echo '<div class="resource__thumbnail">'.$this->thumbnail($media, $thumbnailType).'</div>';
+                echo '<div class="resource__thumbnail '. $thumbnailType.'">'.$this->thumbnail($media, $thumbnailType, ['loading' => 'lazy']).'</div>';
             } else {
                 echo $media->render([
                     'thumbnailType' => $thumbnailType,

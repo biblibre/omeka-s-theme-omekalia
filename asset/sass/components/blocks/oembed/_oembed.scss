@@ -1,0 +1,44 @@
+.video-responsive { 
+	overflow:hidden; 
+	padding-bottom:56.25%; 
+	position:relative; 
+	height:0;
+	
+	iframe {
+		left:0; 
+		top:0; 
+		height:100%;
+		width:100%;
+		position:absolute;
+	}
+}
+
+// BLOC GROUPE VIDEO
+.page-layout-normal .block-blockGroup:has(.video-responsive) {
+	padding-top: 0;
+
+	& > .block-html:has(h2,h3) {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+	& > .block-html:has(p) {
+		padding-top: 0;
+		padding-bottom: 0;
+		font-weight: $medium;
+
+		& + .block-oembed {
+			padding-top: $gutter;
+		}
+	}
+	.block-oembed {
+		padding-bottom: 0;
+
+		& + .block-html {
+			padding-top: $gutter--xs;
+
+			p {
+				color: $color-label;
+			}
+		}
+	}
+}

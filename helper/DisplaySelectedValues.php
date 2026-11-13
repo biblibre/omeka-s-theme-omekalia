@@ -1,7 +1,8 @@
 <?php 
 /*****
  * DisplaySelectedValues Helper
- * Last Update : 2025-11-10
+ * Version: 3.0.5
+ * Last Update: 2026-11-09
  *****/
 namespace OmekaTheme\Helper;
 
@@ -20,12 +21,20 @@ class DisplaySelectedValues extends AbstractHelper
 	 * 		@var string 'propertiesForSearch' Add search link to this metadata.
 	 * 		@var string 'multiValuesSeparator' Multivalues Separator.
 	 * 		@var bool   'stripTags' Strip tags of values.
+	 * 		@var string 'labelSuffix'
+	 * 		@var string 'externalLinkTitlePrefix'
+	 * 		@var string 'externalLinkLabel'
 	 * }
 	 * @return string
 	 */
 
-	public function __invoke($resource, $properties, array $options = [] )
+	public function __invoke($resource, $properties, $options = [] )
 	{
+		$view = $this->getView();
+		$translate = $view->plugin('translate');
+		$escape = $view->plugin('escapeHtml');
+		$lang = $view->lang();
+
 		if (!$resource || !$properties) {
 			return '';
 		}
@@ -43,7 +52,7 @@ class DisplaySelectedValues extends AbstractHelper
 		}
 
 		if ( isset($options['multiValuesSeparator']) ) {
-			$multiValuesSeparator = $options['multiValuesSeparator'];
+			$multiValuesSeparator = strip_tags($options['multiValuesSeparator']);
 		} else {
 			$multiValuesSeparator = ' | ';
 		}
@@ -54,10 +63,23 @@ class DisplaySelectedValues extends AbstractHelper
 			$stripTags = false;
 		}
 
-		$view = $this->getView();
-		$translate = $view->plugin('translate');
-		$escape = $view->plugin('escapeHtml');
-		$lang = $view->lang();
+		if ( isset($options['labelSuffix']) ) {
+			$labelSuffix = $options['labelSuffix'];
+		} else {
+			$labelSuffix = '';
+		}
+
+		if ( isset($options['externalLinkTitlePrefix']) ) {
+			$externalLinkTitlePrefix = $options['externalLinkTitlePrefix'];
+		} else {
+			$externalLinkTitlePrefix = $translate('Open the external reference for ');
+		}
+
+		if ( isset($options['externalLinkLabel']) ) {
+			$externalLinkLabel = $options['externalLinkLabel'];
+		} else {
+			$externalLinkLabel = $translate('Ref.');
+		}
 
 		if ($showValueAnnotations) $showValueAnnotations = (bool) $view->siteSetting('show_value_annotations', false);
 		$showLocale = (bool) $view->siteSetting('show_locale_label', true);
@@ -90,7 +112,7 @@ class DisplaySelectedValues extends AbstractHelper
 
 						$propertyClass = $escape( str_replace(['_', ':'], '-', $propertyValue) );
 						$metadataContent .= '<div class="property resource__property '.$propertyClass.'">';
-						$metadataContent .= '<dt class="label">'.$propertyLabel.$translate(': ').'</dt>';
+						$metadataContent .= '<dt class="label">'.$propertyLabel.$labelSuffix.'</dt>';
 
 						$searchLinkUrl = '';
 
@@ -113,15 +135,31 @@ class DisplaySelectedValues extends AbstractHelper
 
 							if ($searchLinkUrl) {
 								$propertyDataValueNoHtml = strip_tags($propertyDataValuesTemp);
-								$searchLinkUrlComplete = $escape($searchLinkUrl.urlencode( $propertyDataValueNoHtml ));
+								$searchLinkUrlComplete = $escape($searchLinkUrl.urlencode( (string) $value ));
 
 								if (preg_match( '/<a\s+[^>]*href=["\'][^"\']+["\'][^>]*>/i', $propertyDataValuesTemp, $propertyDataValueUrl )) {
 									// la chaine $propertyDataValuesTemp contient un lien web
-									$propertyDataValuesTemp = '<a href="'.$searchLinkUrlComplete.'">'.$propertyDataValueNoHtml.'<i class="o-icon-search"></i></a>';
-									$propertyDataValuesTemp .= '&nbsp;<span class="uri-value-link--icon">'.$propertyDataValueUrl[0].'</a></span>';
+									$propertyDataValuesTemp = '<a href="'.$searchLinkUrlComplete.'">'.$propertyDataValueNoHtml.'<span class="icon icon-search"></span></a>';
+
+									$linkTitle = ' title="'.$escape($externalLinkTitlePrefix.$propertyDataValueNoHtml).'"';
+									$propertyDataValueUrl[0] = substr($propertyDataValueUrl[0], 0, -1) . $linkTitle . substr($propertyDataValueUrl[0], -1);
+
+									if ( strpos($propertyDataValueUrl[0], '.idref.fr') ) {
+										$externalLinkLabel = 'IdRef';
+									} elseif ( strpos($propertyDataValueUrl[0], 'gallica.bnf.fr') ) {
+										$externalLinkLabel = 'Gallica';
+									} elseif ( strpos($propertyDataValueUrl[0], '.bnf.fr') ) {
+										$externalLinkLabel = 'BnF';
+									} elseif ( strpos($propertyDataValueUrl[0], '.sudoc.fr') ) {
+										$externalLinkLabel = 'Sudoc';
+									} elseif ( strpos($propertyDataValueUrl[0], 'calames.abes.fr') ) {
+										$externalLinkLabel = 'Calames';
+									}
+
+									$propertyDataValuesTemp .= '&nbsp;<span class="uri-value-link--icon">'.$propertyDataValueUrl[0].$externalLinkLabel.'</a></span>';
 								} else {
 									// pas de lien dans la chaine
-									$propertyDataValuesTemp = '<a href="'.$searchLinkUrlComplete.'">'.$propertyDataValuesTemp.'<i class="o-icon-search"></i></a>';
+									$propertyDataValuesTemp = '<a href="'.$searchLinkUrlComplete.'">'.$propertyDataValuesTemp.'<span class="icon icon-search"></span></a>';
 								}
 
 							}
@@ -134,7 +172,7 @@ class DisplaySelectedValues extends AbstractHelper
 							endif;
 
 							if ($showLocale && $valueLang):
-								$htmlLang = '<span class="language">'.$valueLang.'</span> ';
+								$htmlLang = '<span class="language" aria-hidden="true">'.$valueLang.'</span> ';
 							else:
 								$htmlLang = '';
 							endif;
@@ -168,24 +206,43 @@ class DisplaySelectedValues extends AbstractHelper
 
 				elseif ($propertyValue == '#group#'):
 
-					if ($metadataGroup) $metadataContent .= '</div>';
+					if ($metadataGroup) {
+						if (strrpos($metadataContent, '<dt', $metadataGroupStartPos) === false) {
+							$metadataContent = substr($metadataContent, 0, $metadataGroupStartPos);
+						} else {
+							$metadataContent .= '</div>';
+						}
+					}
+					$metadataGroupStartPos = strlen($metadataContent);
 					$metadataContent .= '<div class="data__group">';
 					$metadataGroup = true;
 
 				elseif ($propertyValue == '#/group#'):
 
-					if ($metadataGroup) $metadataContent .= '</div>';
+					if ($metadataGroup) {
+						if (strrpos($metadataContent, '<dt', $metadataGroupStartPos) === false) {
+							$metadataContent = substr($metadataContent, 0, $metadataGroupStartPos);
+						} else {
+							$metadataContent .= '</div>';
+						}
+					}
 					$metadataGroup = false;
 
 				elseif ( substr($propertyValue, 0, 7) == '#title#'):
 
-					$metadataContent .= '<p><strong>'.(substr( $propertyValue, 7)).'</strong></p>';
+					$metadataContent .= '<p class="data__title"><strong>'.(substr( $propertyValue, 7)).'</strong></p>';
 
 				endif;
 
 			endforeach;
 
-			if ($metadataGroup) {$metadataContent .= '</div>';};
+			if ($metadataGroup) {
+				if (strrpos($metadataContent, '<dt', $metadataGroupStartPos) === false) {
+					$metadataContent = substr($metadataContent, 0, $metadataGroupStartPos);
+				} else {
+					$metadataContent .= '</div>';
+				}
+			}
 
 			if ($metadataContent):
 				$metadataContent = '<dl style="--separator:\''.$multiValuesSeparator.'\'">'.$metadataContent.'</dl>';

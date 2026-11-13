@@ -78,3 +78,89 @@
 		color: $bg-marker--2;
 	}
 }
+
+/* BLOCK COLUMNS - TEXT + FILE OR MEDIA ON SITE ------------------------- */
+.block-blockGroup:has(.page-column-image) {
+	margin-top: $gutter--md;
+	margin-bottom: $gutter--md;
+	padding: $gutter--md;
+	background-color: $bg-body;
+	@include align--md;
+
+	& > .block {
+		grid-column-end: span 12;
+
+		@include breakpoint(sm) {
+			
+			&.grid-span-3,
+			&.grid-span-4,
+			&.grid-span-5,
+			&.grid-span-6,
+			&.grid-span-7,
+			&.grid-span-8,
+			&.grid-span-9,
+			&.grid-span-10 {
+				grid-column-end: span 6;
+			}
+		}
+		@include breakpoint(md) {
+			
+			&.grid-span-1 {
+				grid-column-end: span 1;
+			}
+			&.grid-span-2 {
+				grid-column-end: span 2;
+			}
+			&.grid-span-3 {
+				grid-column-end: span 3;
+			}
+			&.grid-span-4 {
+				grid-column-end: span 4;
+			}
+			&.grid-span-5 {
+				grid-column-end: span 5;
+			}
+			&.grid-span-7 {
+				grid-column-end: span 7;
+			}
+			&.grid-span-8 {
+				grid-column-end: span 8;
+			}
+			&.grid-span-9 {
+				grid-column-end: span 9;
+			}
+			&.grid-span-10 {
+				grid-column-end: span 10;
+			}
+			&.grid-span-11 {
+				grid-column-end: span 11;
+			}
+			&.grid-span-12 {
+				grid-column-end: span 12;
+			}
+		}
+	}
+	& > .block,
+	& > .block + .block {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+	& > .block:first-child:has(.page-column-image) {
+		
+		.page-column-image {
+
+			@include breakpoint(sm) {
+				padding-right: $gutter--md;
+			}
+		}
+	}
+	.block-asset + .block:has(.page-column-image) {
+
+		.page-column-image {
+
+			@include breakpoint(sm) {
+				padding-left: $gutter--md;
+			}
+		}
+	}
+}

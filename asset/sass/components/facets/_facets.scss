@@ -39,8 +39,14 @@
 		}
 	}
 	.active-facets {
-		padding: $gutter $gutter--sm;
-		border-bottom: 2px solid $border--f;
+		margin-top: $gutter;
+		padding: $gutter 0;
+		border-top: 2px solid $border--f;
+
+		& + .search-facet__filters {
+			margin-top: 0;
+			border-top: 0;
+		}
 
 		&__group {
 			margin-bottom: 0;
@@ -83,6 +89,7 @@
 				}
 			}
 			.icon-delete::before {
+				width: $gutter;
 				background-color: $color-global;
 			}
 		}
@@ -127,7 +134,16 @@
 	&__filters {
 		display: flex;
 		column-gap: $gutter;
-		padding: $gutter $gutter--sm 0;
+		margin-top: $gutter;
+		padding: $gutter 0;
+		border-style: solid;
+		border-color: $border--f;
+		border-width: 2px 0;
+
+		&:last-child {
+			padding-bottom: 0;
+			border-bottom: 0;
+		}
 
 		button {
 			padding: $gutter--xs $gutter;
@@ -135,6 +151,7 @@
 			text-transform: none;
 			font-family: $font-family;
 			font-weight: $normal;
+			line-height: $line-height--xs;
 
 			&::before {
 				margin-right: 8px;

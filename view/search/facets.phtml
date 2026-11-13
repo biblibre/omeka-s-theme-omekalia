@@ -1,4 +1,4 @@
-<?php /* Search 0.23.0 */
+<?php /* Search 0.23.2 */
 /*
  * Copyright BibLibre, 2016
  *
@@ -39,33 +39,28 @@ $facetedFiltering =
     $settings["faceted_filtering"] === "1";
 ?>
 
-<?php if (!empty($facets)): ?>
+
+<?php $hasActiveFacets = !empty($this->params()->fromQuery('limit')); ?>
+
+<?php if (!empty($facets) || $hasActiveFacets): ?>
+
 	<aside class="search-facets simple-accordion simple-accordion--md simple-accordion__container">
 		<div class="simple-accordion__heading">
 			<h2 class="search-facets__title simple-accordion__title"><?php echo $this->translate('Facets'); ?><span class="simple-accordion__icon fa fa-caret-down"></span></h2>
 		</div>
 		<div class="simple-accordion__panel">
 
-			<?php if ($facetedFiltering): ?>
-                <button class="fas fa-filter" id="submit-facets" title="<?php echo $this->escapeHtml($this->translate("Filter with selected facets")); ?>"></button>
-                <button class="fas fa-times" id="reset-facets" title="<?php echo $this->escapeHtml($this->translate("Reset all filters")); ?>"></button>
-            <?php endif; ?>
              <?= $this->partial('search/active-facets') ?>
-             
-			<ul>
 
-				<?php /* foreach ($facets as $name => $facetValues): ?>
-					<li class="search-facet">
-						<h3 class="search-facet__title"><?php echo $this->facetLabel($name); ?></h3>
-						<ul class="search-facet-items">
-							<?php foreach ($facetValues as $facetValue): ?>
-								<li class="search-facet-item">
-									<?php echo $this->facetLink($name, $facetValue); ?>
-								</li>
-							<?php endforeach; ?>
-						</ul>
-					</li>
-				<?php endforeach; */ ?>
+			<div class="actions search-facet__filters">
+                <!-- <button class="fas fa-filter" id="submit-facets" title="<?php echo $this->escapeHtml($this->translate("Filter with selected facets")); ?>"></button>
+                <button class="fas fa-times" id="reset-facets" title="<?php echo $this->escapeHtml($this->translate("Reset all filters")); ?>"></button> -->
+                <button class="submit-facets-action"><?php echo $this->translate('Apply facets') ?></button>
+            	<button class="reset-facets-action"><?php echo $this->translate('Reset all facets') ?></button>
+            </div>
+
+            <?php if (!empty($facets)): ?>
+			<ul>
 
 				<?php foreach ($settings['facets'] as $facetSettings): ?>
 					<?php $name = $facetSettings['name']; ?>
@@ -111,6 +106,11 @@ $facetedFiltering =
 				<?php endforeach; ?>
 
 			</ul>
+			<?php endif; ?>
+	        <div class="actions search-facet__filters">
+	            <button class="submit-facets-action"><?php echo $this->translate('Filter with selected facets') ?></button>
+            	<button class="reset-facets-action"><?php echo $this->translate('Reset all filters') ?></button>
+	        </div>
 		</div>
 	</aside>
 <?php endif; ?>

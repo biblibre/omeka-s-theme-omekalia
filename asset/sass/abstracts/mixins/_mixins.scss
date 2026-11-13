@@ -159,8 +159,8 @@
 
 // align full
 @mixin alignfull {
-	margin-left: calc(calc(-100vw + 100%) / 2);
-	margin-right: calc(calc(-100vw + 100%) / 2);
+	margin-left: calc(calc(-99vw + 100%) / 2);
+	margin-right: calc(calc(-99vw + 100%) / 2);
 	width: 99vw;
 	max-width: 99vw;
 }

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Omekalia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-19 14:41+0200\n"
-"PO-Revision-Date: 2026-07-06 10:16+0200\n"
+"POT-Creation-Date: 2026-11-12 10:07+0100\n"
+"PO-Revision-Date: 2026-11-12 13:55+0100\n"
 "Last-Translator: Christophe Perrin - Kaeness <christophe@kaeness.fr>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -17,8 +17,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Poedit 3.10\n"
 "X-Poedit-Basepath: ..\n"
+
+#: ../view/common/omekalia/header.phtml:28
+msgid "Visitor Login"
+msgstr "Connexion visiteur"
+
+#: ../view/common/omekalia/header.phtml:28
+msgid "Login"
+msgstr "Connexion"
+
+#: ../view/common/omekalia/header.phtml:36
+msgid "SSO Login"
+msgstr "Connexion SSO"
 
 #: ../view/common/omekalia/back-to-top.phtml:2
 msgid "Back to top"
@@ -83,21 +95,37 @@ msgstr "Accès aux documents"
 msgid "Related resources"
 msgstr "Documents en relation"
 
-#: ../helper/DisplaySelectedValues.php:53
-msgid ": "
-msgstr " : "
+#: ../helper/DisplaySelectedValues.php:75
+msgid "Open the external reference for "
+msgstr "Voir le référentiel externe pour "
 
-#: ../view/common/omekalia/header.phtml:53
-msgid "Visitor Login"
-msgstr "Connexion visiteur"
+#: ../helper/DisplaySelectedValues.php:81
+msgid "Ref."
+msgstr "Réf."
 
-#: ../view/common/omekalia/header.phtml:53
-msgid "Login"
-msgstr "Connexion"
+#: ../view/search/facets.phtml:51
+msgid "Filter with selected facets"
+msgstr "Filtrer avec les facettes sélectionnées"
 
-#: ../view/common/omekalia/header.phtml:53
-msgid "SSO Login"
-msgstr "Connexion SSO"
+#: ../view/search/facets.phtml:58
+msgid "Apply selected facets"
+msgstr "Appliquer la sélection"
+
+#: ../view/search/facets.phtml:58
+msgid "Apply facets"
+msgstr "Appliquer les facettes"
+
+#: ../view/search/facets.phtml:58
+msgid "Apply filters"
+msgstr "Appliquer les filtres"
+
+#: ../view/search/facets.phtml:59
+msgid "Reset all facets"
+msgstr "Réinitialiser les facettes"
+
+#: ../view/search/facets.phtml:59
+msgid "Reset all filters"
+msgstr "Réinitialiser les filtres"
 
 #: ../view/search/facets.phtml:43
 msgid "Facets"

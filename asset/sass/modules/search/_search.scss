@@ -78,7 +78,7 @@
 	}
 	&#resource-class,
 	&#item-sets {
-		margin-bottom: $gutter--md;			
+		margin-bottom: $gutter--md;	
 
 		@include breakpoint(sm) {
 			
@@ -121,6 +121,19 @@
 }
 
 
+/* SEARCH SUMMARY --------------------- */
+.search-summary {
+	margin-bottom: $gutter--xs;
+
+	&__element {
+		font-size: $font-size;
+	}
+	&__element-name {
+		font-weight: $bold;
+	}
+}
+
+
 /* SEARCH BY FILTERS --------------------- */
 .section-advsearch--filters {
 	position: relative;
@@ -152,8 +165,36 @@
 			grid-template-columns: 1fr 1fr 1fr 40px;
 		}
 
+		&:has(.search-form-standard-filter-proximity:not([style*="none"])) {
+
+			@include breakpoint(xxs) {
+				grid-template-columns: 1fr 3fr 40px;
+			}
+			@include breakpoint(sm) {
+				grid-template-columns: 2fr 2fr 1fr 2fr 40px;
+			}
+
+			.search-form-standard-filter-proximity {
+				grid-column: span 2;
+
+				@include breakpoint(xxs) {
+					grid-column: initial;
+				}
+			}
+			select {
+
+				@include breakpoint(xxs) {
+					grid-column: span 3;
+				}
+				@include breakpoint(sm) {
+					grid-column: initial;
+				}
+			}
+		}
+
 		select {
 			grid-column: span 2;
+			min-width: 100%; // pour éviter que min-width 200px gêne l'organisation en grid
 
 			@include breakpoint(sm) {
 				grid-column: initial;
@@ -216,7 +257,8 @@
 	}
 }
 
-/* SEARCH BUTTONS ------ */
+/* SEARCH BUTTONS 
+------------------------------------------------------------------------ */
 .advsearch__buttons {
 	padding: $gutter--sm 0;
 
@@ -315,24 +357,56 @@
 .search-add-filter {
 	
 	i::before,
+	span::before,
 	span[class*="fa"]::before {
 		position: absolute;
-		left: 0.5 * $gutter--xs;
-		top: 4px;
-		font-size: 1.4em;
+		left: $gutter--xs;
+		top: $gutter--xs;
+		font-size: 1.1em;
 		color: $bg-secondary;
 	}
 
 	&:hover,
 	&:focus {
+
 		i::before,
+		span::before,
 		span[class*="fa"]::before {
+			color: $color-light;
+		}
+	}
+}
+.search-add-group {
+	
+	i::before,
+	span::before,
+	span[class*="fa"]::before {
+		left: 0.5 * $gutter--xs;
+		top: 0.75 * $gutter--xs;
+		font-size: 1.3em;
+	}
+}
+button.add-value {
+
+	&::before {
+		position: absolute;
+		left: $gutter--xs;
+		top: 10px;
+		color: $bg-secondary;
+	}
+
+	&:hover,
+	&:focus {
+
+		&::before {
 			color: $color-light;
 		}
 	}
 }
 
 
+/* SEARCH RESULTS NO RESULT
+-------------------------------------------------------------------------- */
 .search-results {
 
 	.noresults {

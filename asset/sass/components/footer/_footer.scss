@@ -123,6 +123,8 @@ body:not(.home) .partners--onlyhome {
 
 	&__title {
 		@extend h1;
+		width: fit-content;
+		@include margin-auto;
 	}
 
 	&__list {
@@ -131,6 +133,7 @@ body:not(.home) .partners--onlyhome {
 		gap: $gutter--lg;
 		justify-content: center;
 		align-items: center;
+		padding-left: 0;
 		list-style-type: none;
 	}
 	&__item {

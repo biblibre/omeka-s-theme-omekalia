@@ -2,83 +2,155 @@
 
 	.resource {
 		position: relative;
+		display: grid;
+		grid-template-rows: auto 1fr;
+		height: 100%;
+		margin-bottom: 0;
+
+		&:has(.media-render) {
+			display: grid;
+			grid-template-rows: auto 1fr;
+		}
 
 		&__thumbnail {
 			aspect-ratio: initial;
 			background-color: transparent;
+
+			&.large {
+				height: 300px;
+
+				@include breakpoint(md) {
+					height: 350px;
+				}
+				img {
+					max-height: 100%;
+				}
+			}
+			&.medium,
+			&.square {
+				height: 200px;
+			}
 		}
-	}
+		.caption {
+			padding: 0;
+			font-size: $font-size--sm;
+		}
+	}	
 	img {
 		max-height: 500px;
 	}
 	.h3,
 	.h4 {
 		margin-top: 0;
+		margin-bottom: 0;
+		padding: $gutter--xs $gutter $gutter--xs 0;
+		border-top: 2px solid $border--link;
+		font-weight: $normal;
+		font-size: $font-size;
+		@include transition;
+
+		&:not(:has(a)) {
+			border-color: $bg-light;
+		}
+
+		&:has(a):hover,
+		&:has(a):focus-within {
+			padding-left: $gutter--xs;
+			padding-right: $gutter--xs;
+			background-color: $bg-light;
+			border-top-color: $border--1;
+			box-shadow: inset 0 3px 0 0 $border--1;
+		}
 
 		a {
 			display: block;
 			border-bottom: 0;
 
 			&::after {
-				content: '';
-				position: absolute;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				left: 0;
+				content: none;
 			}
+
 			&:hover,
 			&:focus {
 				background-color: transparent;
-				box-shadow: inset 0 3px 0 0 $bg-primary;
 				color: $color-accent;
 			}
 		}
 	}
-	
-	&.multiple-attachments.layout-horizontal.media-display-thumbnail,
-	&[class*="attachment-count"]:not(.attachment-count-1).layout-horizontal.media-display-thumbnail {
-		align-items: flex-end;
-		@include alignmedium;
+	&:has(.resource__thumbnail) {
 
+		.h3,
+		.h4 {
 
-		.resource {
-			position: relative;
+			a {
+
+				&:hover,
+				&:focus {
+					box-shadow: none;
+				}
+
+				&::after {
+					content: '';
+				}
+			}
+		}
+	}
+
+	// OPTION MÉDIA INTÉGRÉ ----------------------------------
+	.media-render.file {
+		background-color: $bg-light;
+
+		&:has( + .h3:hover, + .h3:focus-within, + .h4:hover, + .h3:focus-within) {
+			background-color: transparent;
+
+			a {
+				background-color: transparent;
+			}
+		}
+
+		a {
+			display: block;
+			border-bottom: 0;
+			overflow: hidden;
+			@extend .resource__thumbnail;
 
 			&:hover,
-			&:focus-within {
+			&:focus {
 
-				.resource__thumbnail {
-					background-color: $bg-secondary-50;
-				}
 				img {
 					transform: scale(1.2);
 				}
 			}
 		}
-
-		.resource__thumbnail {
-			background-color: $bg-light;
-
-			&:hover,
-			&:focus {
-			}
-		}
-		img {
-			max-height: 300px;
-		}
-		a {
-
-		}
 	}
-	
-	&[class*="attachment-count"]:not(.attachment-count-1).layout-horizontal.media-display-thumbnail {
+
+	// MEDIAS MULTIPLES HORIZONTAL ----------------------------------	
+	&.multiple-attachments.layout-horizontal,
+	&[class*="attachment-count"]:not(.attachment-count-1).layout-horizontal {
+		display: flex;
+		flex-flow: row wrap;
+		align-items: flex-start;
+		justify-content: center;
+		column-gap: $margin;
+		row-gap: $gutter--lg;
+		@include alignmedium;
 
 		.resource {
-			display: grid;
-			grid-template-rows: 1fr auto;
-			height: 100%;
-			margin-bottom: 0;
+			flex-basis: 100%;
+
+			@include breakpoint(xs) {
+				flex-basis: $one-half;
+			}
+			@include breakpoint(sm) {
+				flex-basis: $one-third;
+			}
+			@include breakpoint(lg) {
+				flex-basis: $one-fourth;
+
+				&:has(.large) {
+					flex-basis: $one-third;
+				}
+			}
 		}
 	}
 }

@@ -9,24 +9,43 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Omekalia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-19 14:41+0200\n"
+"POT-Creation-Date: 2026-11-12 10:07+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kaeness <contact@kaeness.fr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.10\n"
 "X-Poedit-Basepath: ..\n"
 
 # ----
+
+
+
+
+#: ../view/common/omekalia/header.phtml:28
+msgid "Visitor Login"
+msgstr ""
+
+#: ../view/common/omekalia/header.phtml:28
+msgid "Login"
+msgstr ""
+
+#: ../view/common/omekalia/header.phtml:36
+msgid "SSO Login"
+msgstr ""
+
+
 #: ../view/common/omekalia/back-to-top.phtml:2
 msgid "Back to top"
 msgstr ""
 
+
 #: ../view/common/omekalia/footer.phtml:54
 msgid "Open new tab"
 msgstr ""
+
 
 #: ../view/common/omekalia/home-collections.phtml:3
 msgid "Collections"
@@ -36,9 +55,11 @@ msgstr ""
 msgid "Explore all the collections"
 msgstr ""
 
+
 #: ../view/common/omekalia/home-items.phtml:4
 msgid "Discover other items"
 msgstr ""
+
 
 #: ../view/common/pagination.phtml:20
 msgid "of %s"
@@ -48,11 +69,17 @@ msgstr ""
 msgid "Results %1$s–%2$s of %3$s"
 msgstr ""
 
+
+
+
 #: ../view/item-sets-tree/site/index/index.phtml:10
 #: ../view/omeka/site/item-set/browse.phtml:14
 #: ../view/omeka/site/item/browse.phtml:30
 msgid "All item sets"
 msgstr ""
+
+
+
 
 #: ../view/omeka/site/item/browse.phtml:43
 msgid "Item set"
@@ -74,7 +101,8 @@ msgstr ""
 #: ../view/omeka/site/item/browse.phtml:87
 msgid "Browse items"
 msgstr ""
-msgstr ""
+
+
 
 
 #: ../view/omeka/site/item/show.phtml:106
@@ -85,22 +113,43 @@ msgstr ""
 msgid "Related resources"
 msgstr ""
 
-#: ../helper/DisplaySelectedValues.php:53
-msgid ": "
+
+
+
+#: ../helper/DisplaySelectedValues.php:75
+msgid "Open the external reference for "
 msgstr ""
 
-#: ../view/common/omekalia/header.phtml:53
-msgid "Visitor Login"
+#: ../helper/DisplaySelectedValues.php:81
+msgid "Ref."
 msgstr ""
 
-common/omekalia/header.phtml:53
-msgid "Login"
+
+
+
+#: ../view/search/facets.phtml:51
+msgid "Filter with selected facets"
 msgstr ""
 
-#: ../view/common/omekalia/header.phtml:53
-msgid "SSO Login"
+#: ../view/search/facets.phtml:58
+msgid "Apply selected facets"
 msgstr ""
 
+#: ../view/search/facets.phtml:58
+msgid "Apply facets"
+msgstr ""
+
+#: ../view/search/facets.phtml:58
+msgid "Apply filters"
+msgstr ""
+
+#: ../view/search/facets.phtml:59
+msgid "Reset all facets"
+msgstr ""
+
+#: ../view/search/facets.phtml:59
+msgid "Reset all filters"
+msgstr ""
 
 #: ../view/search/facets.phtml:43
 msgid "Facets"
@@ -126,6 +175,9 @@ msgstr ""
 #: ../view/search/form/standard-match-group-filter.phtml:46
 msgid "Delete value"
 msgstr ""
+
+
+
 
 #: ../view/item-set-calendar/site/item/browse.phtml:47
 msgid "Back to view per year"
@@ -173,7 +225,6 @@ msgstr ""
 
 #: ../view/item-set-calendar/site/item/browse.phtml:73
 msgid "November"
-msgstr ""
 msgstr ""
 
 #: ../view/item-set-calendar/site/item/browse.phtml:74

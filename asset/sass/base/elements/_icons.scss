@@ -1,3 +1,155 @@
+.icon {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 1.33334rem;
+	width: 1.33334rem;
+	@include transition;
+
+	&::before {
+		content: '';
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+		mask-repeat: no-repeat;
+		mask-position: center;
+		mask-size: contain;
+		@include transition;
+	}
+
+	&-caret--left::before {
+		mask-image: var(--icon-caret--left);
+		background-color: $bg-primary;
+	}
+	&-caret--right::before {
+		mask-image: var(--icon-caret--right);
+		background-color: $bg-primary;
+	}
+	&-arrow--left::before {
+		mask-image: var(--icon-arrow--left);
+		background-color: $bg-primary;
+	}
+	&-arrow--right::before {
+		mask-image: var(--icon-arrow--right);
+		background-color: $bg-primary;
+	}
+	&-carousel--left::before {
+		mask-image: var(--icon-carousel--left);
+		background-color: $bg-primary;
+	}
+	&-carousel--right::before {
+		mask-image: var(--icon-carousel--right);
+		background-color: $bg-primary;
+	}
+	&-next::before {
+		mask-image: var(--icon-next);
+		background-color: $bg-primary;
+	}
+	&-previous::before {
+		mask-image: var(--icon-previous);
+		background-color: $bg-primary;
+	}
+
+	&-arrow--up::before {
+		mask-image: var(--icon-arrow--up);
+		background-color: $bg-primary;
+	}
+	&-arrow--down::before {
+		mask-image: var(--icon-arrow--down);
+		background-color: $bg-primary;
+	}
+	&-chevron-down::before {
+		mask-image: var(--icon-chevron--down);
+		background-color: $bg-primary;
+	}
+	&-chevron-up::before {
+		mask-image: var(--icon-chevron--down);
+		background-color: $bg-primary;
+	}
+	&-menu--up::before {
+		mask-image: var(--icon-menu--up);
+		background-color: $bg-primary;
+	}
+	&-menu--down::before {
+		mask-image: var(--icon-menu--down);
+		background-color: $bg-primary;
+	}
+	&-accordion--up::before {
+		mask-image: var(--icon-accordion--up);
+		background-color: $bg-primary;
+	}
+	&-accordion--down::before {
+		mask-image: var(--icon-accordion--down);
+		background-color: $bg-primary;
+	}
+
+
+	&-user {
+		display: inline-block;
+
+		&::before {
+			mask-image: var(--icon-user);
+			background-color: $bg-primary;
+		}
+	}
+		
+
+	&-list::before {
+		mask-image: var(--icon-list);
+		background-color: $bg-primary;
+	}
+	&-list--grid::before {
+		mask-image: var(--icon-list--grid);
+		background-color: $bg-primary;
+	}
+
+	// SEARCH ICONS -------------------------------------
+	&-magnifyer::before {
+		mask-image: var(--icon-magnifyer);
+		mask-size: $gutter--sm;
+		background-color: $bg-primary;
+	}
+	&-search::before {
+		mask-image: var(--icon-search);
+		background-color: $bg-primary;
+	}
+	&-add::before {
+		mask-image: var(--icon-add);
+		background-color: $bg-primary;
+	}
+	&-delete::before {
+		mask-image: var(--icon-delete);
+		background-color: $bg-primary;
+	}
+
+	// LINK ICONS -------------------------------------
+	&-link--out {
+		display: inline-block;
+		width: $gutter;
+		height: $gutter;
+
+		&::before {
+			mask-size: 0.75 * $gutter;
+			mask-position: center;
+			mask-image: var(--icon-link--out);
+			background-color: $bg-dark;
+		}
+	}
+	&-link--in {
+		display: inline-block;
+		width: $gutter;
+		height: $gutter;
+
+		&::before {
+			mask-size: 0.75 * $gutter;
+			mask-position: center;
+			mask-image: var(--icon-link--in);
+			background-color: $bg-dark;
+		}
+	}
+}
 *[class*="icon-"] {
 	font-family: $font-icon;
 }

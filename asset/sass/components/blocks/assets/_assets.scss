@@ -87,3 +87,33 @@
 		}
 	}
 }
+
+// MODELE LOGO LIST -------------------------------------
+.assets.logos-list {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+	row-gap: $gutter;
+	column-gap: $margin;
+
+	@include breakpoint(sm) {
+		row-gap: $gutter--md;
+	}
+
+	.asset {
+		width: $one-half;
+
+		@include breakpoint(xs) {
+			width: $one-third; // a revoir en fontion du rendu
+		}
+		img {
+			max-height: 100px;
+			max-width: 100%;
+
+			@include breakpoint(xs) {
+				max-height: 200px;
+			}
+		}
+	}
+}

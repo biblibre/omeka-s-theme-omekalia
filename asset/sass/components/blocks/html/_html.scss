@@ -8,3 +8,215 @@
 		margin-bottom: 0;
 	}
 }
+
+.page-chapo {
+	font-size: $font-size--md;
+	font-weight: $medium;
+}
+
+
+.page-quote,
+.page-featured-title,
+.page-featured {
+	padding: $gutter--sm $gutter;
+	background-color: $bg-white;
+	@include align--sm;
+
+	@include breakpoint(xs) {
+		padding: $gutter--md;
+	}
+	@include breakpoint(sm) {
+		padding-top: $gutter--lg;
+		padding-bottom: $gutter--lg;
+	}
+
+	h2,
+	h3,
+	h4 {
+		margin-top: 0;
+	}
+	p:last-of-type {
+		margin-bottom: 0;
+	}
+}
+
+.page-quote {
+	position: relative;
+	@include box-shadow--sm;
+	text-align: center;
+	color: $color-link;
+	font-family: $font-headings;
+	font-style: italic;
+	font-weight: $semi-bold;
+	font-size: 1.3em;
+
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+		left: $gutter--xs;
+		display: block;
+		width: calc(100% - #{$gutter});
+		height: $gutter--sm;
+		background-repeat: no-repeat;
+		background-size: contain;
+
+		@include breakpoint(xs) {
+			left: $gutter;
+			width: calc(100% - #{$gutter--md});
+			height: $gutter--md;
+		}
+	}
+	&::before {
+		top: $gutter;
+		background-image: var(--quote-left);
+		background-position: left;
+	}
+	&::after {
+		bottom: $gutter;
+		background-image: var(--quote-right);
+		background-position: right;
+	}
+
+	& > * {
+		max-width: 500px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	blockquote {
+		width: initial;
+
+		&::before,
+		&::after {
+			content: none;
+		}
+
+		& + p:last-child {
+			margin-bottom: $gutter;
+		}
+	}
+
+	small {
+		display: block;
+		line-height: 1.25;
+		font-family: $font-family;
+		font-weight: $medium;
+		font-style: normal;
+		font-size: 1rem;
+		color: $color-global;
+
+		strong {
+			font-size: 1.125rem;
+		}
+	}
+}
+
+.page-featured-title {
+
+	h2 {
+		text-align: center;
+		font-size: 1.5em;
+		font-style: italic;
+		color: $color-global;
+	}
+}
+
+.page-featured {
+	position: relative;
+	@include box-shadow--sm;
+	font-family: $font-headings;
+	font-weight: 600;
+	font-size: 1.125em;
+
+	&::after {
+		content: '';
+		position: absolute;
+		right: -75px;
+		bottom: -$gutter--xl;
+		display: block;
+		width: 150px;
+		height: 250px;
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: center;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2' clip-rule='evenodd' viewBox='0 0 1238 2121'%3E%3Cpath fill='%23e7e9f4' fill-rule='nonzero' d='M1035.67 18.30880861s7.94999682-42.82498287 29.61665482 2.51666566l89.81663074 188.80825781 76.5833027 161.04993558s21.63332468 45.30831521-21.09999156 26.04165625l-183.24159337-82.45830035s-42.78331622-19.15832567-34.82498607-62.01664186L1035.67 18.30880861ZM680.059 1362.9931927s16.60832669 64.38330758 61.29997548 16.70832665l186.56659204-198.89992044 158.96660308-169.3332656s44.80831541-47.63331428-44.10831569-50.39997984l-381.43318076-11.64166201s-88.89996444-2.39999904-72.10830449 61.85830859L680.059 1362.9931927ZM870.595 2065.94978668s35.62498575 97.56662764-63.77497449 30.57498777l-413.37483465-279.13322168L40.8453319 1579.08331476s-99.40829357-66.90830657 11.94166189-79.18330166l476.49147607-52.39997904s111.18328886-12.4166617 146.62494135 85.27496589L870.595 2065.94978668Z'/%3E%3C/svg%3E");
+	}
+	& > * {
+		position: relative;
+		z-index: 2;
+	}
+}
+
+.page-bibliography,
+.page-authors {
+
+	h2 {
+		display: inline-block;
+		padding: 8px $gutter;
+		background-color: $bg-primary;
+		font-size: 1em;
+		font-weight: normal;
+		color: $color-light;
+
+		@include breakpoint(md) {
+			margin-left: -12px;
+		}
+	}
+	ul {
+		padding-right: $gutter--sm;
+
+		@include breakpoint(md) {
+			padding-right: 48px;
+		}
+	}
+}
+
+.block .page-bibliography {
+
+	ul li {
+		padding-left: 0;
+
+		&::before {
+			content: none;
+		}
+	}		
+}
+
+
+/* VIDEO IFRAME
+---------------------------------------------------- */
+.html-page-video {
+
+	figure,
+	img,
+	iframe {
+		width: 100%;
+	}
+}
+
+
+/* VIDEO  IFRAME / VISUEL + GRANDE LARGEUR BLOCK --sm, --md, --lg :
+---------------------------------------------------- */
+.page-block-sm,
+.page-block-md,
+.page-block-lg {
+
+	// réduction de la largeur pour les contenus textes
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	ul,
+	ol,
+	p:not(:has(iframe)),
+	figcaption {
+		max-width: $width--page;
+		@include margin-auto;
+	}
+	figure,
+	img,
+	iframe {
+		width: 100%;
+	}
+}

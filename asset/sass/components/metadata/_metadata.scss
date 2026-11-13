@@ -18,7 +18,8 @@
 	}
 }
 .value {
-	margin-bottom: 0;
+	margin-bottom: 0.75 * $gutter;
+	line-height: $line-height--sm;
 	color: $color-value;
 
 	a {
@@ -35,10 +36,20 @@
 			border-color: $bg-link;
 			color: $color-light;
 			box-shadow: none;
+
+			.icon::before {
+				background-color: $bg-white;
+			}
+		}
+
+		&:has(.icon) {
+			display: inline-flex;
 		}
 
 		i::before,
-		span[class*="fa"]::before {
+		span[class*="fa"]::before,
+		span[class*="o-icon"]::before,
+		.icon::before {
 			position: relative;
 			bottom: 0.5 * $gutter--xs;
 			padding-left: 4px;
@@ -46,18 +57,62 @@
 			font-size: 0.6em;
 			@include transition;
 		}
+		.icon {
+			width: $gutter;
+			margin-left: 0.5 * $gutter--xs;
+
+			&::before {
+				bottom: 0;
+				background-color: $bg-primary;
+				@include transition;
+			} 
+		}
+
+		/*& + .uri-value-link--icon {
+			margin-left: $gutter--xs;
+
+			&::before {
+				content: "|";
+				margin-right: $gutter--xs;
+			}
+		}*/
 	}
 	.uri-value-link--icon a {
 		display: inline-block;
 		margin-left: $gutter--xs;
-		border-bottom: 0;
+		padding: 0.25 * $gutter--xs 0.5 * $gutter--xs;
+		background-color: $bg-link;
+		border: 1px solid $border--1;
+		border-radius: $radius--sm;
+		color: $color-light;
 
-		i::before {
+		&:hover,
+		&:focus {
+			background-color: $bg-light;
+			color: $color-menu;
+
+			.icon::before {
+				background-color: $bg-dark;
+			}
+		}
+
+		i::before,
+		span::before {
 			bottom: initial;
 			display: inline-block;
 			padding: 0.5 * $gutter--xs 0.75 * $gutter--xs;
 			font-size: 1em;
 		} 
+		.icon::before {
+			background-color: $bg-white;
+		}
+	}
+	// Internal link to resource
+	a.resource-link {
+
+		img {
+			display: none;
+		}
 	}
 	a:has(.has-annotation) {
 		margin-left: $gutter--xs;
@@ -118,10 +173,6 @@
 		@include container (properties, sm) {
 			line-height: $line-height--sm;
 		}
-
-		.value {
-			margin-bottom: 0;
-		}
 	}	
 
 	& > dl:not([class]) > .property:first-child {
@@ -152,10 +203,7 @@
 
 		.label {
 			padding-top: 2px;
-		}
-		.value {
-			margin-bottom: 0;
-		}		
+		}	
 	}
 
 	& > dl:not(last-of-type) {

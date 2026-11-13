@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.1.0 - 2026-11-13
+
+New public release
+Add custom block templates
+Update templates for facets (Search 0.23.2)
+Update DisplaySelectedValues Helper
+Update icon class
+Update styles
+Update translations
+
 ## 1.0.13 - 2026-07-27
 
 New public release
