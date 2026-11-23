@@ -53,8 +53,6 @@ $facetedFiltering =
              <?= $this->partial('search/active-facets') ?>
 
 			<div class="actions search-facet__filters">
-                <!-- <button class="fas fa-filter" id="submit-facets" title="<?php echo $this->escapeHtml($this->translate("Filter with selected facets")); ?>"></button>
-                <button class="fas fa-times" id="reset-facets" title="<?php echo $this->escapeHtml($this->translate("Reset all filters")); ?>"></button> -->
                 <button class="submit-facets-action"><?php echo $this->translate('Apply facets') ?></button>
             	<button class="reset-facets-action"><?php echo $this->translate('Reset all facets') ?></button>
             </div>
@@ -73,6 +71,7 @@ $facetedFiltering =
 						<?php $hidden_facets = array_slice($facet_values, $facet_display_limit); ?>
 						<li class="search-facet" data-facet-name="<?= $this->escapeHtml($name) ?>">
 							<h3 class="search-facet__title"><?php echo $this->facetLabel($name); ?></h3>
+							<span class="search-facet-operator"><?= $this->escapeHtml($operatorLabel) ?></span>
 							<div>
 								<ul class="search-facet-items">
 									<?php foreach ($visible_facets as $facetValue): ?>

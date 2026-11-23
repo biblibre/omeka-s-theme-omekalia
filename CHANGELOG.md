@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.1.1 - 2026-11-23
+
+New public release
+Update styles and templates for facets
+
 ## 1.1.0 - 2026-11-13
 
 New public release

@@ -185,7 +185,7 @@
 			position: relative;
 			display: inline-block;
 			align-items: center;
-			margin-left: $gutter--md;
+			//margin-left: $gutter--md;
 			font-weight: $semi-bold;
 			line-height: $line-height--sm;
 			@include transition;
@@ -193,12 +193,14 @@
 			&::before {
 				content: '';
 				position: absolute;
-				left: -$gutter--md;
-				top: 0;
+				left: -$gutter--sm;
+				top: 2px;
 				display: block;
-				height: calc( #{$gutter--sm} - 2px );
-				width: $gutter--sm;
-				background: url(../img/icon_search_facet.svg) no-repeat left top /contain; 
+				height: $gutter;
+				width: $gutter;
+				//background: url(../img/icon_search_facet.svg) no-repeat left top /contain; 
+				border: 1px solid $border--2;
+				border-radius: $radius;
 			}
 			&:hover {
 				cursor: pointer;
@@ -208,11 +210,15 @@
 		span:has(input:checked) {
 
 			label::after {
-				content: '\25A0';
+				content: '';
 				position: absolute;
-				top: -2px;
-				left: calc(-#{$gutter--md} + 0.75 * #{$gutter--xs});
-				line-height: 1.2;
+				top: 4px;
+				left: calc(-#{$gutter--sm} + 2px);
+				display: block;
+				width: 0.75 * $gutter;
+				height: 0.75 * $gutter;
+				border-radius: $radius;
+				background-color: $bg-primary;
 				color: $bg-primary;
 			}
 		}
